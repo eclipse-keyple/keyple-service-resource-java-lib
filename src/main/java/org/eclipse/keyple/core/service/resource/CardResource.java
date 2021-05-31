@@ -11,28 +11,28 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.service.resource;
 
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
-import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.util.Assert;
 
 /**
- * This POJO contains a {@link SmartCard} and its associated {@link Reader}.
+ * This POJO contains a {@link SmartCard} and its associated {@link CardReader}.
  *
  * @since 2.0
  */
 public final class CardResource {
 
-  private final Reader reader;
+  private final CardReader reader;
   private final SmartCard smartCard;
 
   /**
    * Creates an instance of {@link CardResource}.
    *
-   * @param reader The {@link Reader}.
+   * @param reader The {@link CardReader}.
    * @param smartCard The {@link SmartCard}.
    * @since 2.0
    */
-  public CardResource(Reader reader, SmartCard smartCard) {
+  public CardResource(CardReader reader, SmartCard smartCard) {
 
     Assert.getInstance().notNull(reader, "reader").notNull(smartCard, "smartCard");
 
@@ -46,7 +46,7 @@ public final class CardResource {
    * @return A not null reference.
    * @since 2.0
    */
-  public Reader getReader() {
+  public CardReader getReader() {
     return reader;
   }
 

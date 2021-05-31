@@ -12,8 +12,9 @@
 package org.eclipse.keyple.core.service.resource.spi;
 
 import org.calypsonet.terminal.card.spi.SmartCardSpi;
+import org.calypsonet.terminal.reader.CardReader;
+import org.calypsonet.terminal.reader.selection.CardSelectionService;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
-import org.eclipse.keyple.core.service.Reader;
 
 /**
  * Provides means to check if a reader contains a card that matches a given profile.
@@ -27,9 +28,10 @@ public interface CardResourceProfileExtensionSpi {
    * potentially executes any necessary commands.
    *
    * @param reader The reader in which the card is supposed to be inserted.
+   * @param cardSelectionService A instance of {@link CardSelectionService}.
    * @return A {@link SmartCardSpi} or null if no card is inserted or if its profile does not match
    *     the associated data.
    * @since 2.0
    */
-  SmartCard matches(Reader reader);
+  SmartCard matches(CardReader reader, CardSelectionService cardSelectionService);
 }

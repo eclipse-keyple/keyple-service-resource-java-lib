@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
+import org.eclipse.keyple.core.service.CardSelectionServiceFactory;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtensionSpi;
@@ -165,7 +166,7 @@ final class ReaderManagerAdapter {
    */
   CardResource matches(CardResourceProfileExtensionSpi extension) {
     CardResource cardResource = null;
-    SmartCard smartCard = extension.matches(reader);
+    SmartCard smartCard = extension.matches(reader, CardSelectionServiceFactory.getService());
     if (smartCard != null) {
       cardResource = getOrCreateCardResource(smartCard);
       selectedCardResource = cardResource;
@@ -200,7 +201,7 @@ final class ReaderManagerAdapter {
           usageTimeoutMillis);
     }
     if (selectedCardResource != cardResource) {
-      SmartCard smartCard = extension.matches(reader);
+      SmartCard smartCard = extension.matches(reader, CardSelectionServiceFactory.getService());
       if (smartCard == null
           || !Arrays.equals(
               cardResource.getSmartCard().getPowerOnData(), smartCard.getPowerOnData())

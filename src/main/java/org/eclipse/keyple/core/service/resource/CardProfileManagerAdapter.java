@@ -17,11 +17,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
-import org.eclipse.keyple.core.service.KeyplePluginException;
-import org.eclipse.keyple.core.service.Plugin;
-import org.eclipse.keyple.core.service.PoolPlugin;
-import org.eclipse.keyple.core.service.Reader;
+import org.eclipse.keyple.core.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -181,7 +179,7 @@ final class CardProfileManagerAdapter {
    * @param reader The reader to check.
    * @return True if it is accepted.
    */
-  private boolean isReaderAccepted(Reader reader) {
+  private boolean isReaderAccepted(CardReader reader) {
     return readerNameRegexPattern == null
         || readerNameRegexPattern.matcher(reader.getName()).matches();
   }
@@ -318,7 +316,7 @@ final class CardProfileManagerAdapter {
     List<CardResource> unusableCardResources = new ArrayList<CardResource>(0);
 
     for (CardResource cardResource : cardResources) {
-      Reader reader = cardResource.getReader();
+      CardReader reader = cardResource.getReader();
       synchronized (reader) {
         ReaderManagerAdapter readerManager = service.getReaderManager(reader);
         if (readerManager != null) {
@@ -373,7 +371,10 @@ final class CardProfileManagerAdapter {
       try {
         Reader reader = poolPlugin.allocateReader(cardProfile.getReaderGroupReference());
         if (reader != null) {
-          SmartCard smartCard = cardProfile.getCardResourceProfileExtensionSpi().matches(reader);
+          SmartCard smartCard =
+              cardProfile
+                  .getCardResourceProfileExtensionSpi()
+                  .matches(reader, CardSelectionServiceFactory.getService());
           if (smartCard != null) {
             CardResource cardResource = new CardResource(reader, smartCard);
             service.registerPoolCardResource(cardResource, poolPlugin);

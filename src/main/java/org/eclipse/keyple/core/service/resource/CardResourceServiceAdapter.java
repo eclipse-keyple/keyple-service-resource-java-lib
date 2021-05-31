@@ -15,6 +15,7 @@ import static org.eclipse.keyple.core.service.resource.PluginsConfigurator.*;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.CardReaderEvent;
 import org.calypsonet.terminal.reader.ObservableCardReader;
 import org.calypsonet.terminal.reader.spi.CardReaderObserverSpi;
@@ -113,7 +114,7 @@ final class CardResourceServiceAdapter
    * @return Null if there is no reader manager associated.
    * @since 2.0
    */
-  ReaderManagerAdapter getReaderManager(Reader reader) {
+  ReaderManagerAdapter getReaderManager(CardReader reader) {
     return readerToReaderManagerMap.get(reader);
   }
 
@@ -414,7 +415,7 @@ final class CardResourceServiceAdapter
       PoolPlugin poolPlugin = cardResourceToPoolPluginMap.get(cardResource);
       if (poolPlugin != null) {
         cardResourceToPoolPluginMap.remove(cardResource);
-        poolPlugin.releaseReader(cardResource.getReader());
+        poolPlugin.releaseReader((Reader) cardResource.getReader());
       }
     }
 
