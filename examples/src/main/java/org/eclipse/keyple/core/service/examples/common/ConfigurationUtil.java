@@ -11,7 +11,7 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.service.examples.common;
 
-import org.eclipse.keyple.card.generic.CardResourceProfileExtension;
+import org.eclipse.keyple.card.generic.GenericCardResourceProfileExtension;
 import org.eclipse.keyple.card.generic.GenericExtensionService;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.Reader;
@@ -93,7 +93,7 @@ public class ConfigurationUtil {
       Plugin plugin, String readerNameRegex, String cardResourceProfileName) {
 
     // Create a card resource extension.
-    CardResourceProfileExtension cardResourceExtension =
+    GenericCardResourceProfileExtension cardResourceExtension =
         GenericExtensionService.getInstance().createCardResourceProfileExtension();
 
     // Get the service

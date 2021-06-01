@@ -12,7 +12,7 @@
 package org.eclipse.keyple.core.service.examples.UseCase8_CardResourceService;
 
 import org.calypsonet.terminal.reader.spi.CardReaderObservationExceptionHandlerSpi;
-import org.eclipse.keyple.card.generic.CardResourceProfileExtension;
+import org.eclipse.keyple.card.generic.GenericCardResourceProfileExtension;
 import org.eclipse.keyple.card.generic.GenericExtensionService;
 import org.eclipse.keyple.core.service.*;
 import org.eclipse.keyple.core.service.resource.*;
@@ -74,14 +74,14 @@ public class Main_CardResourceService_Pcsc {
 
     // Create a card resource extension A expecting a card having power-on data matching the regex
     // A.
-    CardResourceProfileExtension cardResourceExtensionA =
+    GenericCardResourceProfileExtension cardResourceExtensionA =
         GenericExtensionService.getInstance()
             .createCardResourceProfileExtension()
             .setPowerOnDataRegex(ATR_REGEX_A);
 
     // Create a card resource extension B expecting a card having power-on data matching the regex
     // B.
-    CardResourceProfileExtension cardResourceExtensionB =
+    GenericCardResourceProfileExtension cardResourceExtensionB =
         GenericExtensionService.getInstance()
             .createCardResourceProfileExtension()
             .setPowerOnDataRegex(ATR_REGEX_B);
