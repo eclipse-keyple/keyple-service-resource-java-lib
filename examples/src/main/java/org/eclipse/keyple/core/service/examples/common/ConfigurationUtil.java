@@ -12,7 +12,7 @@
 package org.eclipse.keyple.core.service.examples.common;
 
 import org.eclipse.keyple.card.generic.CardResourceProfileExtension;
-import org.eclipse.keyple.card.generic.GenericExtensionServiceProvider;
+import org.eclipse.keyple.card.generic.GenericExtensionService;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.service.resource.*;
@@ -94,7 +94,7 @@ public class ConfigurationUtil {
 
     // Create a card resource extension.
     CardResourceProfileExtension cardResourceExtension =
-        GenericExtensionServiceProvider.getService().createCardResourceProfileExtension();
+        GenericExtensionService.getInstance().createCardResourceProfileExtension();
 
     // Get the service
     CardResourceService cardResourceService = CardResourceServiceProvider.getService();

@@ -14,7 +14,6 @@ package org.eclipse.keyple.core.service.examples.UseCase8_CardResourceService;
 import org.calypsonet.terminal.reader.spi.CardReaderObservationExceptionHandlerSpi;
 import org.eclipse.keyple.card.generic.CardResourceProfileExtension;
 import org.eclipse.keyple.card.generic.GenericExtensionService;
-import org.eclipse.keyple.card.generic.GenericExtensionServiceProvider;
 import org.eclipse.keyple.core.service.*;
 import org.eclipse.keyple.core.service.resource.*;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
@@ -65,24 +64,25 @@ public class Main_CardResourceService_Pcsc {
     Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
 
     // Get the generic card extension service
-    GenericExtensionService cardExtension = GenericExtensionServiceProvider.getService();
+    GenericExtensionService cardExtension = GenericExtensionService.getInstance();
 
     // Verify that the extension's API level is consistent with the current service.
     smartCardService.checkCardExtension(cardExtension);
 
-    logger.info("=============== UseCase Resource Service #1: card resource service ==================");
+    logger.info(
+        "=============== UseCase Resource Service #1: card resource service ==================");
 
     // Create a card resource extension A expecting a card having power-on data matching the regex
     // A.
     CardResourceProfileExtension cardResourceExtensionA =
-        GenericExtensionServiceProvider.getService()
+        GenericExtensionService.getInstance()
             .createCardResourceProfileExtension()
             .setPowerOnDataRegex(ATR_REGEX_A);
 
     // Create a card resource extension B expecting a card having power-on data matching the regex
     // B.
     CardResourceProfileExtension cardResourceExtensionB =
-        GenericExtensionServiceProvider.getService()
+        GenericExtensionService.getInstance()
             .createCardResourceProfileExtension()
             .setPowerOnDataRegex(ATR_REGEX_B);
 
