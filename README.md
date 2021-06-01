@@ -4,7 +4,7 @@
 
 The **Keyple Service Resource** Java library contains the Keyple Card Resource Service whose goal is to provide an profile based card resource allocation mechanism.
 
-This library **should be import explicitly** by the main application.
+This library **should be imported explicitly** by the main application.
 
 ## User Guide & Download Information
 
