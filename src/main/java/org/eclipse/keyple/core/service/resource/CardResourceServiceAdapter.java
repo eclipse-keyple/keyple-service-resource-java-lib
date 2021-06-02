@@ -464,7 +464,7 @@ final class CardResourceServiceAdapter
       return;
     }
     Plugin plugin = SmartCardServiceProvider.getService().getPlugin(pluginEvent.getPluginName());
-    if (pluginEvent.getEventType() == PluginEvent.EventType.READER_CONNECTED) {
+    if (pluginEvent.getType() == PluginEvent.Type.READER_CONNECTED) {
       for (String readerName : pluginEvent.getReaderNames()) {
         // Get the new reader from the plugin because it is not yet registered in the service.
         Reader reader = plugin.getReader(readerName);
@@ -631,8 +631,8 @@ final class CardResourceServiceAdapter
    * @param readerManager The reader manager associated to the reader.
    */
   private void onReaderEvent(CardReaderEvent readerEvent, ReaderManagerAdapter readerManager) {
-    if (readerEvent.getEventType() == CardReaderEvent.EventType.CARD_INSERTED
-        || readerEvent.getEventType() == CardReaderEvent.EventType.CARD_MATCHED) {
+    if (readerEvent.getType() == CardReaderEvent.Type.CARD_INSERTED
+        || readerEvent.getType() == CardReaderEvent.Type.CARD_MATCHED) {
       if (logger.isDebugEnabled()) {
         logger.debug(
             "Create new card resources associated with reader '{}' matching the new card inserted",

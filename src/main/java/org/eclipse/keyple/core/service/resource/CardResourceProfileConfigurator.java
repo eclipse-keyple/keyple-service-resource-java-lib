@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import org.eclipse.keyple.core.service.Plugin;
-import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtensionSpi;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.util.Assert;
 
 /**
@@ -27,7 +27,7 @@ import org.eclipse.keyple.core.util.Assert;
 public final class CardResourceProfileConfigurator {
 
   private final String profileName;
-  private final CardResourceProfileExtensionSpi cardResourceProfileExtensionSpi;
+  private final CardResourceProfileExtension cardResourceProfileExtensionSpi;
   private final List<Plugin> plugins;
   private final String readerNameRegex;
   private final String readerGroupReference;
@@ -58,7 +58,7 @@ public final class CardResourceProfileConfigurator {
    * @return A not null reference.
    * @since 2.0
    */
-  CardResourceProfileExtensionSpi getCardResourceProfileExtensionSpi() {
+  CardResourceProfileExtension getCardResourceProfileExtensionSpi() {
     return cardResourceProfileExtensionSpi;
   }
 
@@ -112,7 +112,7 @@ public final class CardResourceProfileConfigurator {
    * @since 2.0
    */
   public static Builder builder(
-      String profileName, CardResourceProfileExtensionSpi cardResourceProfileExtension) {
+      String profileName, CardResourceProfileExtension cardResourceProfileExtension) {
     return new Builder(profileName, cardResourceProfileExtension);
   }
 
@@ -124,23 +124,22 @@ public final class CardResourceProfileConfigurator {
   public static class Builder {
 
     private final String profileName;
-    private final CardResourceProfileExtensionSpi cardResourceProfileExtensionSpi;
+    private final CardResourceProfileExtension cardResourceProfileExtensionSpi;
     private final List<Plugin> plugins;
     private String readerNameRegex;
     private String readerGroupReference;
 
-    private Builder(
-        String profileName, CardResourceProfileExtensionSpi cardResourceProfileExtension) {
+    private Builder(String profileName, CardResourceProfileExtension cardResourceProfileExtension) {
       Assert.getInstance()
           .notEmpty(profileName, "profileName")
           .notNull(cardResourceProfileExtension, "cardResourceProfileExtension");
-      if (!(cardResourceProfileExtension instanceof CardResourceProfileExtensionSpi)) {
+      if (!(cardResourceProfileExtension instanceof CardResourceProfileExtension)) {
         throw new IllegalArgumentException(
             "The provided card profile extension does not implement the right internal SPI.");
       }
       this.profileName = profileName;
       this.cardResourceProfileExtensionSpi =
-          (CardResourceProfileExtensionSpi) cardResourceProfileExtension;
+          (CardResourceProfileExtension) cardResourceProfileExtension;
       this.plugins = new ArrayList<Plugin>(1);
       this.readerNameRegex = null;
       this.readerGroupReference = null;

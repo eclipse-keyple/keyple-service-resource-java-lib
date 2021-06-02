@@ -21,7 +21,7 @@ import org.calypsonet.terminal.reader.selection.spi.SmartCard;
  *
  * @since 2.0
  */
-public interface CardResourceProfileExtensionSpi {
+public interface CardResourceProfileExtension {
 
   /**
    * Checks if a card is inserted in the provided reader, selects it, evaluates its profile and

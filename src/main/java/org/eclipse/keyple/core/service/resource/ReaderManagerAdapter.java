@@ -19,7 +19,7 @@ import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.service.CardSelectionServiceFactory;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.Reader;
-import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtensionSpi;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -164,7 +164,7 @@ final class ReaderManagerAdapter {
    * @return Null if the inserted card does not match with the provided profile extension.
    * @since 2.0
    */
-  CardResource matches(CardResourceProfileExtensionSpi extension) {
+  CardResource matches(CardResourceProfileExtension extension) {
     CardResource cardResource = null;
     SmartCard smartCard = extension.matches(reader, CardSelectionServiceFactory.getService());
     if (smartCard != null) {
@@ -190,7 +190,7 @@ final class ReaderManagerAdapter {
    *     match the provided profile extension or is not the same smart card than the provided one.
    * @since 2.0
    */
-  boolean lock(CardResource cardResource, CardResourceProfileExtensionSpi extension) {
+  boolean lock(CardResource cardResource, CardResourceProfileExtension extension) {
     if (isBusy) {
       if (System.currentTimeMillis() < lockMaxTimeMillis) {
         return false;
@@ -204,7 +204,7 @@ final class ReaderManagerAdapter {
       SmartCard smartCard = extension.matches(reader, CardSelectionServiceFactory.getService());
       if (smartCard == null
           || !Arrays.equals(
-              cardResource.getSmartCard().getPowerOnData(), smartCard.getPowerOnData())
+              cardResource.getSmartCard().getPowerOnDataBytes(), smartCard.getPowerOnDataBytes())
           || !Arrays.equals(cardResource.getSmartCard().getFciBytes(), smartCard.getFciBytes())) {
         selectedCardResource = null;
         throw new IllegalStateException(
@@ -257,7 +257,8 @@ final class ReaderManagerAdapter {
       boolean hasSamePowerOnData =
           (!cardResource.getSmartCard().hasPowerOnData() && !smartCard.hasPowerOnData())
               || Arrays.equals(
-                  cardResource.getSmartCard().getPowerOnData(), smartCard.getPowerOnData());
+                  cardResource.getSmartCard().getPowerOnDataBytes(),
+                  smartCard.getPowerOnDataBytes());
 
       boolean hasSameFci =
           (!cardResource.getSmartCard().hasFci() && !smartCard.hasFci())
