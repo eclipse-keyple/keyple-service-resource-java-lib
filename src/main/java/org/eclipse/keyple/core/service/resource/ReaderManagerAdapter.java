@@ -203,9 +203,10 @@ final class ReaderManagerAdapter {
     if (selectedCardResource != cardResource) {
       SmartCard smartCard = extension.matches(reader, CardSelectionServiceFactory.getService());
       if (smartCard == null
+          || !cardResource.getSmartCard().getPowerOnData().equals(smartCard.getPowerOnData())
           || !Arrays.equals(
-              cardResource.getSmartCard().getPowerOnDataBytes(), smartCard.getPowerOnDataBytes())
-          || !Arrays.equals(cardResource.getSmartCard().getFciBytes(), smartCard.getFciBytes())) {
+              cardResource.getSmartCard().getSelectApplicationResponse(),
+              smartCard.getSelectApplicationResponse())) {
         selectedCardResource = null;
         throw new IllegalStateException(
             "No card is inserted or its profile does not match the associated data.");
@@ -255,14 +256,13 @@ final class ReaderManagerAdapter {
     for (CardResource cardResource : cardResources) {
 
       boolean hasSamePowerOnData =
-          (!cardResource.getSmartCard().hasPowerOnData() && !smartCard.hasPowerOnData())
-              || Arrays.equals(
-                  cardResource.getSmartCard().getPowerOnDataBytes(),
-                  smartCard.getPowerOnDataBytes());
+          cardResource.getSmartCard().getPowerOnData() != null
+              && cardResource.getSmartCard().getPowerOnData().equals(smartCard.getPowerOnData());
 
       boolean hasSameFci =
-          (!cardResource.getSmartCard().hasFci() && !smartCard.hasFci())
-              || Arrays.equals(cardResource.getSmartCard().getFciBytes(), smartCard.getFciBytes());
+          Arrays.equals(
+              cardResource.getSmartCard().getSelectApplicationResponse(),
+              smartCard.getSelectApplicationResponse());
 
       if (hasSamePowerOnData && hasSameFci) {
         return cardResource;

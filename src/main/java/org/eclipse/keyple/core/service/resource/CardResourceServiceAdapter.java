@@ -576,7 +576,7 @@ final class CardResourceServiceAdapter
     observableReader.setReaderObservationExceptionHandler(
         configuredPlugin.getReaderObservationExceptionHandlerSpi());
     observableReader.addObserver(this);
-    observableReader.startCardDetection(ObservableCardReader.PollingMode.REPEATING);
+    observableReader.startCardDetection(ObservableCardReader.DetectionMode.REPEATING);
   }
 
   /**
