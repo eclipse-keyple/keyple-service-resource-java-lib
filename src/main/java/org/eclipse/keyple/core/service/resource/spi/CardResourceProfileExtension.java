@@ -1,5 +1,5 @@
 /* **************************************************************************************
- * Copyright (c) 2021 Calypso Networks Association https://www.calypsonet-asso.org/
+ * Copyright (c) 2021 Calypso Networks Association https://calypsonet.org/
  *
  * See the NOTICE file(s) distributed with this work for additional information
  * regarding copyright ownership.
@@ -11,7 +11,6 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.service.resource.spi;
 
-import org.calypsonet.terminal.card.spi.SmartCardSpi;
 import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.CardSelectionService;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
@@ -29,8 +28,8 @@ public interface CardResourceProfileExtension {
    *
    * @param reader The reader in which the card is supposed to be inserted.
    * @param cardSelectionService A instance of {@link CardSelectionService}.
-   * @return A {@link SmartCardSpi} or null if no card is inserted or if its profile does not match
-   *     the associated data.
+   * @return A {@link SmartCard} or null if no card is inserted or if its profile does not match the
+   *     associated data.
    * @since 2.0
    */
   SmartCard matches(CardReader reader, CardSelectionService cardSelectionService);

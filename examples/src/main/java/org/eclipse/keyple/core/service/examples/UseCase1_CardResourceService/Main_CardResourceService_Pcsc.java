@@ -1,5 +1,5 @@
 /* **************************************************************************************
- * Copyright (c) 2018 Calypso Networks Association https://www.calypsonet-asso.org/
+ * Copyright (c) 2018 Calypso Networks Association https://calypsonet.org/
  *
  * See the NOTICE file(s) distributed with this work for additional information
  * regarding copyright ownership.
@@ -12,10 +12,11 @@
 package org.eclipse.keyple.core.service.examples.UseCase8_CardResourceService;
 
 import org.calypsonet.terminal.reader.spi.CardReaderObservationExceptionHandlerSpi;
-import org.eclipse.keyple.card.generic.GenericCardResourceProfileExtension;
+import org.eclipse.keyple.card.generic.GenericCardSelection;
 import org.eclipse.keyple.card.generic.GenericExtensionService;
 import org.eclipse.keyple.core.service.*;
 import org.eclipse.keyple.core.service.resource.*;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
 import org.eclipse.keyple.core.service.spi.PluginObservationExceptionHandlerSpi;
 import org.eclipse.keyple.plugin.pcsc.PcscPluginFactoryBuilder;
@@ -74,17 +75,23 @@ public class Main_CardResourceService_Pcsc {
 
     // Create a card resource extension A expecting a card having power-on data matching the regex
     // A.
-    GenericCardResourceProfileExtension cardResourceExtensionA =
+    GenericCardSelection cardSelectionA =
         GenericExtensionService.getInstance()
-            .createCardResourceProfileExtension()
-            .setPowerOnDataRegex(ATR_REGEX_A);
+            .createCardSelection()
+            .filterByPowerOnData(ATR_REGEX_A);
+
+    CardResourceProfileExtension cardResourceExtensionA =
+        GenericExtensionService.getInstance().createCardResourceProfileExtension(cardSelectionA);
 
     // Create a card resource extension B expecting a card having power-on data matching the regex
     // B.
-    GenericCardResourceProfileExtension cardResourceExtensionB =
+    GenericCardSelection cardSelectionB =
         GenericExtensionService.getInstance()
-            .createCardResourceProfileExtension()
-            .setPowerOnDataRegex(ATR_REGEX_B);
+            .createCardSelection()
+            .filterByPowerOnData(ATR_REGEX_B);
+
+    CardResourceProfileExtension cardResourceExtensionB =
+        GenericExtensionService.getInstance().createCardResourceProfileExtension(cardSelectionB);
 
     // Get the service
     CardResourceService cardResourceService = CardResourceServiceProvider.getService();

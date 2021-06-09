@@ -1,5 +1,5 @@
 /* **************************************************************************************
- * Copyright (c) 2021 Calypso Networks Association https://www.calypsonet-asso.org/
+ * Copyright (c) 2021 Calypso Networks Association https://calypsonet.org/
  *
  * See the NOTICE file(s) distributed with this work for additional information
  * regarding copyright ownership.
@@ -202,10 +202,7 @@ final class ReaderManagerAdapter {
     }
     if (selectedCardResource != cardResource) {
       SmartCard smartCard = extension.matches(reader, CardSelectionServiceFactory.getService());
-      if (smartCard == null
-          || !Arrays.equals(
-              cardResource.getSmartCard().getPowerOnDataBytes(), smartCard.getPowerOnDataBytes())
-          || !Arrays.equals(cardResource.getSmartCard().getFciBytes(), smartCard.getFciBytes())) {
+      if (!areEquals(cardResource.getSmartCard(), smartCard)) {
         selectedCardResource = null;
         throw new IllegalStateException(
             "No card is inserted or its profile does not match the associated data.");
@@ -253,18 +250,7 @@ final class ReaderManagerAdapter {
 
     // Check if an identical card resource is already created.
     for (CardResource cardResource : cardResources) {
-
-      boolean hasSamePowerOnData =
-          (!cardResource.getSmartCard().hasPowerOnData() && !smartCard.hasPowerOnData())
-              || Arrays.equals(
-                  cardResource.getSmartCard().getPowerOnDataBytes(),
-                  smartCard.getPowerOnDataBytes());
-
-      boolean hasSameFci =
-          (!cardResource.getSmartCard().hasFci() && !smartCard.hasFci())
-              || Arrays.equals(cardResource.getSmartCard().getFciBytes(), smartCard.getFciBytes());
-
-      if (hasSamePowerOnData && hasSameFci) {
+      if (areEquals(cardResource.getSmartCard(), smartCard)) {
         return cardResource;
       }
     }
@@ -273,5 +259,33 @@ final class ReaderManagerAdapter {
     CardResource cardResource = new CardResource(reader, smartCard);
     cardResources.add(cardResource);
     return cardResource;
+  }
+
+  /**
+   * (private)<br>
+   * Checks if the provided Smart Cards are identical.
+   *
+   * @param s1 Smart Card 1
+   * @param s2 Smart Card 2
+   * @return True if they are identical.
+   */
+  private boolean areEquals(SmartCard s1, SmartCard s2) {
+
+    if (s1 == s2) {
+      return true;
+    }
+
+    if (s1 == null || s2 == null) {
+      return false;
+    }
+
+    boolean hasSamePowerOnData =
+        s1.getPowerOnData() == s2.getPowerOnData()
+            || (s1.getPowerOnData() != null && s1.getPowerOnData().equals(s2.getPowerOnData()));
+
+    boolean hasSameFci =
+        Arrays.equals(s1.getSelectApplicationResponse(), s2.getSelectApplicationResponse());
+
+    return hasSamePowerOnData && hasSameFci;
   }
 }
