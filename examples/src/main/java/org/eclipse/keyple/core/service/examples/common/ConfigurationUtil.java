@@ -11,11 +11,12 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.service.examples.common;
 
-import org.eclipse.keyple.card.generic.GenericCardResourceProfileExtension;
+import org.eclipse.keyple.card.generic.GenericCardSelection;
 import org.eclipse.keyple.card.generic.GenericExtensionService;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.service.resource.*;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
 import org.eclipse.keyple.core.util.protocol.ContactlessCardCommonProtocol;
 import org.eclipse.keyple.plugin.pcsc.PcscReader;
@@ -92,9 +93,13 @@ public class ConfigurationUtil {
   public static void setupCardResourceService(
       Plugin plugin, String readerNameRegex, String cardResourceProfileName) {
 
+    // Create a card selection with default values (no filter)
+    GenericCardSelection cardSelection =
+        GenericExtensionService.getInstance().createCardSelection();
+
     // Create a card resource extension.
-    GenericCardResourceProfileExtension cardResourceExtension =
-        GenericExtensionService.getInstance().createCardResourceProfileExtension();
+    CardResourceProfileExtension cardResourceExtension =
+        GenericExtensionService.getInstance().createCardResourceProfileExtension(cardSelection);
 
     // Get the service
     CardResourceService cardResourceService = CardResourceServiceProvider.getService();
