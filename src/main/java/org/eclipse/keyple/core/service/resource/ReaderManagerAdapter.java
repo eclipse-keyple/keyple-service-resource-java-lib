@@ -16,9 +16,9 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
-import org.eclipse.keyple.core.service.CardSelectionServiceFactory;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.Reader;
+import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
 import org.slf4j.Logger;
@@ -157,8 +157,8 @@ final class ReaderManagerAdapter {
    *
    * <p>If the card matches, then updates the current selected card resource.
    *
-   * <p>In any case, invoking this method unlocks the reader due to the use of the selection service
-   * by the extension during the match process.
+   * <p>In any case, invoking this method unlocks the reader due to the use of the card selection
+   * manager by the extension during the match process.
    *
    * @param extension The card resource profile extension to use for matching.
    * @return Null if the inserted card does not match with the provided profile extension.
@@ -166,7 +166,9 @@ final class ReaderManagerAdapter {
    */
   CardResource matches(CardResourceProfileExtension extension) {
     CardResource cardResource = null;
-    SmartCard smartCard = extension.matches(reader, CardSelectionServiceFactory.getService());
+    SmartCard smartCard =
+        extension.matches(
+            reader, SmartCardServiceProvider.getService().createCardSelectionManager());
     if (smartCard != null) {
       cardResource = getOrCreateCardResource(smartCard);
       selectedCardResource = cardResource;
@@ -201,7 +203,9 @@ final class ReaderManagerAdapter {
           usageTimeoutMillis);
     }
     if (selectedCardResource != cardResource) {
-      SmartCard smartCard = extension.matches(reader, CardSelectionServiceFactory.getService());
+      SmartCard smartCard =
+          extension.matches(
+              reader, SmartCardServiceProvider.getService().createCardSelectionManager());
       if (!areEquals(cardResource.getSmartCard(), smartCard)) {
         selectedCardResource = null;
         throw new IllegalStateException(

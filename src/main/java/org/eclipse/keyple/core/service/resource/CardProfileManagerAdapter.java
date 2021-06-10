@@ -374,7 +374,8 @@ final class CardProfileManagerAdapter {
           SmartCard smartCard =
               cardProfile
                   .getCardResourceProfileExtensionSpi()
-                  .matches(reader, CardSelectionServiceFactory.getService());
+                  .matches(
+                      reader, SmartCardServiceProvider.getService().createCardSelectionManager());
           if (smartCard != null) {
             CardResource cardResource = new CardResource(reader, smartCard);
             service.registerPoolCardResource(cardResource, poolPlugin);

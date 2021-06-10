@@ -12,7 +12,7 @@
 package org.eclipse.keyple.core.service.resource.spi;
 
 import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.CardSelectionService;
+import org.calypsonet.terminal.reader.selection.CardSelectionManager;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 
 /**
@@ -27,10 +27,10 @@ public interface CardResourceProfileExtension {
    * potentially executes any necessary commands.
    *
    * @param reader The reader in which the card is supposed to be inserted.
-   * @param cardSelectionService A instance of {@link CardSelectionService}.
+   * @param cardSelectionManager A instance of {@link CardSelectionManager}.
    * @return A {@link SmartCard} or null if no card is inserted or if its profile does not match the
    *     associated data.
    * @since 2.0
    */
-  SmartCard matches(CardReader reader, CardSelectionService cardSelectionService);
+  SmartCard matches(CardReader reader, CardSelectionManager cardSelectionManager);
 }
