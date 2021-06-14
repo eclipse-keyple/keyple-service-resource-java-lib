@@ -7,7 +7,7 @@ select card and how to observe plugins and readers.
 Each example can be run independently.
 
 * Use Case ‘Generic 1’ – Card resource service
-  observation: [UseCase1_CardResourceService](https://github.com/eclipse/keyple-java-service-resource/tree/main/examples/src/main/java/org/eclipse/keyple/core/service/examples/UseCase1_CardResourceService)
+  observation: [UseCase1_CardResourceService](https://github.com/eclipse/keyple-service-resource-java-lib/tree/main/examples/src/main/java/org/eclipse/keyple/core/service/examples/UseCase1_CardResourceService)
     * Shows the implementation of the Card Resource service with simultaneous observation of the plugin and the readers,
       with the definition of two resource profiles.
     * Implementations:
