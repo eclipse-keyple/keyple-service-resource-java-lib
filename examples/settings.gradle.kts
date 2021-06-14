@@ -1,1 +1,1 @@
-rootProject.name = "keyple-java-service-resource-examples"
+rootProject.name = "keyple-service-resource-java-lib-examples"
