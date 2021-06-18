@@ -38,7 +38,7 @@ final class CardResourceServiceAdapter
   private static final Logger logger = LoggerFactory.getLogger(CardResourceServiceAdapter.class);
 
   /** Singleton instance */
-  private static final CardResourceServiceAdapter instance = new CardResourceServiceAdapter();
+  private static final CardResourceServiceAdapter INSTANCE = new CardResourceServiceAdapter();
 
   /** Map an accepted reader of a "regular" plugin to a reader manager. */
   private final Map<Reader, ReaderManagerAdapter> readerToReaderManagerMap =
@@ -78,7 +78,7 @@ final class CardResourceServiceAdapter
    * @since 2.0
    */
   static CardResourceServiceAdapter getInstance() {
-    return instance;
+    return INSTANCE;
   }
 
   /**
