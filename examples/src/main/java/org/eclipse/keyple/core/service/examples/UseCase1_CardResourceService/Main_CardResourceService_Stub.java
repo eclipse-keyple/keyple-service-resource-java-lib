@@ -31,9 +31,9 @@ import org.slf4j.LoggerFactory;
 /**
  *
  *
- * <h1>Use Case "resource service 1" – Card resource service (PC/SC)</h1>
+ * <h1>Use Case "resource service 1" – Card resource service (Stub)</h1>
  *
- * <p>We demonstrate here the usage of the card resource service with a local pool of PC/SC readers.
+ * <p>We demonstrate here the usage of the card resource service with a local pool of Stub readers.
  *
  * <h2>Scenario:</h2>
  *
@@ -50,8 +50,8 @@ import org.slf4j.LoggerFactory;
  *
  * @since 2.0
  */
-public class Main_CardResourceService_Pcsc {
-  private static final Logger logger = LoggerFactory.getLogger(Main_CardResourceService_Pcsc.class);
+public class Main_CardResourceService_Stub {
+  private static final Logger logger = LoggerFactory.getLogger(Main_CardResourceService_Stub.class);
   private static final String READER_A = "READER_A";
   private static final String READER_B = "READER_B";
   public static final String ATR_CARD_A = "3B3F9600805A4880C120501711AABBCC829000";
@@ -68,7 +68,7 @@ public class Main_CardResourceService_Pcsc {
     // Get the instance of the SmartCardService (singleton pattern)
     SmartCardService smartCardService = SmartCardServiceProvider.getService();
 
-    // Register the PcscPlugin with the SmartCardService, get the corresponding generic plugin in
+    // Register the StubPlugin with the SmartCardService, get the corresponding generic plugin in
     // return.
     Plugin plugin = smartCardService.registerPlugin(StubPluginFactoryBuilder.builder().build());
 
@@ -109,7 +109,7 @@ public class Main_CardResourceService_Pcsc {
 
     // Configure the card resource service:
     // - allocation mode is blocking with a 100 milliseconds cycle and a 10 seconds timeout.
-    // - the readers are searched in the PC/SC plugin, the observation of the plugin (for the
+    // - the readers are searched in the Stub plugin, the observation of the plugin (for the
     // connection/disconnection of readers) and of the readers (for the insertion/removal of cards)
     // is activated.
     // - two card resource profiles A and B are defined, each expecting a specific card
@@ -161,7 +161,7 @@ public class Main_CardResourceService_Pcsc {
               .insertCard(
                   StubSmartCard.builder()
                       .withPowerOnData(ByteArrayUtil.fromHex(ATR_CARD_A))
-                      .withProcotol(ContactCardCommonProtocol.ISO_7816_3_T0.name())
+                      .withProtocol(ContactCardCommonProtocol.ISO_7816_3_T0.name())
                       .build());
           break;
         case '2':
@@ -173,13 +173,13 @@ public class Main_CardResourceService_Pcsc {
               .insertCard(
                   StubSmartCard.builder()
                       .withPowerOnData(ByteArrayUtil.fromHex(ATR_CARD_B))
-                      .withProcotol(ContactCardCommonProtocol.ISO_7816_3_T0.name())
+                      .withProtocol(ContactCardCommonProtocol.ISO_7816_3_T0.name())
                       .build());
           break;
         case '4':
           readerB.getExtension(StubReader.class).removeCard();
           break;
-        case 'a':
+        case '5':
           cardResourceA = cardResourceService.getCardResource(RESOURCE_A);
           if (cardResourceA != null) {
             logger.info(
@@ -190,7 +190,7 @@ public class Main_CardResourceService_Pcsc {
             logger.info("Card resource A is not available");
           }
           break;
-        case 'A':
+        case '6':
           if (cardResourceA != null) {
             logger.info("Release card resource A.");
             cardResourceService.releaseCardResource(cardResourceA);
@@ -198,7 +198,7 @@ public class Main_CardResourceService_Pcsc {
             logger.error("Card resource A is not available");
           }
           break;
-        case 'b':
+        case '7':
           cardResourceB = cardResourceService.getCardResource(RESOURCE_B);
           if (cardResourceB != null) {
             logger.info(
@@ -209,7 +209,7 @@ public class Main_CardResourceService_Pcsc {
             logger.info("Card resource B is not available");
           }
           break;
-        case 'B':
+        case '8':
           if (cardResourceB != null) {
             logger.info("Release card resource B.");
             cardResourceService.releaseCardResource(cardResourceB);
@@ -283,10 +283,10 @@ public class Main_CardResourceService_Pcsc {
     System.out.println("    '2': Remove stub card A");
     System.out.println("    '3': Insert stub card B");
     System.out.println("    '4': Remove stub card B");
-    System.out.println("    'a': Get resource A");
-    System.out.println("    'A': Release resource A");
-    System.out.println("    'b': Get resource B");
-    System.out.println("    'B': Release resource B");
+    System.out.println("    '5': Get resource A");
+    System.out.println("    '6': Release resource A");
+    System.out.println("    '7': Get resource B");
+    System.out.println("    '8': Release resource B");
     System.out.println("    'q': quit");
     System.out.print("Select an option: ");
 
@@ -304,11 +304,4 @@ public class Main_CardResourceService_Pcsc {
 
     return (char) key;
   }
-
-  /**
-   * This object is used to freeze the main thread while card operations are handle through the
-   * observers callbacks. A call to the notify() method would end the program (not demonstrated
-   * here).
-   */
-  private static final Object waitForEnd = new Object();
 }
