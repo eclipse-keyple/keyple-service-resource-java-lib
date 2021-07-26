@@ -11,5 +11,4 @@ Each example can be run independently.
     * Shows the implementation of the Card Resource service with simultaneous observation of the plugin and the readers,
       with the definition of two resource profiles.
     * Implementations:
-        * For PC/SC plugin: [`Main_CardResourceService_Pcsc.java`]
         * For Stub plugin: [`Main_CardResourceService_Stub.java`]

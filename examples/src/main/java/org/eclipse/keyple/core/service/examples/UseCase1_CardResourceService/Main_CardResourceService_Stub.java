@@ -9,7 +9,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  ************************************************************************************** */
-package org.eclipse.keyple.core.service.examples.UseCase8_CardResourceService;
+package org.eclipse.keyple.core.service.examples.UseCase1_CardResourceService;
 
 import org.calypsonet.terminal.reader.spi.CardReaderObservationExceptionHandlerSpi;
 import org.eclipse.keyple.card.generic.GenericCardSelection;
@@ -19,17 +19,21 @@ import org.eclipse.keyple.core.service.resource.*;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
 import org.eclipse.keyple.core.service.spi.PluginObservationExceptionHandlerSpi;
-import org.eclipse.keyple.plugin.pcsc.PcscPluginFactoryBuilder;
-import org.eclipse.keyple.plugin.pcsc.PcscReader;
+import org.eclipse.keyple.core.util.ByteArrayUtil;
+import org.eclipse.keyple.core.util.protocol.ContactCardCommonProtocol;
+import org.eclipse.keyple.plugin.stub.StubPlugin;
+import org.eclipse.keyple.plugin.stub.StubPluginFactoryBuilder;
+import org.eclipse.keyple.plugin.stub.StubReader;
+import org.eclipse.keyple.plugin.stub.StubSmartCard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  *
  *
- * <h1>Use Case "resource service 1" – Card resource service (PC/SC)</h1>
+ * <h1>Use Case "resource service 1" – Card resource service (Stub)</h1>
  *
- * <p>We demonstrate here the usage of the card resource service with a local pool of PC/SC readers.
+ * <p>We demonstrate here the usage of the card resource service with a local pool of Stub readers.
  *
  * <h2>Scenario:</h2>
  *
@@ -46,23 +50,27 @@ import org.slf4j.LoggerFactory;
  *
  * @since 2.0
  */
-public class Main_CardResourceService_Pcsc {
-  private static final Logger logger = LoggerFactory.getLogger(Main_CardResourceService_Pcsc.class);
-  public static final String ATR_REGEX_A = "^3B3F9600805A4880C1205017AEC0[0-9A-F]{4}829000$";
-  public static final String ATR_REGEX_B = "^3B3F9600805A4880C1205017AEC1[0-9A-F]{4}829000$";
+public class Main_CardResourceService_Stub {
+  private static final Logger logger = LoggerFactory.getLogger(Main_CardResourceService_Stub.class);
+  private static final String READER_A = "READER_A";
+  private static final String READER_B = "READER_B";
+  public static final String ATR_CARD_A = "3B3F9600805A4880C120501711AABBCC829000";
+  public static final String ATR_CARD_B = "3B3F9600805A4880C120501722AABBCC829000";
+  public static final String ATR_REGEX_A = "^3B3F9600805A4880C120501711[0-9A-F]{6}829000$";
+  public static final String ATR_REGEX_B = "^3B3F9600805A4880C120501722[0-9A-F]{6}829000$";
   public static final String RESOURCE_A = "RESOURCE_A";
   public static final String RESOURCE_B = "RESOURCE_B";
-  public static final String READER_NAME_REGEX_A = ".*Identive.*";
-  public static final String READER_NAME_REGEX_B = ".*HID.*";
+  public static final String READER_NAME_REGEX_A = ".*_A";
+  public static final String READER_NAME_REGEX_B = ".*_B";
 
   public static void main(String[] args) throws InterruptedException {
 
     // Get the instance of the SmartCardService (singleton pattern)
     SmartCardService smartCardService = SmartCardServiceProvider.getService();
 
-    // Register the PcscPlugin with the SmartCardService, get the corresponding generic plugin in
+    // Register the StubPlugin with the SmartCardService, get the corresponding generic plugin in
     // return.
-    Plugin plugin = smartCardService.registerPlugin(PcscPluginFactoryBuilder.builder().build());
+    Plugin plugin = smartCardService.registerPlugin(StubPluginFactoryBuilder.builder().build());
 
     // Get the generic card extension service
     GenericExtensionService cardExtension = GenericExtensionService.getInstance();
@@ -101,7 +109,7 @@ public class Main_CardResourceService_Pcsc {
 
     // Configure the card resource service:
     // - allocation mode is blocking with a 100 milliseconds cycle and a 10 seconds timeout.
-    // - the readers are searched in the PC/SC plugin, the observation of the plugin (for the
+    // - the readers are searched in the Stub plugin, the observation of the plugin (for the
     // connection/disconnection of readers) and of the readers (for the insertion/removal of cards)
     // is activated.
     // - two card resource profiles A and B are defined, each expecting a specific card
@@ -130,8 +138,14 @@ public class Main_CardResourceService_Pcsc {
 
     cardResourceService.start();
 
-    // sleep for a moment for a better readability of the console display
+    plugin.getExtension(StubPlugin.class).plugReader(READER_A, true, null);
+    plugin.getExtension(StubPlugin.class).plugReader(READER_B, true, null);
+
+    // sleep for a moment to let the readers being detected
     Thread.sleep(2000);
+
+    Reader readerA = plugin.getReader(READER_A);
+    Reader readerB = plugin.getReader(READER_B);
 
     logger.info("= #### Connect/disconnect readers, insert/remove cards, watch the log.");
 
@@ -141,7 +155,31 @@ public class Main_CardResourceService_Pcsc {
     while (loop) {
       char c = getInput();
       switch (c) {
-        case 'a':
+        case '1':
+          readerA
+              .getExtension(StubReader.class)
+              .insertCard(
+                  StubSmartCard.builder()
+                      .withPowerOnData(ByteArrayUtil.fromHex(ATR_CARD_A))
+                      .withProtocol(ContactCardCommonProtocol.ISO_7816_3_T0.name())
+                      .build());
+          break;
+        case '2':
+          readerA.getExtension(StubReader.class).removeCard();
+          break;
+        case '3':
+          readerB
+              .getExtension(StubReader.class)
+              .insertCard(
+                  StubSmartCard.builder()
+                      .withPowerOnData(ByteArrayUtil.fromHex(ATR_CARD_B))
+                      .withProtocol(ContactCardCommonProtocol.ISO_7816_3_T0.name())
+                      .build());
+          break;
+        case '4':
+          readerB.getExtension(StubReader.class).removeCard();
+          break;
+        case '5':
           cardResourceA = cardResourceService.getCardResource(RESOURCE_A);
           if (cardResourceA != null) {
             logger.info(
@@ -152,7 +190,7 @@ public class Main_CardResourceService_Pcsc {
             logger.info("Card resource A is not available");
           }
           break;
-        case 'A':
+        case '6':
           if (cardResourceA != null) {
             logger.info("Release card resource A.");
             cardResourceService.releaseCardResource(cardResourceA);
@@ -160,7 +198,7 @@ public class Main_CardResourceService_Pcsc {
             logger.error("Card resource A is not available");
           }
           break;
-        case 'b':
+        case '7':
           cardResourceB = cardResourceService.getCardResource(RESOURCE_B);
           if (cardResourceB != null) {
             logger.info(
@@ -171,7 +209,7 @@ public class Main_CardResourceService_Pcsc {
             logger.info("Card resource B is not available");
           }
           break;
-        case 'B':
+        case '8':
           if (cardResourceB != null) {
             logger.info("Release card resource B.");
             cardResourceService.releaseCardResource(cardResourceB);
@@ -211,11 +249,9 @@ public class Main_CardResourceService_Pcsc {
     public void setupReader(Reader reader) {
       // Configure the reader with parameters suitable for contactless operations.
       try {
-        reader
-            .getExtension(PcscReader.class)
-            .setContactless(false)
-            .setIsoProtocol(PcscReader.IsoProtocol.T0)
-            .setSharingMode(PcscReader.SharingMode.SHARED);
+        reader.activateProtocol(
+            ContactCardCommonProtocol.ISO_7816_3_T0.name(),
+            ContactCardCommonProtocol.ISO_7816_3_T0.name());
       } catch (Exception e) {
         logger.error("Exception raised while setting up the reader {}", reader.getName(), e);
       }
@@ -243,10 +279,15 @@ public class Main_CardResourceService_Pcsc {
     int key = 0;
 
     System.out.println("Options:");
-    System.out.println("    'a': Get resource A");
-    System.out.println("    'A': Release resource A");
-    System.out.println("    'b': Get resource B");
-    System.out.println("    'B': Release resource B");
+    System.out.println("    '1': Insert stub card A");
+    System.out.println("    '2': Remove stub card A");
+    System.out.println("    '3': Insert stub card B");
+    System.out.println("    '4': Remove stub card B");
+    System.out.println("    '5': Get resource A");
+    System.out.println("    '6': Release resource A");
+    System.out.println("    '7': Get resource B");
+    System.out.println("    '8': Release resource B");
+    System.out.println("    'q': quit");
     System.out.print("Select an option: ");
 
     try {
@@ -263,11 +304,4 @@ public class Main_CardResourceService_Pcsc {
 
     return (char) key;
   }
-
-  /**
-   * This object is used to freeze the main thread while card operations are handle through the
-   * observers callbacks. A call to the notify() method would end the program (not demonstrated
-   * here).
-   */
-  private static final Object waitForEnd = new Object();
 }
