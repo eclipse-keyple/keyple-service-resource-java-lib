@@ -249,9 +249,10 @@ public class Main_CardResourceService_Stub {
     public void setupReader(Reader reader) {
       // Configure the reader with parameters suitable for contactless operations.
       try {
-        reader.activateProtocol(
-            ContactCardCommonProtocol.ISO_7816_3_T0.name(),
-            ContactCardCommonProtocol.ISO_7816_3_T0.name());
+        ((ConfigurableReader) reader)
+            .activateProtocol(
+                ContactCardCommonProtocol.ISO_7816_3_T0.name(),
+                ContactCardCommonProtocol.ISO_7816_3_T0.name());
       } catch (Exception e) {
         logger.error("Exception raised while setting up the reader {}", reader.getName(), e);
       }
