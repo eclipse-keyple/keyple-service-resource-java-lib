@@ -18,7 +18,7 @@ import org.eclipse.keyple.core.util.Assert;
 /**
  * This POJO contains a {@link SmartCard} and its associated {@link CardReader}.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public final class CardResource {
 
@@ -30,7 +30,7 @@ public final class CardResource {
    *
    * @param reader The {@link CardReader}.
    * @param smartCard The {@link SmartCard}.
-   * @since 2.0
+   * @since 2.0.0
    */
   public CardResource(CardReader reader, SmartCard smartCard) {
 
@@ -44,7 +44,7 @@ public final class CardResource {
    * Gets the reader
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   public CardReader getReader() {
     return reader;
@@ -54,7 +54,7 @@ public final class CardResource {
    * Gets the {@link SmartCard}.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   public SmartCard getSmartCard() {
     return smartCard;

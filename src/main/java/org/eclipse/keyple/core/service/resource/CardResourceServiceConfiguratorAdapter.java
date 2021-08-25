@@ -22,7 +22,7 @@ import org.eclipse.keyple.core.util.Assert;
  * (package-private)<br>
  * Implementation of {@link CardResourceServiceConfigurator}.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 final class CardResourceServiceConfiguratorAdapter implements CardResourceServiceConfigurator {
 
@@ -48,7 +48,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    * Constructor.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResourceServiceConfiguratorAdapter() {
     cardResourceProfileConfigurators = new HashSet<CardResourceProfileConfigurator>(1);
@@ -57,7 +57,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardResourceServiceConfigurator withPlugins(PluginsConfigurator pluginsConfigurator) {
@@ -75,7 +75,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardResourceServiceConfigurator withPoolPlugins(
@@ -92,7 +92,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardResourceServiceConfigurator withCardResourceProfiles(
@@ -112,7 +112,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardResourceServiceConfigurator withBlockingAllocationMode(
@@ -132,7 +132,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public void configure() {
@@ -248,7 +248,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return A not null list.
-   * @since 2.0
+   * @since 2.0.0
    */
   List<Plugin> getPlugins() {
     return plugins;
@@ -258,7 +258,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return A not null list.
-   * @since 2.0
+   * @since 2.0.0
    */
   List<ConfiguredPlugin> getConfiguredPlugins() {
     return configuredPlugins;
@@ -268,7 +268,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   AllocationStrategy getAllocationStrategy() {
     return allocationStrategy;
@@ -278,7 +278,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return 0 if no usage timeout is set.
-   * @since 2.0
+   * @since 2.0.0
    */
   int getUsageTimeoutMillis() {
     return usageTimeoutMillis;
@@ -288,7 +288,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return A not null list.
-   * @since 2.0
+   * @since 2.0.0
    */
   List<PoolPlugin> getPoolPlugins() {
     return poolPlugins;
@@ -298,7 +298,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return True if pool plugins are prior to regular plugins.
-   * @since 2.0
+   * @since 2.0.0
    */
   boolean isUsePoolFirst() {
     return usePoolFirst;
@@ -309,7 +309,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * Gets the configurations of all configured card resource profiles.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   Set<CardResourceProfileConfigurator> getCardResourceProfileConfigurators() {
     return cardResourceProfileConfigurators;
@@ -319,7 +319,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return A not null boolean.
-   * @since 2.0
+   * @since 2.0.0
    */
   boolean isBlockingAllocationMode() {
     return isBlockingAllocationMode;
@@ -329,7 +329,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return A positive int.
-   * @since 2.0
+   * @since 2.0.0
    */
   int getCycleDurationMillis() {
     return cycleDurationMillis;
@@ -339,7 +339,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * (package-private)<br>
    *
    * @return A positive int.
-   * @since 2.0
+   * @since 2.0.0
    */
   int getTimeoutMillis() {
     return timeoutMillis;

@@ -26,7 +26,7 @@ import org.eclipse.keyple.core.service.PoolPlugin;
  *   <li>Creation of card profiles.
  * </ul>
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public interface CardResourceServiceConfigurator {
 
@@ -38,7 +38,7 @@ public interface CardResourceServiceConfigurator {
    * @return The current configurator instance.
    * @throws IllegalArgumentException If the provided plugins configurator is null.
    * @throws IllegalStateException If this step has already been performed.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResourceServiceConfigurator withPlugins(PluginsConfigurator pluginsConfigurator);
 
@@ -49,7 +49,7 @@ public interface CardResourceServiceConfigurator {
    * @return The current configurator instance.
    * @throws IllegalArgumentException If the provided pool plugins configurator is null.
    * @throws IllegalStateException If this step has already been performed.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResourceServiceConfigurator withPoolPlugins(PoolPluginsConfigurator poolPluginsConfigurator);
 
@@ -60,7 +60,7 @@ public interface CardResourceServiceConfigurator {
    * @return The current configurator instance.
    * @throws IllegalArgumentException If the provided configurators are null.
    * @throws IllegalStateException If this step has already been performed.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResourceServiceConfigurator withCardResourceProfiles(
       CardResourceProfileConfigurator... cardResourceProfileConfigurators);
@@ -79,7 +79,7 @@ public interface CardResourceServiceConfigurator {
    * @return The current configurator instance.
    * @throws IllegalArgumentException If one of the provided values is less or equal to 0.
    * @throws IllegalStateException If this step has already been performed.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResourceServiceConfigurator withBlockingAllocationMode(
       int cycleDurationMillis, int timeoutMillis);
@@ -102,7 +102,7 @@ public interface CardResourceServiceConfigurator {
    *           list.
    *     </ul>
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   void configure();
 }

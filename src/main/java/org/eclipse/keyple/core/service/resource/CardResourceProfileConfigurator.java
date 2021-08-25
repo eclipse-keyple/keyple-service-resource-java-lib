@@ -22,7 +22,7 @@ import org.eclipse.keyple.core.util.Assert;
 /**
  * Configurator of a card resource profile.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public final class CardResourceProfileConfigurator {
 
@@ -45,7 +45,7 @@ public final class CardResourceProfileConfigurator {
    * Gets the name of the profile.
    *
    * @return A not empty string.
-   * @since 2.0
+   * @since 2.0.0
    */
   String getProfileName() {
     return profileName;
@@ -56,7 +56,7 @@ public final class CardResourceProfileConfigurator {
    * Gets the card resource profile extension.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResourceProfileExtension getCardResourceProfileExtensionSpi() {
     return cardResourceProfileExtensionSpi;
@@ -68,7 +68,7 @@ public final class CardResourceProfileConfigurator {
    * If empty, then global configured plugins must be used.
    *
    * @return A not null collection.
-   * @since 2.0
+   * @since 2.0.0
    */
   List<Plugin> getPlugins() {
     return plugins;
@@ -80,7 +80,7 @@ public final class CardResourceProfileConfigurator {
    * This filter is useful for readers associated to "regular" plugins only.
    *
    * @return Null if no filter is set.
-   * @since 2.0
+   * @since 2.0.0
    */
   String getReaderNameRegex() {
     return readerNameRegex;
@@ -92,7 +92,7 @@ public final class CardResourceProfileConfigurator {
    * This filter is useful for readers associated to "pool" plugins only.
    *
    * @return Null if no filter is set.
-   * @since 2.0
+   * @since 2.0.0
    */
   String getReaderGroupReference() {
     return readerGroupReference;
@@ -109,7 +109,7 @@ public final class CardResourceProfileConfigurator {
    * @throws IllegalArgumentException If the name or the card profile extension is null or empty.
    * @throws IllegalStateException If the name is already in use (performed by the method {@link
    *     CardResourceServiceConfigurator#configure()}).
-   * @since 2.0
+   * @since 2.0.0
    */
   public static Builder builder(
       String profileName, CardResourceProfileExtension cardResourceProfileExtension) {
@@ -119,7 +119,7 @@ public final class CardResourceProfileConfigurator {
   /**
    * Builder of {@link CardResourceProfileConfigurator}.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   public static class Builder {
 
@@ -160,7 +160,7 @@ public final class CardResourceProfileConfigurator {
      * @throws IllegalArgumentException If one or more plugin are null or empty.
      * @throws IllegalStateException If one or more plugins are not previously configured (performed
      *     by the method {@link CardResourceServiceConfigurator#configure()}).
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder withPlugins(Plugin... plugins) {
       Assert.getInstance().notNull(plugins, "plugins");
@@ -181,7 +181,7 @@ public final class CardResourceProfileConfigurator {
      * @return The current builder instance.
      * @throws IllegalArgumentException If the readerNameRegex is null, empty or invalid.
      * @throws IllegalStateException If the filter has already been set.
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder withReaderNameRegex(String readerNameRegex) {
       Assert.getInstance().notEmpty(readerNameRegex, "readerNameRegex");
@@ -206,7 +206,7 @@ public final class CardResourceProfileConfigurator {
      * @return The current builder instance.
      * @throws IllegalArgumentException If the readerGroupReference is null or empty.
      * @throws IllegalStateException If the filter has already been set.
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder withReaderGroupReference(String readerGroupReference) {
       Assert.getInstance().notEmpty(readerGroupReference, "readerGroupReference");
@@ -222,7 +222,7 @@ public final class CardResourceProfileConfigurator {
      * configuration.
      *
      * @return A new instance.
-     * @since 2.0
+     * @since 2.0.0
      */
     public CardResourceProfileConfigurator build() {
       return new CardResourceProfileConfigurator(this);

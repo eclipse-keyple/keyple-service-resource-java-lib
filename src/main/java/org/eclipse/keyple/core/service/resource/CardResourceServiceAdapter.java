@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
  * (package-private)<br>
  * Implementation of {@link CardResourceService}.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 final class CardResourceServiceAdapter
     implements CardResourceService, PluginObserverSpi, CardReaderObserverSpi {
@@ -75,7 +75,7 @@ final class CardResourceServiceAdapter
    * Gets the unique instance.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   static CardResourceServiceAdapter getInstance() {
     return INSTANCE;
@@ -87,7 +87,7 @@ final class CardResourceServiceAdapter
    *
    * @param cardResource The card resource.
    * @return Null if the provided card resource is null.
-   * @since 2.0
+   * @since 2.0.0
    */
   static String getCardResourceInfo(CardResource cardResource) {
     if (cardResource != null) {
@@ -112,7 +112,7 @@ final class CardResourceServiceAdapter
    *
    * @param reader The associated reader.
    * @return Null if there is no reader manager associated.
-   * @since 2.0
+   * @since 2.0.0
    */
   ReaderManagerAdapter getReaderManager(CardReader reader) {
     return readerToReaderManagerMap.get(reader);
@@ -124,7 +124,7 @@ final class CardResourceServiceAdapter
    *
    * @param cardResource The card resource to register.
    * @param poolPlugin The associated pool plugin.
-   * @since 2.0
+   * @since 2.0.0
    */
   void registerPoolCardResource(CardResource cardResource, PoolPlugin poolPlugin) {
     cardResourceToPoolPluginMap.put(cardResource, poolPlugin);
@@ -139,7 +139,7 @@ final class CardResourceServiceAdapter
    *
    * <p>If not, then only applies the configuration.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   void configure(CardResourceServiceConfiguratorAdapter configurator) {
     logger.info("Applying a new configuration...");
@@ -156,7 +156,7 @@ final class CardResourceServiceAdapter
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardResourceServiceConfigurator getConfigurator() {
@@ -166,7 +166,7 @@ final class CardResourceServiceAdapter
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public void start() {
@@ -317,7 +317,7 @@ final class CardResourceServiceAdapter
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public void stop() {
@@ -360,7 +360,7 @@ final class CardResourceServiceAdapter
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public CardResource getCardResource(String cardResourceProfileName) {
@@ -390,7 +390,7 @@ final class CardResourceServiceAdapter
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public void releaseCardResource(CardResource cardResource) {
@@ -427,7 +427,7 @@ final class CardResourceServiceAdapter
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public void removeCardResource(CardResource cardResource) {
@@ -456,7 +456,7 @@ final class CardResourceServiceAdapter
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public void onPluginEvent(PluginEvent pluginEvent) {
@@ -604,7 +604,7 @@ final class CardResourceServiceAdapter
   /**
    * {@inheritDoc}
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   @Override
   public void onReaderEvent(CardReaderEvent readerEvent) {

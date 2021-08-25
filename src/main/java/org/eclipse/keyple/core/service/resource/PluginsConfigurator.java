@@ -23,7 +23,7 @@ import org.eclipse.keyple.core.util.Assert;
 /**
  * Configurator of all plugins to associate to the card resource service.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public final class PluginsConfigurator {
 
@@ -44,7 +44,7 @@ public final class PluginsConfigurator {
    * Gets the selected card resource allocation strategy.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   AllocationStrategy getAllocationStrategy() {
     return allocationStrategy;
@@ -55,7 +55,7 @@ public final class PluginsConfigurator {
    * Gets the configured usage timeout.
    *
    * @return 0 if no timeout is set.
-   * @since 2.0
+   * @since 2.0.0
    */
   int getUsageTimeoutMillis() {
     return usageTimeoutMillis;
@@ -66,7 +66,7 @@ public final class PluginsConfigurator {
    * Gets the list of all configured "regular" plugins.
    *
    * @return A not empty list.
-   * @since 2.0
+   * @since 2.0.0
    */
   List<Plugin> getPlugins() {
     return plugins;
@@ -77,7 +77,7 @@ public final class PluginsConfigurator {
    * Gets the list of all configured "regular" plugins with their associated configuration.
    *
    * @return A not empty collection.
-   * @since 2.0
+   * @since 2.0.0
    */
   List<ConfiguredPlugin> getConfiguredPlugins() {
     return configuredPlugins;
@@ -87,7 +87,7 @@ public final class PluginsConfigurator {
    * Gets the configurator's builder to use in order to create a new instance.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   public static Builder builder() {
     return new Builder();
@@ -96,7 +96,7 @@ public final class PluginsConfigurator {
   /**
    * Builder of {@link PluginsConfigurator}.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   public static class Builder {
 
@@ -119,7 +119,7 @@ public final class PluginsConfigurator {
      * @return The current builder instance.
      * @throws IllegalArgumentException If the provided strategy is null.
      * @throws IllegalStateException If the strategy has already been configured.
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder withAllocationStrategy(AllocationStrategy allocationStrategy) {
       Assert.getInstance().notNull(allocationStrategy, "allocationStrategy");
@@ -140,7 +140,7 @@ public final class PluginsConfigurator {
      * @return The current builder instance.
      * @throws IllegalArgumentException If the provided value is less or equal to 0.
      * @throws IllegalStateException If the timeout has already been configured.
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder withUsageTimeout(int usageTimeoutMillis) {
       Assert.getInstance().greaterOrEqual(usageTimeoutMillis, 1, "usageTimeoutMillis");
@@ -164,7 +164,7 @@ public final class PluginsConfigurator {
      * @throws IllegalArgumentException If the provided plugin or reader configurator is null or if
      *     the plugin is not an instance of Plugin or ObservablePlugin.
      * @throws IllegalStateException If the plugin has already been configured.
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder addPlugin(Plugin plugin, ReaderConfiguratorSpi readerConfiguratorSpi) {
       return addPluginWithMonitoring(plugin, readerConfiguratorSpi, null, null);
@@ -193,7 +193,7 @@ public final class PluginsConfigurator {
      * @throws IllegalArgumentException If the provided plugin or reader configurator is null or if
      *     the plugin is not an instance of Plugin or ObservablePlugin.
      * @throws IllegalStateException If the plugin has already been configured.
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder addPluginWithMonitoring(
         Plugin plugin,
@@ -225,7 +225,7 @@ public final class PluginsConfigurator {
      *
      * @return A new instance.
      * @throws IllegalStateException If no plugin has been configured.
-     * @since 2.0
+     * @since 2.0.0
      */
     public PluginsConfigurator build() {
       if (plugins.isEmpty()) {
@@ -244,7 +244,7 @@ public final class PluginsConfigurator {
   /**
    * Enumeration of all card resource service allocation strategies.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   public enum AllocationStrategy {
 
@@ -252,7 +252,7 @@ public final class PluginsConfigurator {
      * Configures the card resource service to provide the first available card when a card
      * allocation is made.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     FIRST,
 
@@ -260,7 +260,7 @@ public final class PluginsConfigurator {
      * Configures the card resource service to provide available cards on a cyclical basis to avoid
      * always providing the same card.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     CYCLIC,
 
@@ -268,7 +268,7 @@ public final class PluginsConfigurator {
      * Configures the card resource service to provide available cards randomly to avoid always
      * providing the same card.
      *
-     * @since 2.0
+     * @since 2.0.0
      */
     RANDOM
   }
@@ -277,7 +277,7 @@ public final class PluginsConfigurator {
    * (package-private)<br>
    * This POJO contains a plugin and the parameters that have been associated with it.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   static class ConfiguredPlugin {
 
@@ -298,7 +298,7 @@ public final class PluginsConfigurator {
      * @param readerConfiguratorSpi The reader configurator to use.
      * @param pluginObservationExceptionHandlerSpi The plugin exception handler to use.
      * @param readerObservationExceptionHandlerSpi The reader exception handler to use.
-     * @since 2.0
+     * @since 2.0.0
      */
     ConfiguredPlugin(
         Plugin plugin,
@@ -321,7 +321,7 @@ public final class PluginsConfigurator {
      * (package-private)<br>
      *
      * @return A not null {@link Plugin} reference.
-     * @since 2.0
+     * @since 2.0.0
      */
     Plugin getPlugin() {
       return plugin;
@@ -331,7 +331,7 @@ public final class PluginsConfigurator {
      * (package-private)<br>
      *
      * @return A not null {@link ReaderConfiguratorSpi} reference if reader monitoring is requested.
-     * @since 2.0
+     * @since 2.0.0
      */
     ReaderConfiguratorSpi getReaderConfiguratorSpi() {
       return readerConfiguratorSpi;
@@ -341,7 +341,7 @@ public final class PluginsConfigurator {
      * (package-private)<br>
      *
      * @return True if the reader monitoring is required.
-     * @since 2.0
+     * @since 2.0.0
      */
     boolean isWithPluginMonitoring() {
       return withPluginMonitoring;
@@ -352,7 +352,7 @@ public final class PluginsConfigurator {
      *
      * @return A not null {@link PluginObservationExceptionHandlerSpi} reference if reader
      *     monitoring is requested.
-     * @since 2.0
+     * @since 2.0.0
      */
     PluginObservationExceptionHandlerSpi getPluginObservationExceptionHandlerSpi() {
       return pluginObservationExceptionHandlerSpi;
@@ -362,7 +362,7 @@ public final class PluginsConfigurator {
      * (package-private)<br>
      *
      * @return True if the card monitoring is required.
-     * @since 2.0
+     * @since 2.0.0
      */
     boolean isWithReaderMonitoring() {
       return withReaderMonitoring;
@@ -373,7 +373,7 @@ public final class PluginsConfigurator {
      *
      * @return A not null {@link CardReaderObservationExceptionHandlerSpi} reference if card
      *     monitoring is requested.
-     * @since 2.0
+     * @since 2.0.0
      */
     CardReaderObservationExceptionHandlerSpi getReaderObservationExceptionHandlerSpi() {
       return readerObservationExceptionHandlerSpi;

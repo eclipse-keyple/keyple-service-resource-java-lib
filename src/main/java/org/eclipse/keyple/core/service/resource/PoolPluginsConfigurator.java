@@ -19,7 +19,7 @@ import org.eclipse.keyple.core.util.Assert;
 /**
  * Configurator of all pool plugins to associate to the card resource service.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public final class PoolPluginsConfigurator {
 
@@ -35,7 +35,7 @@ public final class PoolPluginsConfigurator {
    * (package-private)<br>
    *
    * @return True if pool plugins must be used prior to "regular" plugins.
-   * @since 2.0
+   * @since 2.0.0
    */
   boolean isUsePoolFirst() {
     return usePoolFirst;
@@ -46,7 +46,7 @@ public final class PoolPluginsConfigurator {
    * Gets the list of all configured "pool" plugins.
    *
    * @return A not empty list.
-   * @since 2.0
+   * @since 2.0.0
    */
   List<PoolPlugin> getPoolPlugins() {
     return poolPlugins;
@@ -56,7 +56,7 @@ public final class PoolPluginsConfigurator {
    * Gets the configurator's builder to use in order to create a new instance.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   public static Builder builder() {
     return new Builder();
@@ -65,7 +65,7 @@ public final class PoolPluginsConfigurator {
   /**
    * Builder of {@link PoolPluginsConfigurator}.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   public static class Builder {
 
@@ -84,7 +84,7 @@ public final class PoolPluginsConfigurator {
      *
      * @return The current builder instance.
      * @throws IllegalStateException If the setting has already been configured.
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder usePoolFirst() {
       if (usePoolFirst != null) {
@@ -104,7 +104,7 @@ public final class PoolPluginsConfigurator {
      * @return The current builder instance.
      * @throws IllegalArgumentException If the provided pool plugin is null.
      * @throws IllegalStateException If the pool plugin has already been configured.
-     * @since 2.0
+     * @since 2.0.0
      */
     public Builder addPoolPlugin(PoolPlugin poolPlugin) {
       Assert.getInstance().notNull(poolPlugin, "poolPlugin");
@@ -120,7 +120,7 @@ public final class PoolPluginsConfigurator {
      *
      * @return A new instance.
      * @throws IllegalStateException If no pool plugin has been configured.
-     * @since 2.0
+     * @since 2.0.0
      */
     public PoolPluginsConfigurator build() {
       if (poolPlugins.isEmpty()) {

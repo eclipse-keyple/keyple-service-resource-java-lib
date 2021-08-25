@@ -33,7 +33,7 @@ import org.eclipse.keyple.core.service.PoolPlugin;
  *       org.calypsonet.terminal.reader.ObservableCardReader}.
  * </ul>
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public interface CardResourceService {
 
@@ -41,7 +41,7 @@ public interface CardResourceService {
    * Gets the configuration builder to setup the service.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResourceServiceConfigurator getConfigurator();
 
@@ -52,7 +52,7 @@ public interface CardResourceService {
    * <p>The service is restarted if it is already started.
    *
    * @throws IllegalStateException If no configuration was done.
-   * @since 2.0
+   * @since 2.0.0
    */
   void start();
 
@@ -61,7 +61,7 @@ public interface CardResourceService {
    *
    * <p>All monitoring processes are stopped, all card resources are released.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   void stop();
 
@@ -76,7 +76,7 @@ public interface CardResourceService {
    * @return Null if no card resource is available.
    * @throws IllegalArgumentException If the profile name is null, empty or not configured.
    * @throws IllegalStateException If the service is not started.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResource getCardResource(String cardResourceProfileName);
 
@@ -85,7 +85,7 @@ public interface CardResourceService {
    *
    * @param cardResource The card resource to release.
    * @throws IllegalArgumentException If the provided card resource is null.
-   * @since 2.0
+   * @since 2.0.0
    */
   void releaseCardResource(CardResource cardResource);
 
@@ -94,7 +94,7 @@ public interface CardResourceService {
    *
    * @param cardResource The card resource to remove.
    * @throws IllegalArgumentException If the provided card resource is null.
-   * @since 2.0
+   * @since 2.0.0
    */
   void removeCardResource(CardResource cardResource);
 }

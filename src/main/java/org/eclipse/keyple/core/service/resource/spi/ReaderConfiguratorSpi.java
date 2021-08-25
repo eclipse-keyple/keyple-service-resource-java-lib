@@ -20,7 +20,7 @@ import org.eclipse.keyple.core.service.Reader;
  * settings to apply to the readers implemented by the Card Resource Service in order for them to be
  * fully operational.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public interface ReaderConfiguratorSpi {
 
@@ -30,7 +30,7 @@ public interface ReaderConfiguratorSpi {
    * <p>The setup is required for some specific readers and must be do first.
    *
    * @param reader The reader to setup.
-   * @since 2.0
+   * @since 2.0.0
    */
   void setupReader(Reader reader);
 }

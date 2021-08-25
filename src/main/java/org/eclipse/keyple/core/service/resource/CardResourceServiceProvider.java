@@ -14,7 +14,7 @@ package org.eclipse.keyple.core.service.resource;
 /**
  * Provider of the {@link CardResourceService}.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public final class CardResourceServiceProvider {
 
@@ -25,7 +25,7 @@ public final class CardResourceServiceProvider {
    * Gets the unique instance of {@link CardResourceService}.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   public static CardResourceService getService() {
     return CardResourceServiceAdapter.getInstance();

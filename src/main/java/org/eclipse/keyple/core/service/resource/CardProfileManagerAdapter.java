@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
  *
  * <p>It contains the profile configuration and associated card resources.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 final class CardProfileManagerAdapter {
 
@@ -63,7 +63,7 @@ final class CardProfileManagerAdapter {
    *
    * @param cardProfile The associated card profile.
    * @param globalConfiguration The global configuration of the service.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardProfileManagerAdapter(
       CardResourceProfileConfigurator cardProfile,
@@ -189,7 +189,7 @@ final class CardProfileManagerAdapter {
    * Removes the provided card resource from the profile manager if it is present.
    *
    * @param cardResource The card resource to remove.
-   * @since 2.0
+   * @since 2.0.0
    */
   void removeCardResource(CardResource cardResource) {
     boolean isRemoved = cardResources.remove(cardResource);
@@ -208,7 +208,7 @@ final class CardProfileManagerAdapter {
    * resource if the reader is accepted.
    *
    * @param readerManager The reader manager to use.
-   * @since 2.0
+   * @since 2.0.0
    */
   void onReaderConnected(ReaderManagerAdapter readerManager) {
     if (!cardProfile.getPlugins().isEmpty()) {
@@ -229,7 +229,7 @@ final class CardProfileManagerAdapter {
    * The behaviour is the same as if a reader was connected.
    *
    * @param readerManager The reader manager to use.
-   * @since 2.0
+   * @since 2.0.0
    */
   void onCardInserted(ReaderManagerAdapter readerManager) {
     onReaderConnected(readerManager);
@@ -241,7 +241,7 @@ final class CardProfileManagerAdapter {
    * Applies the configured allocation strategy by looping, pausing, ordering resources.
    *
    * @return Null if there is no card resource available.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResource getCardResource() {
     CardResource cardResource;

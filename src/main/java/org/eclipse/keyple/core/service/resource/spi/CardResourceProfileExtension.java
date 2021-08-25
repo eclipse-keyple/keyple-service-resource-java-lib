@@ -18,7 +18,7 @@ import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 /**
  * Provides means to check if a reader contains a card that matches a given profile.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 public interface CardResourceProfileExtension {
 
@@ -30,7 +30,7 @@ public interface CardResourceProfileExtension {
    * @param cardSelectionManager A instance of {@link CardSelectionManager}.
    * @return A {@link SmartCard} or null if no card is inserted or if its profile does not match the
    *     associated data.
-   * @since 2.0
+   * @since 2.0.0
    */
   SmartCard matches(CardReader reader, CardSelectionManager cardSelectionManager);
 }

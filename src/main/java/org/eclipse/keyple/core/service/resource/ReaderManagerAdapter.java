@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  * <p>It contains all associated created card resources and manages concurrent access to the
  * reader's card resources so that only one card resource can be used at a time.
  *
- * @since 2.0
+ * @since 2.0.0
  */
 final class ReaderManagerAdapter {
 
@@ -76,7 +76,7 @@ final class ReaderManagerAdapter {
    * @param readerConfiguratorSpi The reader configurator to use.
    * @param usageTimeoutMillis The max usage duration of a card resource before it will be
    *     automatically release.
-   * @since 2.0
+   * @since 2.0.0
    */
   ReaderManagerAdapter(
       Reader reader,
@@ -98,7 +98,7 @@ final class ReaderManagerAdapter {
    * Gets the associated reader.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   Reader getReader() {
     return reader;
@@ -109,7 +109,7 @@ final class ReaderManagerAdapter {
    * Gets the associated plugin.
    *
    * @return A not null reference.
-   * @since 2.0
+   * @since 2.0.0
    */
   Plugin getPlugin() {
     return plugin;
@@ -120,7 +120,7 @@ final class ReaderManagerAdapter {
    * Gets a view of the current created card resources.
    *
    * @return An empty collection if there's no card resources.
-   * @since 2.0
+   * @since 2.0.0
    */
   Set<CardResource> getCardResources() {
     return cardResources;
@@ -131,7 +131,7 @@ final class ReaderManagerAdapter {
    * Indicates if the associated reader is accepted by at least one card profile manager.
    *
    * @return True if the reader manager is active.
-   * @since 2.0
+   * @since 2.0.0
    */
   boolean isActive() {
     return isActive;
@@ -141,7 +141,7 @@ final class ReaderManagerAdapter {
    * (package-private)<br>
    * Activates the reader manager and setup the reader if needed.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   void activate() {
     if (!isActive) {
@@ -162,7 +162,7 @@ final class ReaderManagerAdapter {
    *
    * @param extension The card resource profile extension to use for matching.
    * @return Null if the inserted card does not match with the provided profile extension.
-   * @since 2.0
+   * @since 2.0.0
    */
   CardResource matches(CardResourceProfileExtension extension) {
     CardResource cardResource = null;
@@ -190,7 +190,7 @@ final class ReaderManagerAdapter {
    * @return True if the card resource is locked.
    * @throws IllegalStateException If a new selection has been made and the current card does not
    *     match the provided profile extension or is not the same smart card than the provided one.
-   * @since 2.0
+   * @since 2.0.0
    */
   boolean lock(CardResource cardResource, CardResourceProfileExtension extension) {
     if (isBusy) {
@@ -222,7 +222,7 @@ final class ReaderManagerAdapter {
    * (package-private)<br>
    * Free the reader.
    *
-   * @since 2.0
+   * @since 2.0.0
    */
   void unlock() {
     isBusy = false;
@@ -233,7 +233,7 @@ final class ReaderManagerAdapter {
    * Removes the provided card resource.
    *
    * @param cardResource The card resource to remove.
-   * @since 2.0
+   * @since 2.0.0
    */
   void removeCardResource(CardResource cardResource) {
     cardResources.remove(cardResource);
