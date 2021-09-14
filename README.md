@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Keyple Service Resource Java Library** is a Keyple addon whose goal is to provide a profile-based card resource allocation mechanism.
+The **Keyple Service Resource Java Library** is a Keyple add-on whose goal is to provide a profile-based card resource allocation mechanism.
 
 ## Documentation & Contribution Guide
 
