@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="3080px" preserveAspectRatio="none" style="width:3090px;height:3080px;background:#FFFFFF;" version="1.1" viewBox="0 0 3090 3080" width="3090px" zoomAndPan="magnify"><defs><filter height="1" id="bjqotru5e5d0o0" width="1" x="0" y="0"><feFlood flood-color="#FFFF00" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="bjqotru5e5d0o1" width="1" x="0" y="0"><feFlood flood-color="#FFC0CB" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="45" lengthAdjust="spacing" textLength="1512.5" x="772.5" y="46.7139">Keyple 2.0 - Adapter of keyple-service-resource-java-lib - 2.0.0 (21/06/2021)</text><rect fill="#DDDDDD" height="201.0938" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:2.5;" width="720" x="1167.5" y="76.6016"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" text-decoration="underline" textLength="220" x="1182.5" y="125.4346">Colors legend</text><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="10" x="1412.5" y="125.4346">:</text><ellipse cx="1196.25" cy="158.3984" fill="#000000" rx="6.25" ry="6.25" style="stroke:#000000;stroke-width:0.0;"/><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" text-decoration="underline" textLength="472.5" x="1215" y="169.458">External public API references</text><text fill="#000000" font-family="sans-serif" font-size="35" lengthAdjust="spacing" textLength="10" x="1697.5" y="169.458">:</text><rect fill="#000000" height="8.75" style="stroke:#000000;stroke-width:0.0;" width="8.75" x="1235" y="201.1719"/><text fill="#000000" filter="url(#bjqotru5e5d0o0)" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="625" x="1247.5" y="213.4814">calypsonet-terminal-reader-java-api</text><rect fill="#000000" height="8.75" style="stroke:#000000;stroke-width:0.0;" width="8.75" x="1235" y="245.1953"/><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="400" x="1247.5" y="257.5049">keyple-service-java-lib</text><!--MD5=[8cf87bfb89567845612e9c744549aa54]
+cluster resource--><polygon fill="#F2F3F4" points="40,315.1953,780,315.1953,797.5,374.2188,3047.5,374.2188,3047.5,3062.6953,40,3062.6953,40,315.1953" style="stroke:#000000;stroke-width:3.75;"/><line style="stroke:#000000;stroke-width:3.75;" x1="40" x2="797.5" y1="374.2188" y2="374.2188"/><text fill="#000000" font-family="sans-serif" font-size="35" font-weight="bold" lengthAdjust="spacing" textLength="725" x="50" y="356.5283">org.eclipse.keyple.core.service.resource</text><!--MD5=[69f0064c5fdaf5fe5b473824855f9455]
+class CardResourceServiceProvider--><rect codeLine="56" fill="#FEFECE" height="154.5898" id="CardResourceServiceProvider" style="stroke:#D4AC0D;stroke-width:3.75;" width="592.5" x="1073.75" y="405.1953"/><ellipse cx="1111.25" cy="445.1953" fill="#ADD1B2" rx="27.5" ry="27.5" style="stroke:#ADD1B2;stroke-width:2.5;"/><path d="M1116.25,436.4453 Q1116.7578,435.1953 1117.3438,434.5703 Q1117.9297,433.9453 1118.5938,433.9453 Q1119.7656,433.9453 1120.5078,434.6484 Q1121.25,435.3516 1121.25,436.9922 L1121.25,440.8984 Q1121.25,442.5391 1120.5469,443.2422 Q1119.8438,443.9453 1118.75,443.9453 Q1117.7734,443.9453 1117.1484,443.5156 Q1116.5234,443.0859 1116.25,441.9531 Q1116.1328,441.1719 1115.7031,440.7422 Q1114.9219,439.9219 1113.5156,439.4531 Q1112.1094,438.9453 1110.7031,438.9453 Q1108.9453,438.9453 1107.4609,439.6484 Q1106.0156,440.3516 1104.8828,441.9141 Q1103.75,443.4766 1103.75,445.625 L1103.75,447.9297 Q1103.75,450.5078 1105.8594,452.2266 Q1107.9688,453.9453 1111.7188,453.9453 Q1113.9453,453.9453 1115.5078,453.4375 Q1116.4063,453.1641 1117.4219,452.2656 Q1118.0859,451.7578 1118.4375,451.6016 Q1118.7891,451.4453 1119.2188,451.4453 Q1120.0391,451.4453 1120.625,452.1094 Q1121.25,452.7344 1121.25,453.6328 Q1121.25,454.4922 1120.3906,455.5078 Q1119.1406,456.9922 1117.1484,457.8125 Q1114.5313,458.9453 1111.3281,458.9453 Q1107.5781,458.9453 1104.5703,457.4609 Q1102.1484,456.2891 1100.4297,453.75 Q1098.75,451.2109 1098.75,448.2031 L1098.75,445.4688 Q1098.75,442.3438 1100.2344,439.6094 Q1101.7578,436.875 1104.375,435.4297 Q1107.0313,433.9453 1110,433.9453 Q1111.7969,433.9453 1113.3594,434.5703 Q1114.9219,435.1953 1116.25,436.4453 Z " fill="#000000"/><ellipse cx="1158.75" cy="443.9453" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="60" x="1173.75" y="457.4707">final</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="417.5" x="1241.25" y="457.4707">CardResourceServiceProvider</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="1076.25" x2="1663.75" y1="485.1953" y2="485.1953"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="22.5" x="1088.75" y="523.7427">...</text><line style="stroke:#D4AC0D;stroke-width:3.75;" x1="1076.25" x2="1663.75" y1="539.7852" y2="539.7852"/><!--MD5=[f6ed16481012c6d04a9c31d473554e1d]
+class CardResourceServiceAdapter--><rect codeLine="145" fill="#EBF5FB" height="903.1445" id="CardResourceServiceAdapter" style="stroke:#3498DB;stroke-width:3.75;" width="1085" x="827.5" y="755.1953"/><ellipse cx="1106.875" cy="843.1641" fill="#ADD1B2" rx="27.5" ry="27.5" style="stroke:#ADD1B2;stroke-width:2.5;"/><path d="M1111.875,834.4141 Q1112.3828,833.1641 1112.9688,832.5391 Q1113.5547,831.9141 1114.2188,831.9141 Q1115.3906,831.9141 1116.1328,832.6172 Q1116.875,833.3203 1116.875,834.9609 L1116.875,838.8672 Q1116.875,840.5078 1116.1719,841.2109 Q1115.4688,841.9141 1114.375,841.9141 Q1113.3984,841.9141 1112.7734,841.4844 Q1112.1484,841.0547 1111.875,839.9219 Q1111.7578,839.1406 1111.3281,838.7109 Q1110.5469,837.8906 1109.1406,837.4219 Q1107.7344,836.9141 1106.3281,836.9141 Q1104.5703,836.9141 1103.0859,837.6172 Q1101.6406,838.3203 1100.5078,839.8828 Q1099.375,841.4453 1099.375,843.5938 L1099.375,845.8984 Q1099.375,848.4766 1101.4844,850.1953 Q1103.5938,851.9141 1107.3438,851.9141 Q1109.5703,851.9141 1111.1328,851.4063 Q1112.0313,851.1328 1113.0469,850.2344 Q1113.7109,849.7266 1114.0625,849.5703 Q1114.4141,849.4141 1114.8438,849.4141 Q1115.6641,849.4141 1116.25,850.0781 Q1116.875,850.7031 1116.875,851.6016 Q1116.875,852.4609 1116.0156,853.4766 Q1114.7656,854.9609 1112.7734,855.7813 Q1110.1563,856.9141 1106.9531,856.9141 Q1103.2031,856.9141 1100.1953,855.4297 Q1097.7734,854.2578 1096.0547,851.7188 Q1094.375,849.1797 1094.375,846.1719 L1094.375,843.4375 Q1094.375,840.3125 1095.8594,837.5781 Q1097.3828,834.8438 1100,833.3984 Q1102.6563,831.9141 1105.625,831.9141 Q1107.4219,831.9141 1108.9844,832.5391 Q1110.5469,833.1641 1111.875,834.4141 Z " fill="#000000"/><polygon fill="#4177AF" points="1170.625,831.9141,1160.625,846.9141,1180.625,846.9141" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="372.5" x="1238.125" y="798.8379">&lt;&lt;CardResourceService&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="35" x="1259.375" y="836.5723">&lt;&lt;</text><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="260" x="1294.375" y="836.5723">PluginObserverSpi</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="35" x="1554.375" y="836.5723">&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="35" x="1218.125" y="874.3066">&lt;&lt;</text><text fill="#000000" filter="url(#bjqotru5e5d0o0)" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="342.5" x="1253.125" y="874.3066">CardReaderObserverSpi</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="35" x="1595.625" y="874.3066">&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="60" x="1185.625" y="912.041">final</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="410" x="1253.125" y="912.041">CardResourceServiceAdapter</text><line style="stroke:#3498DB;stroke-width:3.75;" x1="830" x2="1910" y1="931.1328" y2="931.1328"/><line style="stroke:#3498DB;stroke-width:2.5;" x1="830" x2="1910" y1="951.1328" y2="951.1328"/><polygon fill="#4177AF" points="855,968.6328,845,983.6328,865,983.6328" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" text-decoration="underline" textLength="540" x="877.5" y="989.6802">CardResourceServiceAdapter getInstance ()</text><polygon fill="#4177AF" points="855,1003.2227,845,1018.2227,865,1018.2227" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" text-decoration="underline" textLength="717.5" x="877.5" y="1024.27">String getCardResourceInfo (CardResource cardResource)</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="885" y="1058.8599"/><polygon fill="#4177AF" points="855,1072.4023,845,1087.4023,865,1087.4023" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="545" x="877.5" y="1093.4497">ReaderManagerAdapter getReaderManager (</text><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="87.5" x="1422.5" y="1093.4497">Reader</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="90" x="1517.5" y="1093.4497">reader)</text><polygon fill="#4177AF" points="855,1106.9922,845,1121.9922,865,1121.9922" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="755" x="877.5" y="1128.0396">void registerPoolCardResource (CardResource cardResource,</text><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="120" x="1640" y="1128.0396">PoolPlugin</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="130" x="1767.5" y="1128.0396">poolPlugin)</text><polygon fill="#4177AF" points="855,1141.582,845,1156.582,865,1156.582" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="870" x="877.5" y="1162.6294">void configure (CardResourceServiceConfiguratorAdapter configurator)</text><ellipse cx="855" cy="1230.7617" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="632.5" x="877.5" y="1241.8091">CardResourceServiceConfigurator getConfigurator()</text><ellipse cx="855" cy="1265.3516" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="802.5" x="877.5" y="1276.3989">MinimalCardResourceServiceConfigurator getMinimalConfigurator()</text><ellipse cx="855" cy="1299.9414" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="140" x="877.5" y="1310.9888">void start ()</text><ellipse cx="855" cy="1334.5313" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="137.5" x="877.5" y="1345.5786">void stop ()</text><ellipse cx="855" cy="1369.1211" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="815" x="877.5" y="1380.1685">CardResource getCardResource (String cardResourceProfileName)</text><ellipse cx="855" cy="1403.7109" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="422.5" x="877.5" y="1414.7583">CardResource getCardResource ()</text><ellipse cx="855" cy="1438.3008" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="705" x="877.5" y="1449.3481">void releaseCardResource (CardResource cardResource)</text><ellipse cx="855" cy="1472.8906" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="705" x="877.5" y="1483.938">void removeCardResource (CardResource cardResource)</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="830" x2="1220" y1="1195.9668" y2="1195.9668"/><text fill="#000000" font-family="sans-serif" font-size="27.5" font-weight="bold" lengthAdjust="spacing" textLength="300" x="1220" y="1205.9692">CardResourceService</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="1520" x2="1910" y1="1195.9668" y2="1195.9668"/><ellipse cx="855" cy="1552.0703" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="242.5" x="877.5" y="1563.1177">void onPluginEvent (</text><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="137.5" x="1120" y="1563.1177">PluginEvent</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="147.5" x="1265" y="1563.1177">pluginEvent)</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="830" x2="1241.25" y1="1517.2754" y2="1517.2754"/><text fill="#000000" font-family="sans-serif" font-size="27.5" font-weight="bold" lengthAdjust="spacing" textLength="257.5" x="1241.25" y="1527.2778">PluginObserverSpi</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="1498.75" x2="1910" y1="1517.2754" y2="1517.2754"/><ellipse cx="855" cy="1631.25" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="260" x="877.5" y="1642.2974">void onReaderEvent (</text><text fill="#000000" filter="url(#bjqotru5e5d0o0)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="212.5" x="1137.5" y="1642.2974">CardReaderEvent</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="157.5" x="1357.5" y="1642.2974">readerEvent)</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="830" x2="1202.5" y1="1596.4551" y2="1596.4551"/><text fill="#000000" font-family="sans-serif" font-size="27.5" font-weight="bold" lengthAdjust="spacing" textLength="335" x="1202.5" y="1606.4575">CardReaderObserverSpi</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="1537.5" x2="1910" y1="1596.4551" y2="1596.4551"/><!--MD5=[090a657b7142642f70f90cfc4679c591]
+class CardResourceAdapter--><rect codeLine="146" fill="#EBF5FB" height="268.8281" id="CardResourceAdapter" style="stroke:#3498DB;stroke-width:3.75;" width="775" x="1550" y="2752.6953"/><ellipse cx="1725.625" cy="2802.9297" fill="#ADD1B2" rx="27.5" ry="27.5" style="stroke:#ADD1B2;stroke-width:2.5;"/><path d="M1730.625,2794.1797 Q1731.1328,2792.9297 1731.7188,2792.3047 Q1732.3047,2791.6797 1732.9688,2791.6797 Q1734.1406,2791.6797 1734.8828,2792.3828 Q1735.625,2793.0859 1735.625,2794.7266 L1735.625,2798.6328 Q1735.625,2800.2734 1734.9219,2800.9766 Q1734.2188,2801.6797 1733.125,2801.6797 Q1732.1484,2801.6797 1731.5234,2801.25 Q1730.8984,2800.8203 1730.625,2799.6875 Q1730.5078,2798.9063 1730.0781,2798.4766 Q1729.2969,2797.6563 1727.8906,2797.1875 Q1726.4844,2796.6797 1725.0781,2796.6797 Q1723.3203,2796.6797 1721.8359,2797.3828 Q1720.3906,2798.0859 1719.2578,2799.6484 Q1718.125,2801.2109 1718.125,2803.3594 L1718.125,2805.6641 Q1718.125,2808.2422 1720.2344,2809.9609 Q1722.3438,2811.6797 1726.0938,2811.6797 Q1728.3203,2811.6797 1729.8828,2811.1719 Q1730.7813,2810.8984 1731.7969,2810 Q1732.4609,2809.4922 1732.8125,2809.3359 Q1733.1641,2809.1797 1733.5938,2809.1797 Q1734.4141,2809.1797 1735,2809.8438 Q1735.625,2810.4688 1735.625,2811.3672 Q1735.625,2812.2266 1734.7656,2813.2422 Q1733.5156,2814.7266 1731.5234,2815.5469 Q1728.9063,2816.6797 1725.7031,2816.6797 Q1721.9531,2816.6797 1718.9453,2815.1953 Q1716.5234,2814.0234 1714.8047,2811.4844 Q1713.125,2808.9453 1713.125,2805.9375 L1713.125,2803.2031 Q1713.125,2800.0781 1714.6094,2797.3438 Q1716.1328,2794.6094 1718.75,2793.1641 Q1721.4063,2791.6797 1724.375,2791.6797 Q1726.1719,2791.6797 1727.7344,2792.3047 Q1729.2969,2792.9297 1730.625,2794.1797 Z " fill="#000000"/><polygon fill="#4177AF" points="1789.375,2791.6797,1779.375,2806.6797,1799.375,2806.6797" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="270" x="1856.875" y="2796.3379">&lt;&lt;CardResource&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="60" x="1804.375" y="2834.0723">final</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="307.5" x="1871.875" y="2834.0723">CardResourceAdapter</text><line style="stroke:#3498DB;stroke-width:3.75;" x1="1552.5" x2="2322.5" y1="2853.1641" y2="2853.1641"/><polygon fill="#4177AF" points="1577.5,2870.6641,1567.5,2885.6641,1587.5,2885.6641" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="192.5" x="1600" y="2891.7114">CardResource (</text><text fill="#000000" filter="url(#bjqotru5e5d0o0)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="145" x="1792.5" y="2891.7114">CardReader</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="87.5" x="1945" y="2891.7114">reader,</text><text fill="#000000" filter="url(#bjqotru5e5d0o0)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="127.5" x="2040" y="2891.7114">SmartCard</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="135" x="2175" y="2891.7114">smartCard)</text><ellipse cx="1577.5" cy="2959.8438" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" filter="url(#bjqotru5e5d0o0)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="145" x="1600" y="2970.8911">CardReader</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="152.5" x="1752.5" y="2970.8911">getReader ()</text><ellipse cx="1577.5" cy="2994.4336" fill="#84BE84" rx="7.5" ry="7.5" style="stroke:#038048;stroke-width:2.5;"/><text fill="#000000" filter="url(#bjqotru5e5d0o0)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="127.5" x="1600" y="3005.481">SmartCard</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="192.5" x="1735" y="3005.481">getSmartCard ()</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="1552.5" x2="1838.75" y1="2925.0488" y2="2925.0488"/><text fill="#000000" font-family="sans-serif" font-size="27.5" font-weight="bold" lengthAdjust="spacing" textLength="197.5" x="1838.75" y="2935.0513">CardResource</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="2036.25" x2="2322.5" y1="2925.0488" y2="2925.0488"/><!--MD5=[d14c2619d34102a9bbb1cb68ea221c31]
+class ReaderManagerAdapter--><rect codeLine="148" fill="#EBF5FB" height="569.668" id="ReaderManagerAdapter" style="stroke:#3498DB;stroke-width:3.75;" width="1105" x="1902.5" y="1898.9453"/><ellipse cx="2231.875" cy="1938.9453" fill="#ADD1B2" rx="27.5" ry="27.5" style="stroke:#ADD1B2;stroke-width:2.5;"/><path d="M2236.875,1930.1953 Q2237.3828,1928.9453 2237.9688,1928.3203 Q2238.5547,1927.6953 2239.2188,1927.6953 Q2240.3906,1927.6953 2241.1328,1928.3984 Q2241.875,1929.1016 2241.875,1930.7422 L2241.875,1934.6484 Q2241.875,1936.2891 2241.1719,1936.9922 Q2240.4688,1937.6953 2239.375,1937.6953 Q2238.3984,1937.6953 2237.7734,1937.2656 Q2237.1484,1936.8359 2236.875,1935.7031 Q2236.7578,1934.9219 2236.3281,1934.4922 Q2235.5469,1933.6719 2234.1406,1933.2031 Q2232.7344,1932.6953 2231.3281,1932.6953 Q2229.5703,1932.6953 2228.0859,1933.3984 Q2226.6406,1934.1016 2225.5078,1935.6641 Q2224.375,1937.2266 2224.375,1939.375 L2224.375,1941.6797 Q2224.375,1944.2578 2226.4844,1945.9766 Q2228.5938,1947.6953 2232.3438,1947.6953 Q2234.5703,1947.6953 2236.1328,1947.1875 Q2237.0313,1946.9141 2238.0469,1946.0156 Q2238.7109,1945.5078 2239.0625,1945.3516 Q2239.4141,1945.1953 2239.8438,1945.1953 Q2240.6641,1945.1953 2241.25,1945.8594 Q2241.875,1946.4844 2241.875,1947.3828 Q2241.875,1948.2422 2241.0156,1949.2578 Q2239.7656,1950.7422 2237.7734,1951.5625 Q2235.1563,1952.6953 2231.9531,1952.6953 Q2228.2031,1952.6953 2225.1953,1951.2109 Q2222.7734,1950.0391 2221.0547,1947.5 Q2219.375,1944.9609 2219.375,1941.9531 L2219.375,1939.2188 Q2219.375,1936.0938 2220.8594,1933.3594 Q2222.3828,1930.625 2225,1929.1797 Q2227.6563,1927.6953 2230.625,1927.6953 Q2232.4219,1927.6953 2233.9844,1928.3203 Q2235.5469,1928.9453 2236.875,1930.1953 Z " fill="#000000"/><polygon fill="#4177AF" points="2295.625,1927.6953,2285.625,1942.6953,2305.625,1942.6953" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="60" x="2310.625" y="1951.2207">final</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="330" x="2378.125" y="1951.2207">ReaderManagerAdapter</text><line style="stroke:#3498DB;stroke-width:3.75;" x1="1905" x2="3005" y1="1978.9453" y2="1978.9453"/><line style="stroke:#3498DB;stroke-width:2.5;" x1="1905" x2="3005" y1="1998.9453" y2="1998.9453"/><polygon fill="#4177AF" points="1930,2016.4453,1920,2031.4453,1940,2031.4453" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="307.5" x="1952.5" y="2037.4927">ReaderManagerAdapter (</text><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="87.5" x="2260" y="2037.4927">Reader</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="87.5" x="2355" y="2037.4927">reader,</text><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="70" x="2450" y="2037.4927">Plugin</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="77.5" x="2527.5" y="2037.4927">plugin,</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="832.5" x="2012.5" y="2072.0825">ReaderConfiguratorSpi readerConfiguratorSpi, int usageTimeoutMillis)</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="1960" y="2106.6724"/><polygon fill="#4177AF" points="1930,2120.2148,1920,2135.2148,1940,2135.2148" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="87.5" x="1952.5" y="2141.2622">Reader</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="152.5" x="2047.5" y="2141.2622">getReader ()</text><polygon fill="#4177AF" points="1930,2154.8047,1920,2169.8047,1940,2169.8047" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" filter="url(#bjqotru5e5d0o1)" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="70" x="1952.5" y="2175.8521">Plugin</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="135" x="2030" y="2175.8521">getPlugin ()</text><polygon fill="#4177AF" points="1930,2189.3945,1920,2204.3945,1940,2204.3945" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="507.5" x="1952.5" y="2210.4419">Set&lt;CardResource&gt; getCardResources ()</text><polygon fill="#4177AF" points="1930,2223.9844,1920,2238.9844,1940,2238.9844" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="227.5" x="1952.5" y="2245.0317">boolean isActive ()</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="1960" y="2279.6216"/><polygon fill="#4177AF" points="1930,2293.1641,1920,2308.1641,1940,2308.1641" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="180" x="1952.5" y="2314.2114">void activate ()</text><polygon fill="#4177AF" points="1930,2327.7539,1920,2342.7539,1940,2342.7539" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="805" x="1952.5" y="2348.8013">CardResource matches (CardResourceProfileExtension extension)</text><polygon fill="#4177AF" points="1930,2362.3438,1920,2377.3438,1940,2377.3438" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="1040" x="1952.5" y="2383.3911">boolean lock (CardResource cardResource, CardResourceProfileExtension extension)</text><polygon fill="#4177AF" points="1930,2396.9336,1920,2411.9336,1940,2411.9336" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="162.5" x="1952.5" y="2417.981">void unlock ()</text><polygon fill="#4177AF" points="1930,2431.5234,1920,2446.5234,1940,2446.5234" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="705" x="1952.5" y="2452.5708">void removeCardResource (CardResource cardResource)</text><!--MD5=[3c59beab3d39ed7b1ad2258d4fc228b0]
+class CardProfileManagerAdapter--><rect codeLine="149" fill="#EBF5FB" height="362.1289" id="CardProfileManagerAdapter" style="stroke:#3498DB;stroke-width:3.75;" width="887.5" x="926.25" y="2002.6953"/><ellipse cx="1120.625" cy="2042.6953" fill="#ADD1B2" rx="27.5" ry="27.5" style="stroke:#ADD1B2;stroke-width:2.5;"/><path d="M1125.625,2033.9453 Q1126.1328,2032.6953 1126.7188,2032.0703 Q1127.3047,2031.4453 1127.9688,2031.4453 Q1129.1406,2031.4453 1129.8828,2032.1484 Q1130.625,2032.8516 1130.625,2034.4922 L1130.625,2038.3984 Q1130.625,2040.0391 1129.9219,2040.7422 Q1129.2188,2041.4453 1128.125,2041.4453 Q1127.1484,2041.4453 1126.5234,2041.0156 Q1125.8984,2040.5859 1125.625,2039.4531 Q1125.5078,2038.6719 1125.0781,2038.2422 Q1124.2969,2037.4219 1122.8906,2036.9531 Q1121.4844,2036.4453 1120.0781,2036.4453 Q1118.3203,2036.4453 1116.8359,2037.1484 Q1115.3906,2037.8516 1114.2578,2039.4141 Q1113.125,2040.9766 1113.125,2043.125 L1113.125,2045.4297 Q1113.125,2048.0078 1115.2344,2049.7266 Q1117.3438,2051.4453 1121.0938,2051.4453 Q1123.3203,2051.4453 1124.8828,2050.9375 Q1125.7813,2050.6641 1126.7969,2049.7656 Q1127.4609,2049.2578 1127.8125,2049.1016 Q1128.1641,2048.9453 1128.5938,2048.9453 Q1129.4141,2048.9453 1130,2049.6094 Q1130.625,2050.2344 1130.625,2051.1328 Q1130.625,2051.9922 1129.7656,2053.0078 Q1128.5156,2054.4922 1126.5234,2055.3125 Q1123.9063,2056.4453 1120.7031,2056.4453 Q1116.9531,2056.4453 1113.9453,2054.9609 Q1111.5234,2053.7891 1109.8047,2051.25 Q1108.125,2048.7109 1108.125,2045.7031 L1108.125,2042.9688 Q1108.125,2039.8438 1109.6094,2037.1094 Q1111.1328,2034.375 1113.75,2032.9297 Q1116.4063,2031.4453 1119.375,2031.4453 Q1121.1719,2031.4453 1122.7344,2032.0703 Q1124.2969,2032.6953 1125.625,2033.9453 Z " fill="#000000"/><polygon fill="#4177AF" points="1184.375,2031.4453,1174.375,2046.4453,1194.375,2046.4453" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="60" x="1199.375" y="2054.9707">final</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="382.5" x="1266.875" y="2054.9707">CardProfileManagerAdapter</text><line style="stroke:#3498DB;stroke-width:3.75;" x1="928.75" x2="1811.25" y1="2082.6953" y2="2082.6953"/><line style="stroke:#3498DB;stroke-width:2.5;" x1="928.75" x2="1811.25" y1="2102.6953" y2="2102.6953"/><polygon fill="#4177AF" points="953.75,2120.1953,943.75,2135.1953,963.75,2135.1953" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="622.5" x="976.25" y="2141.2427">CardProfileManagerAdapter(CardProfile cardProfile,</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="762.5" x="1036.25" y="2175.8325">CardResourceServiceConfiguratorAdapter globalConfiguration)</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="0" x="983.75" y="2210.4224"/><polygon fill="#4177AF" points="953.75,2223.9648,943.75,2238.9648,963.75,2238.9648" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="705" x="976.25" y="2245.0122">void removeCardResource (CardResource cardResource)</text><polygon fill="#4177AF" points="953.75,2258.5547,943.75,2273.5547,963.75,2273.5547" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="815" x="976.25" y="2279.6021">void onReaderConnected (ReaderManagerAdapter readerManager)</text><polygon fill="#4177AF" points="953.75,2293.1445,943.75,2308.1445,963.75,2308.1445" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="752.5" x="976.25" y="2314.1919">void onCardInserted (ReaderManagerAdapter readerManager)</text><polygon fill="#4177AF" points="953.75,2327.7344,943.75,2342.7344,963.75,2342.7344" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="422.5" x="976.25" y="2348.7817">CardResource getCardResource ()</text><!--MD5=[8762d97bbed9d502dcdd7ce8b6d1f937]
+class CardResourceServiceConfiguratorAdapter--><rect codeLine="147" fill="#EBF5FB" height="748.4961" id="CardResourceServiceConfiguratorAdapter" style="stroke:#3498DB;stroke-width:3.75;" width="757.5" x="81.25" y="1810.1953"/><ellipse cx="118.75" cy="2067.9688" fill="#ADD1B2" rx="27.5" ry="27.5" style="stroke:#ADD1B2;stroke-width:2.5;"/><path d="M123.75,2059.2188 Q124.2578,2057.9688 124.8438,2057.3438 Q125.4297,2056.7188 126.0938,2056.7188 Q127.2656,2056.7188 128.0078,2057.4219 Q128.75,2058.125 128.75,2059.7656 L128.75,2063.6719 Q128.75,2065.3125 128.0469,2066.0156 Q127.3438,2066.7188 126.25,2066.7188 Q125.2734,2066.7188 124.6484,2066.2891 Q124.0234,2065.8594 123.75,2064.7266 Q123.6328,2063.9453 123.2031,2063.5156 Q122.4219,2062.6953 121.0156,2062.2266 Q119.6094,2061.7188 118.2031,2061.7188 Q116.4453,2061.7188 114.9609,2062.4219 Q113.5156,2063.125 112.3828,2064.6875 Q111.25,2066.25 111.25,2068.3984 L111.25,2070.7031 Q111.25,2073.2813 113.3594,2075 Q115.4688,2076.7188 119.2188,2076.7188 Q121.4453,2076.7188 123.0078,2076.2109 Q123.9063,2075.9375 124.9219,2075.0391 Q125.5859,2074.5313 125.9375,2074.375 Q126.2891,2074.2188 126.7188,2074.2188 Q127.5391,2074.2188 128.125,2074.8828 Q128.75,2075.5078 128.75,2076.4063 Q128.75,2077.2656 127.8906,2078.2813 Q126.6406,2079.7656 124.6484,2080.5859 Q122.0313,2081.7188 118.8281,2081.7188 Q115.0781,2081.7188 112.0703,2080.2344 Q109.6484,2079.0625 107.9297,2076.5234 Q106.25,2073.9844 106.25,2070.9766 L106.25,2068.2422 Q106.25,2065.1172 107.7344,2062.3828 Q109.2578,2059.6484 111.875,2058.2031 Q114.5313,2056.7188 117.5,2056.7188 Q119.2969,2056.7188 120.8594,2057.3438 Q122.4219,2057.9688 123.75,2059.2188 Z " fill="#000000"/><polygon fill="#4177AF" points="166.25,2056.7188,156.25,2071.7188,176.25,2071.7188" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="542.5" x="235" y="1853.8379">&lt;&lt;CardResourceServiceConfigurator&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="650" x="181.25" y="1891.5723">&lt;&lt;MinimalCardResourceServiceConfigurator&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="380" x="316.25" y="1929.3066">&lt;&lt;AllocationStrategyStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="335" x="338.75" y="1967.041">&lt;&lt;UsageTimeoutStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="220" x="396.25" y="2004.7754">&lt;&lt;PluginStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="362.5" x="325" y="2042.5098">&lt;&lt;PluginMonitoringStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="442.5" x="285" y="2080.2441">&lt;&lt;PoolAllocationStrategyStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="282.5" x="365" y="2117.9785">&lt;&lt;PoolPluginStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="507.5" x="252.5" y="2155.7129">&lt;&lt;AllocationTimingParameterStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="220" x="396.25" y="2193.4473">&lt;&lt;ProfileStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="365" x="323.75" y="2231.1816">&lt;&lt;ProfileParameterStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="317.5" x="347.5" y="2268.916">&lt;&lt;ConfigurationStep&gt;&gt;</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="60" x="182.5" y="2306.6504">final</text><text fill="#000000" font-family="sans-serif" font-size="30" font-style="italic" lengthAdjust="spacing" textLength="580" x="250" y="2306.6504">CardResourceServiceConfiguratorAdapter</text><line style="stroke:#3498DB;stroke-width:3.75;" x1="83.75" x2="836.25" y1="2325.7422" y2="2325.7422"/><line style="stroke:#3498DB;stroke-width:2.5;" x1="83.75" x2="836.25" y1="2345.7422" y2="2345.7422"/><polygon fill="#4177AF" points="108.75,2363.2422,98.75,2378.2422,118.75,2378.2422" style="stroke:#1963A0;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="542.5" x="131.25" y="2384.2896">CardResourceServiceConfiguratorAdapter ()</text><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="22.5" x="96.25" y="2463.4692">...</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="83.75" x2="222.5" y1="2417.627" y2="2417.627"/><text fill="#000000" font-family="sans-serif" font-size="27.5" font-weight="bold" lengthAdjust="spacing" textLength="475" x="222.5" y="2427.6294">CardResourceServiceConfigurator</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="697.5" x2="836.25" y1="2417.627" y2="2417.627"/><text fill="#000000" font-family="sans-serif" font-size="27.5" lengthAdjust="spacing" textLength="22.5" x="96.25" y="2542.6489">...</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="83.75" x2="168.75" y1="2496.8066" y2="2496.8066"/><text fill="#000000" font-family="sans-serif" font-size="27.5" font-weight="bold" lengthAdjust="spacing" textLength="582.5" x="168.75" y="2506.8091">MinimalCardResourceServiceConfigurator</text><line style="stroke:#3498DB;stroke-width:2.5;" x1="751.25" x2="836.25" y1="2496.8066" y2="2496.8066"/><!--MD5=[4e0f39a17971f280cbb32604c4fa27f8]
+link CardResourceServiceProvider to CardResourceServiceAdapter--><path codeLine="125" d="M1370,560.7453 C1370,607.4103 1370,671.5853 1370,741.4403 " fill="none" id="CardResourceServiceProvider-to-CardResourceServiceAdapter" style="stroke:#3498DB;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="1370,754.5453,1380,732.0453,1370,742.0453,1360,732.0453,1370,754.5453" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#000000" points="1382.5,670.6348,1389.8473,648.0221,1375.1527,648.0221,1382.5,670.6348" style="stroke:#000000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="100" x="1405" y="671.4331">provide</text><!--MD5=[043ebf8fda4a84e1f87495e5ba11a6d7]
+reverse link CardResourceServiceAdapter to CardResourceServiceConfiguratorAdapter--><path codeLine="127" d="M927.3325,1682.0153 C887.165,1724.9428 846.865,1768.0078 807.6925,1809.8728 " fill="none" id="CardResourceServiceAdapter-backto-CardResourceServiceConfiguratorAdapter" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#3498DB" points="949.6275,1658.1878,932.0769,1662.308,929.1299,1680.0932,946.6805,1675.9731,949.6275,1658.1878" style="stroke:#3498DB;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="17.5" x="807.6692" y="1783.2882">1</text><!--MD5=[b88f55aee6c316c4d6eec7ea3f2bc801]
+reverse link CardResourceServiceAdapter to ReaderManagerAdapter--><path codeLine="128" d="M1895.8625,1680.2828 C1979.175,1754.9553 2063.01,1830.1003 2139.5025,1898.6603 " fill="none" id="CardResourceServiceAdapter-backto-ReaderManagerAdapter" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#3498DB" points="1871.2125,1658.1878,1875.7085,1675.6459,1893.5529,1678.2104,1889.0569,1660.7523,1871.2125,1658.1878" style="stroke:#3498DB;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="60" x="2056.2894" y="1871.9274">0..N</text><!--MD5=[300d2a3e6a7827564e8b45ae64faf817]
+reverse link CardResourceServiceAdapter to CardProfileManagerAdapter--><path codeLine="129" d="M1370,1691.1053 C1370,1802.3653 1370,1913.9128 1370,2002.4403 " fill="none" id="CardResourceServiceAdapter-backto-CardProfileManagerAdapter" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#3498DB" points="1370,1658.1878,1360,1673.1878,1370,1688.1878,1380,1673.1878,1370,1658.1878" style="stroke:#3498DB;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="60" x="1306.9063" y="1975.4624">1..N</text><!--MD5=[d29a76c668afaba3a22bc2eb140faa24]
+link CardResourceServiceConfiguratorAdapter to CardProfileManagerAdapter--><path codeLine="131" d="M839.4625,2183.9453 C857.1575,2183.9453 874.85,2183.9453 892.545,2183.9453 " fill="none" id="CardResourceServiceConfiguratorAdapter-to-CardProfileManagerAdapter" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#3498DB" points="925.4675,2183.9453,910.4675,2173.9453,895.4675,2183.9453,910.4675,2193.9453,925.4675,2183.9453" style="stroke:#3498DB;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="17.5" x="858.2665" y="2176.7115">1</text><!--MD5=[ba2d83ab2dcfca3780647bcb07ac1e5e]
+link CardProfileManagerAdapter to CardResourceAdapter--><path codeLine="132" d="M1379.6125,2365.7578 C1393.4075,2467.0853 1425.25,2590.5178 1497.5,2677.6953 C1518.195,2702.6678 1542.585,2724.8178 1569.09,2744.4278 " fill="none" id="CardProfileManagerAdapter-to-CardResourceAdapter" style="stroke:#3498DB;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="1579.755,2752.1053,1567.331,2730.8475,1569.6082,2744.8051,1555.6507,2747.0823,1579.755,2752.1053" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#000000" points="1515.5935,2666.8134,1512.0454,2643.3032,1498.9041,2649.8788,1515.5935,2666.8134" style="stroke:#000000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="300" x="1532.5" y="2668.9331">create for pool plugin</text><!--MD5=[c2d04406c2e86fc181d9782fe8025634]
+reverse link CardProfileManagerAdapter to CardResourceAdapter--><path codeLine="133" d="M1627.625,2388.0978 C1705.485,2458.8878 1785.9025,2543.2503 1845,2632.6953 C1868.935,2668.9203 1887.6875,2712.1478 1901.8625,2752.5103 " fill="none" id="CardProfileManagerAdapter-backto-CardResourceAdapter" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#3498DB" points="1602.465,2365.6003,1606.9827,2383.0528,1624.8303,2385.5952,1620.3126,2368.1427,1602.465,2365.6003" style="stroke:#3498DB;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="60" x="1833.0425" y="2725.5329">0..N</text><!--MD5=[e0b5cea6c0f271dcdaec1145d4906b8a]
+link ReaderManagerAdapter to CardResourceAdapter--><path codeLine="135" d="M2166.3175,2469.5103 C2121.5725,2521.3003 2078.3725,2576.7403 2042.5,2632.6953 C2021.32,2665.7303 2002.8725,2703.7553 1987.5975,2740.1053 " fill="none" id="ReaderManagerAdapter-to-CardResourceAdapter" style="stroke:#3498DB;stroke-width:2.5;stroke-dasharray:7.0,7.0;"/><polygon fill="#3498DB" points="1982.54,2752.3603,2000.3669,2735.3764,1987.3084,2740.8055,1981.8792,2727.747,1982.54,2752.3603" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#000000" points="2048.1111,2666.0651,2066.7041,2651.2456,2054.4425,2643.1472,2048.1111,2666.0651" style="stroke:#000000;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="337.5" x="2077.5" y="2668.9331">create for regular plugin</text><!--MD5=[b2fd4919a2dda790f1bc47929b3aae28]
+reverse link ReaderManagerAdapter to CardResourceAdapter--><path codeLine="136" d="M2488.0025,2501.8553 C2481.145,2564.4378 2463.495,2626.5303 2427.5,2677.6953 C2400.6575,2715.8528 2365.335,2747.0303 2325.9275,2772.4953 " fill="none" id="ReaderManagerAdapter-backto-CardResourceAdapter" style="stroke:#3498DB;stroke-width:2.5;"/><polygon fill="#3498DB" points="2490.6425,2469.1403,2479.4667,2483.286,2488.2259,2499.0428,2499.4017,2484.8971,2490.6425,2469.1403" style="stroke:#3498DB;stroke-width:2.5;"/><text fill="#000000" font-family="sans-serif" font-size="32.5" lengthAdjust="spacing" textLength="60" x="2344.8875" y="2760.1533">0..N</text><!--MD5=[3a7bcbea984db9cc16f39248ec4bd159]
+@startuml
+title
+    Keyple 2.0 - Adapter of keyple-service-resource-java-lib - 2.0.0 (21/06/2021)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+legend top
+    __Colors legend__ :
+    * __External public API references__ :
+    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:pink>**keyple-service-java-lib**</back>
+end legend
+
+package "org.eclipse.keyple.core.service.resource" as resource {
+
+    +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider {
+        ...
+    }
+    ~class "<<CardResourceService>>\n<<<back:pink>PluginObserverSpi</back>>>\n<<<back:yellow>CardReaderObserverSpi</back>>>\n**final** CardResourceServiceAdapter" as CardResourceServiceAdapter {
+        - -
+        ~{static} CardResourceServiceAdapter getInstance ()
+        ~{static} String getCardResourceInfo (CardResource cardResource)
+
+        ~ReaderManagerAdapter getReaderManager (<back:pink>Reader</back> reader)
+        ~void registerPoolCardResource (CardResource cardResource, <back:pink>PoolPlugin</back> poolPlugin)
+        ~void configure (CardResourceServiceConfiguratorAdapter configurator)
+        - - **CardResourceService** - -
+        +CardResourceServiceConfigurator getConfigurator()
+        +MinimalCardResourceServiceConfigurator getMinimalConfigurator()
+        +void start ()
+        +void stop ()
+        +CardResource getCardResource (String cardResourceProfileName)
+        +CardResource getCardResource ()
+        +void releaseCardResource (CardResource cardResource)
+        +void removeCardResource (CardResource cardResource)
+        - - **PluginObserverSpi** - -
+        +void onPluginEvent (<back:pink>PluginEvent</back> pluginEvent)
+        - - **CardReaderObserverSpi** - -
+        +void onReaderEvent (<back:yellow>CardReaderEvent</back> readerEvent)
+    }
+    ~class "<<CardResource>>\n**final** CardResourceAdapter" as CardResourceAdapter {
+        ~CardResource (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> smartCard)
+        - - **CardResource** - -
+        +<back:yellow>CardReader</back> getReader ()
+        +<back:yellow>SmartCard</back> getSmartCard ()
+    }
+    ~class "**final** ReaderManagerAdapter" as ReaderManagerAdapter {
+        - -
+        ~ReaderManagerAdapter (<back:pink>Reader</back> reader, <back:pink>Plugin</back> plugin,
+            \tReaderConfiguratorSpi readerConfiguratorSpi, int usageTimeoutMillis)
+
+        ~<back:pink>Reader</back> getReader ()
+        ~<back:pink>Plugin</back> getPlugin ()
+        ~Set<CardResource> getCardResources ()
+        ~boolean isActive ()
+
+        ~void activate ()
+        ~CardResource matches (CardResourceProfileExtension extension)
+        ~boolean lock (CardResource cardResource, CardResourceProfileExtension extension)
+        ~void unlock ()
+        ~void removeCardResource (CardResource cardResource)
+    }
+    ~class "**final** CardProfileManagerAdapter" as CardProfileManagerAdapter {
+        - -
+        ~CardProfileManagerAdapter(CardProfile cardProfile,
+            \tCardResourceServiceConfiguratorAdapter globalConfiguration)
+
+        ~void removeCardResource (CardResource cardResource)
+        ~void onReaderConnected (ReaderManagerAdapter readerManager)
+        ~void onCardInserted (ReaderManagerAdapter readerManager)
+        ~CardResource getCardResource ()
+    }
+    ~class "<<CardResourceServiceConfigurator>>\n<<MinimalCardResourceServiceConfigurator>>\n<<AllocationStrategyStep>>\n<<UsageTimeoutStep>>\n<<PluginStep>>\n<<PluginMonitoringStep>>\n<<PoolAllocationStrategyStep>>\n<<PoolPluginStep>>\n<<AllocationTimingParameterStep>>\n<<ProfileStep>>\n<<ProfileParameterStep>>\n<<ConfigurationStep>>\n**final** CardResourceServiceConfiguratorAdapter" as CardResourceServiceConfiguratorAdapter {
+        - -
+        ~CardResourceServiceConfiguratorAdapter ()
+        - - **CardResourceServiceConfigurator** - -
+        ...
+        - - **MinimalCardResourceServiceConfigurator** - -
+        ...
+    }
+}
+
+' Associations
+
+CardResourceServiceProvider ..> CardResourceServiceAdapter #C_LINK : provide >
+
+CardResourceServiceAdapter *- - "1" CardResourceServiceConfiguratorAdapter #C_LINK
+CardResourceServiceAdapter *- - "0..N" ReaderManagerAdapter #C_LINK
+CardResourceServiceAdapter *- - "1..N" CardProfileManagerAdapter #C_LINK
+
+CardProfileManagerAdapter *-left- "1" CardResourceServiceConfiguratorAdapter #C_LINK
+CardProfileManagerAdapter ..> CardResourceAdapter #C_LINK : create for pool plugin >
+CardProfileManagerAdapter *- - "0..N" CardResourceAdapter #C_LINK
+
+ReaderManagerAdapter ..> CardResourceAdapter #C_LINK : create for regular plugin >
+ReaderManagerAdapter *- - "0..N" CardResourceAdapter #C_LINK
+
+' == LAYOUT ==
+
+
+' == STYLE ==
+
+package resource #C_GREY2 {}
+
+class CardResourceServiceAdapter <<blue>>
+class CardResourceAdapter <<blue>>
+class CardResourceServiceConfiguratorAdapter <<blue>>
+class ReaderManagerAdapter <<blue>>
+class CardProfileManagerAdapter <<blue>>
+
+@enduml
+
+@startuml
+title
+    Keyple 2.0 - Adapter of keyple-service-resource-java-lib - 2.0.0 (21/06/2021)
+end title
+
+
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+
+legend top
+    __Colors legend__ :
+    * __External public API references__ :
+    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:pink>**keyple-service-java-lib**</back>
+end legend
+
+package "org.eclipse.keyple.core.service.resource" as resource {
+
+    +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider {
+        ...
+    }
+    ~class "<<CardResourceService>>\n<<<back:pink>PluginObserverSpi</back>>>\n<<<back:yellow>CardReaderObserverSpi</back>>>\n**final** CardResourceServiceAdapter" as CardResourceServiceAdapter {
+        - -
+        ~{static} CardResourceServiceAdapter getInstance ()
+        ~{static} String getCardResourceInfo (CardResource cardResource)
+
+        ~ReaderManagerAdapter getReaderManager (<back:pink>Reader</back> reader)
+        ~void registerPoolCardResource (CardResource cardResource, <back:pink>PoolPlugin</back> poolPlugin)
+        ~void configure (CardResourceServiceConfiguratorAdapter configurator)
+        - - **CardResourceService** - -
+        +CardResourceServiceConfigurator getConfigurator()
+        +MinimalCardResourceServiceConfigurator getMinimalConfigurator()
+        +void start ()
+        +void stop ()
+        +CardResource getCardResource (String cardResourceProfileName)
+        +CardResource getCardResource ()
+        +void releaseCardResource (CardResource cardResource)
+        +void removeCardResource (CardResource cardResource)
+        - - **PluginObserverSpi** - -
+        +void onPluginEvent (<back:pink>PluginEvent</back> pluginEvent)
+        - - **CardReaderObserverSpi** - -
+        +void onReaderEvent (<back:yellow>CardReaderEvent</back> readerEvent)
+    }
+    ~class "<<CardResource>>\n**final** CardResourceAdapter" as CardResourceAdapter {
+        ~CardResource (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> smartCard)
+        - - **CardResource** - -
+        +<back:yellow>CardReader</back> getReader ()
+        +<back:yellow>SmartCard</back> getSmartCard ()
+    }
+    ~class "**final** ReaderManagerAdapter" as ReaderManagerAdapter {
+        - -
+        ~ReaderManagerAdapter (<back:pink>Reader</back> reader, <back:pink>Plugin</back> plugin,
+            \tReaderConfiguratorSpi readerConfiguratorSpi, int usageTimeoutMillis)
+
+        ~<back:pink>Reader</back> getReader ()
+        ~<back:pink>Plugin</back> getPlugin ()
+        ~Set<CardResource> getCardResources ()
+        ~boolean isActive ()
+
+        ~void activate ()
+        ~CardResource matches (CardResourceProfileExtension extension)
+        ~boolean lock (CardResource cardResource, CardResourceProfileExtension extension)
+        ~void unlock ()
+        ~void removeCardResource (CardResource cardResource)
+    }
+    ~class "**final** CardProfileManagerAdapter" as CardProfileManagerAdapter {
+        - -
+        ~CardProfileManagerAdapter(CardProfile cardProfile,
+            \tCardResourceServiceConfiguratorAdapter globalConfiguration)
+
+        ~void removeCardResource (CardResource cardResource)
+        ~void onReaderConnected (ReaderManagerAdapter readerManager)
+        ~void onCardInserted (ReaderManagerAdapter readerManager)
+        ~CardResource getCardResource ()
+    }
+    ~class "<<CardResourceServiceConfigurator>>\n<<MinimalCardResourceServiceConfigurator>>\n<<AllocationStrategyStep>>\n<<UsageTimeoutStep>>\n<<PluginStep>>\n<<PluginMonitoringStep>>\n<<PoolAllocationStrategyStep>>\n<<PoolPluginStep>>\n<<AllocationTimingParameterStep>>\n<<ProfileStep>>\n<<ProfileParameterStep>>\n<<ConfigurationStep>>\n**final** CardResourceServiceConfiguratorAdapter" as CardResourceServiceConfiguratorAdapter {
+        - -
+        ~CardResourceServiceConfiguratorAdapter ()
+        - - **CardResourceServiceConfigurator** - -
+        ...
+        - - **MinimalCardResourceServiceConfigurator** - -
+        ...
+    }
+}
+
+
+CardResourceServiceProvider ..> CardResourceServiceAdapter #3498DB : provide >
+
+CardResourceServiceAdapter *- - "1" CardResourceServiceConfiguratorAdapter #3498DB
+CardResourceServiceAdapter *- - "0..N" ReaderManagerAdapter #3498DB
+CardResourceServiceAdapter *- - "1..N" CardProfileManagerAdapter #3498DB
+
+CardProfileManagerAdapter *-left- "1" CardResourceServiceConfiguratorAdapter #3498DB
+CardProfileManagerAdapter ..> CardResourceAdapter #3498DB : create for pool plugin >
+CardProfileManagerAdapter *- - "0..N" CardResourceAdapter #3498DB
+
+ReaderManagerAdapter ..> CardResourceAdapter #3498DB : create for regular plugin >
+ReaderManagerAdapter *- - "0..N" CardResourceAdapter #3498DB
+
+
+
+
+package resource #F2F3F4 {}
+
+class CardResourceServiceAdapter <<blue>>
+class CardResourceAdapter <<blue>>
+class CardResourceServiceConfiguratorAdapter <<blue>>
+class ReaderManagerAdapter <<blue>>
+class CardProfileManagerAdapter <<blue>>
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 14:40:07 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: Dynamic Code Evolution 64-Bit Server VM
+Default Encoding: Cp1252
+Language: fr
+Country: FR
+--></g></svg>

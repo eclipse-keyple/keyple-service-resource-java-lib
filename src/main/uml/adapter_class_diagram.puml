@@ -1,0 +1,152 @@
+@startuml
+title
+    Keyple 2.0 - Adapter of keyple-service-resource-java-lib - 2.0.0 (21/06/2021)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+legend top
+    __Colors legend__ :
+    * __External public API references__ :
+    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:pink>**keyple-service-java-lib**</back>
+end legend
+
+package "org.eclipse.keyple.core.service.resource" as resource {
+
+    +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider {
+        ...
+    }
+    ~class "<<CardResourceService>>\n<<<back:pink>PluginObserverSpi</back>>>\n<<<back:yellow>CardReaderObserverSpi</back>>>\n**final** CardResourceServiceAdapter" as CardResourceServiceAdapter {
+        --
+        ~{static} CardResourceServiceAdapter getInstance ()
+        ~{static} String getCardResourceInfo (CardResource cardResource)
+
+        ~ReaderManagerAdapter getReaderManager (<back:pink>Reader</back> reader)
+        ~void registerPoolCardResource (CardResource cardResource, <back:pink>PoolPlugin</back> poolPlugin)
+        ~void configure (CardResourceServiceConfiguratorAdapter configurator)
+        -- **CardResourceService** --
+        +CardResourceServiceConfigurator getConfigurator()
+        +MinimalCardResourceServiceConfigurator getMinimalConfigurator()
+        +void start ()
+        +void stop ()
+        +CardResource getCardResource (String cardResourceProfileName)
+        +CardResource getCardResource ()
+        +void releaseCardResource (CardResource cardResource)
+        +void removeCardResource (CardResource cardResource)
+        -- **PluginObserverSpi** --
+        +void onPluginEvent (<back:pink>PluginEvent</back> pluginEvent)
+        -- **CardReaderObserverSpi** --
+        +void onReaderEvent (<back:yellow>CardReaderEvent</back> readerEvent)
+    }
+    ~class "<<CardResource>>\n**final** CardResourceAdapter" as CardResourceAdapter {
+        ~CardResource (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> smartCard)
+        -- **CardResource** --
+        +<back:yellow>CardReader</back> getReader ()
+        +<back:yellow>SmartCard</back> getSmartCard ()
+    }
+    ~class "**final** ReaderManagerAdapter" as ReaderManagerAdapter {
+        --
+        ~ReaderManagerAdapter (<back:pink>Reader</back> reader, <back:pink>Plugin</back> plugin,
+            \tReaderConfiguratorSpi readerConfiguratorSpi, int usageTimeoutMillis)
+
+        ~<back:pink>Reader</back> getReader ()
+        ~<back:pink>Plugin</back> getPlugin ()
+        ~Set<CardResource> getCardResources ()
+        ~boolean isActive ()
+
+        ~void activate ()
+        ~CardResource matches (CardResourceProfileExtension extension)
+        ~boolean lock (CardResource cardResource, CardResourceProfileExtension extension)
+        ~void unlock ()
+        ~void removeCardResource (CardResource cardResource)
+    }
+    ~class "**final** CardProfileManagerAdapter" as CardProfileManagerAdapter {
+        --
+        ~CardProfileManagerAdapter(CardProfile cardProfile,
+            \tCardResourceServiceConfiguratorAdapter globalConfiguration)
+
+        ~void removeCardResource (CardResource cardResource)
+        ~void onReaderConnected (ReaderManagerAdapter readerManager)
+        ~void onCardInserted (ReaderManagerAdapter readerManager)
+        ~CardResource getCardResource ()
+    }
+    ~class "<<CardResourceServiceConfigurator>>\n<<MinimalCardResourceServiceConfigurator>>\n<<AllocationStrategyStep>>\n<<UsageTimeoutStep>>\n<<PluginStep>>\n<<PluginMonitoringStep>>\n<<PoolAllocationStrategyStep>>\n<<PoolPluginStep>>\n<<AllocationTimingParameterStep>>\n<<ProfileStep>>\n<<ProfileParameterStep>>\n<<ConfigurationStep>>\n**final** CardResourceServiceConfiguratorAdapter" as CardResourceServiceConfiguratorAdapter {
+        --
+        ~CardResourceServiceConfiguratorAdapter ()
+        -- **CardResourceServiceConfigurator** --
+        ...
+        -- **MinimalCardResourceServiceConfigurator** --
+        ...
+    }
+}
+
+' Associations
+
+CardResourceServiceProvider ..> CardResourceServiceAdapter #C_LINK : provide >
+
+CardResourceServiceAdapter *-- "1" CardResourceServiceConfiguratorAdapter #C_LINK
+CardResourceServiceAdapter *-- "0..N" ReaderManagerAdapter #C_LINK
+CardResourceServiceAdapter *-- "1..N" CardProfileManagerAdapter #C_LINK
+
+CardProfileManagerAdapter *-left- "1" CardResourceServiceConfiguratorAdapter #C_LINK
+CardProfileManagerAdapter ..> CardResourceAdapter #C_LINK : create for pool plugin >
+CardProfileManagerAdapter *-- "0..N" CardResourceAdapter #C_LINK
+
+ReaderManagerAdapter ..> CardResourceAdapter #C_LINK : create for regular plugin >
+ReaderManagerAdapter *-- "0..N" CardResourceAdapter #C_LINK
+
+' == LAYOUT ==
+
+
+' == STYLE ==
+
+package resource #C_GREY2 {}
+
+class CardResourceServiceAdapter <<blue>>
+class CardResourceAdapter <<blue>>
+class CardResourceServiceConfiguratorAdapter <<blue>>
+class ReaderManagerAdapter <<blue>>
+class CardProfileManagerAdapter <<blue>>
+
+@enduml

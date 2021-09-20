@@ -1,0 +1,175 @@
+@startuml
+title
+    Keyple 2.0 - keyple-service-resource-java-lib - 2.0.0 (21/06/2021)
+end title
+
+' == THEME ==
+
+'Couleurs issues de : https://htmlcolorcodes.com/fr/tableau-de-couleur/tableau-de-couleur-design-plat/
+!define C_GREY1 F8F9F9
+!define C_GREY2 F2F3F4
+!define C_GREY3 E5E7E9
+!define C_GREY4 D7DBDD
+!define C_GREY5 CACFD2
+!define C_GREY6 BDC3C7
+!define C_LINK 3498DB
+!define C_USE 27AE60
+
+skinparam Shadowing false
+skinparam ClassFontStyle italic
+skinparam ClassBorderColor #D4AC0D
+skinparam stereotypeABorderColor #A9DCDF
+skinparam stereotypeIBorderColor #B4A7E5
+skinparam stereotypeCBorderColor #ADD1B2
+skinparam stereotypeEBorderColor #EB93DF
+' Red
+skinparam ClassBackgroundColor<<red>> #FDEDEC
+skinparam ClassBorderColor<<red>> #E74C3C
+hide <<red>> stereotype
+' Purple
+skinparam ClassBackgroundColor<<purple>> #F4ECF7
+skinparam ClassBorderColor<<purple>> #8E44AD
+hide <<purple>> stereotype
+' blue
+skinparam ClassBackgroundColor<<blue>> #EBF5FB
+skinparam ClassBorderColor<<blue>> #3498DB
+hide <<blue>> stereotype
+' Green
+skinparam ClassBackgroundColor<<green>> #E9F7EF
+skinparam ClassBorderColor<<green>> #27AE60
+hide <<green>> stereotype
+' Grey
+skinparam ClassBackgroundColor<<grey>> #EAECEE
+skinparam ClassBorderColor<<grey>> #2C3E50
+hide <<grey>> stereotype
+
+' == CONTENT ==
+
+legend top
+    __Colors legend__ :
+    * __External public API references__ :
+    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:pink>**keyple-service-java-lib**</back>
+end legend
+
+package "org.eclipse.keyple.core.service.resource" as resource {
+
+    ' Card Resource Service
+    +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider {
+        +{static} CardResourceService getService ()
+    }
+
+    +interface CardResourceService {
+        +CardResourceServiceConfigurator getConfigurator()
+        +void start ()
+        +void stop ()
+        +CardResource getCardResource (String cardResourceProfileName)
+        +void releaseCardResource (CardResource cardResource)
+        +void removeCardResource (CardResource cardResource)
+    }
+
+    +interface CardResourceServiceConfigurator {
+        +CardResourceServiceConfigurator withPlugins (PluginsConfigurator pluginsConfigurator)
+        +CardResourceServiceConfigurator withPoolPlugins (PoolPluginsConfigurator poolPluginsConfigurator)
+        +CardResourceServiceConfigurator withCardResourceProfiles (CardResourceProfileConfigurator... cardResourceProfileConfigurators)
+        +CardResourceServiceConfigurator withBlockingAllocationMode (int cycleDurationMillis, int timeoutMillis)
+        +void configure ()
+    }
+
+    +class "**final** PluginsConfigurator" as PluginsConfigurator {
+        +{static} Builder builder ()
+    }
+    +class "**final** Builder" as PluginsConfiguratorBuilder {
+        --
+        +Builder withAllocationStrategy (AllocationStrategy allocationStrategy)
+        +Builder withUsageTimeout (int usageTimeoutMillis)
+        +Builder addPlugin (<back:pink>Plugin</back> plugin, ReaderConfiguratorSpi readerConfiguratorSpi)
+        +Builder addPluginWithMonitoring (<back:pink>Plugin</back> plugin, ReaderConfiguratorSpi readerConfiguratorSpi
+            \t<back:pink>PluginObservationExceptionHandlerSpi</back> pluginObservationExceptionHandlerSpi,
+            \t<back:yellow>CardReaderObservationExceptionHandlerSpi</back> readerObservationExceptionHandlerSpi)
+        +PluginsConfigurator build ()
+    }
+    +enum AllocationStrategy {
+        FIRST
+        CYCLIC
+        RANDOM
+    }
+
+    +class "**final** PoolPluginsConfigurator" as PoolPluginsConfigurator {
+        +{static} Builder builder ()
+    }
+    +class "**final** Builder" as PoolPluginsConfiguratorBuilder {
+        +Builder usePoolFirst ()
+        +Builder addPoolPlugin (<back:pink>PoolPlugin</back> poolPlugin)
+        +PoolPluginsConfigurator build ()
+    }
+
+    +class "**final** CardResourceProfileConfigurator" as CardResourceProfileConfigurator {
+        --
+        +{static} Builder builder (String profileName, CardResourceProfileExtension cardResourceProfileExtension)
+    }
+    +class "**final** Builder" as CardResourceProfileConfiguratorBuilder {
+        +Builder withPlugins (<back:pink>Plugin</back>... plugins)
+        +Builder withReaderNameRegex (String readerNameRegex)
+        +Builder withReaderGroupReference (String readerGroupReference)
+        +CardResourceProfileConfigurator build ()
+    }
+
+    +interface CardResource {
+        +<back:yellow>CardReader</back> getReader ()
+        +<back:yellow>SmartCard</back> getSmartCard ()
+    }
+
+    package "spi" as resourceSpi {
+        +interface ReaderConfiguratorSpi {
+            +void setupReader (<back:pink>Reader</back> reader)
+        }
+        +interface CardResourceProfileExtension {
+            +<back:yellow>SmartCard</back> matches (<back:yellow>CardReader</back> reader, <back:yellow>CardSelectionManager</back> cardSelectionManager)
+        }
+    }
+}
+
+' Associations
+
+CardResourceServiceProvider ..> CardResourceService #C_LINK : provide >
+
+CardResourceService .left.> CardResource #C_LINK : provide >
+CardResourceService ..> CardResourceServiceConfigurator #C_LINK : provide >
+
+CardResourceServiceConfigurator ..> CardResourceServiceConfigurator #C_LINK
+CardResourceServiceConfigurator ..> PluginsConfigurator #C_USE : use >
+CardResourceServiceConfigurator ..> PoolPluginsConfigurator #C_USE : use >
+CardResourceServiceConfigurator ..> CardResourceProfileConfigurator #C_USE : use >
+
+PluginsConfigurator +-- PluginsConfiguratorBuilder
+PluginsConfigurator ..> PluginsConfiguratorBuilder #C_LINK : provide >
+PluginsConfigurator +-right- AllocationStrategy
+PluginsConfigurator *-right- "1" AllocationStrategy #C_LINK
+
+PluginsConfiguratorBuilder ..> PluginsConfiguratorBuilder #C_LINK
+PluginsConfiguratorBuilder .up.> AllocationStrategy #C_USE : use >
+PluginsConfiguratorBuilder ..> ReaderConfiguratorSpi #C_USE : use >
+PluginsConfiguratorBuilder .up.> PluginsConfigurator #C_LINK : create >
+
+PoolPluginsConfigurator +-- PoolPluginsConfiguratorBuilder
+PoolPluginsConfigurator ..> PoolPluginsConfiguratorBuilder #C_LINK : provide >
+
+PoolPluginsConfiguratorBuilder ..> PoolPluginsConfiguratorBuilder #C_LINK
+PoolPluginsConfiguratorBuilder .up.> PoolPluginsConfigurator #C_LINK : create >
+
+CardResourceProfileConfigurator +-- CardResourceProfileConfiguratorBuilder
+CardResourceProfileConfigurator ..> CardResourceProfileConfiguratorBuilder #C_LINK : provide >
+CardResourceProfileConfigurator ..> CardResourceProfileExtension #C_USE : use >
+
+CardResourceProfileConfiguratorBuilder ..> CardResourceProfileConfiguratorBuilder #C_LINK
+CardResourceProfileConfiguratorBuilder .up.> CardResourceProfileConfigurator #C_LINK : create >
+
+' == LAYOUT ==
+
+' == STYLE ==
+
+package resource #C_GREY1 {}
+package resourceSpi #C_GREY2 {}
+
+@enduml
