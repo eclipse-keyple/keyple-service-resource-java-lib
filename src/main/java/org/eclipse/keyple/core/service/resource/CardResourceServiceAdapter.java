@@ -280,8 +280,9 @@ final class CardResourceServiceAdapter
     Set<ObservableCardReader> usedObservableReaders = pluginToObservableReadersMap.get(plugin);
 
     if (usedObservableReaders != null && reader instanceof ObservableCardReader) {
-      ((ObservableCardReader) reader).removeObserver(this);
-      usedObservableReaders.remove(reader);
+      ObservableCardReader observableCardReader = (ObservableCardReader) reader;
+      observableCardReader.removeObserver(this);
+      usedObservableReaders.remove(observableCardReader);
     }
   }
 

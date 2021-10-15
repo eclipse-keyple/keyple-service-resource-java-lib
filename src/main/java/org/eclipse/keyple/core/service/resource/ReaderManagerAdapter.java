@@ -284,7 +284,7 @@ final class ReaderManagerAdapter {
     }
 
     boolean hasSamePowerOnData =
-        s1.getPowerOnData() == s2.getPowerOnData()
+        (s1.getPowerOnData() == null && s2.getPowerOnData() == null)
             || (s1.getPowerOnData() != null && s1.getPowerOnData().equals(s2.getPowerOnData()));
 
     boolean hasSameFci =
