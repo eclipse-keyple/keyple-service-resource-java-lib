@@ -149,7 +149,7 @@ final class CardProfileManagerAdapter {
       readerManager.activate();
 
       CardResource cardResource =
-          readerManager.matches(cardProfile.getCardResourceProfileExtensionSpi());
+          readerManager.matches(cardProfile.getCardResourceProfileExtension());
 
       // The returned card resource may already be present in the current list if the service starts
       // with an observable reader in which a card has been inserted.
@@ -321,8 +321,7 @@ final class CardProfileManagerAdapter {
         ReaderManagerAdapter readerManager = service.getReaderManager(reader);
         if (readerManager != null) {
           try {
-            if (readerManager.lock(
-                cardResource, cardProfile.getCardResourceProfileExtensionSpi())) {
+            if (readerManager.lock(cardResource, cardProfile.getCardResourceProfileExtension())) {
               int cardResourceIndex = cardResources.indexOf(cardResource);
               updateCardResourcesOrder(cardResourceIndex);
               result = cardResource;
@@ -373,7 +372,7 @@ final class CardProfileManagerAdapter {
         if (reader != null) {
           SmartCard smartCard =
               cardProfile
-                  .getCardResourceProfileExtensionSpi()
+                  .getCardResourceProfileExtension()
                   .matches(
                       reader, SmartCardServiceProvider.getService().createCardSelectionManager());
           if (smartCard != null) {

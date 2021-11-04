@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - "CHANGELOG.md" file (issue [eclipse/keyple#6]).
 - CI: Forbid the publication of a version already released (issue [#4]).
+### Changed
+- Useless check removed in configurator builder (issue [#9])
 ### Fixed
 - Sonar issues (issue [#6]).
 
@@ -19,6 +21,7 @@ It also brings many major API changes.
 [unreleased]: https://github.com/eclipse/keyple-service-resource-java-lib/compare/2.0.0...HEAD
 [2.0.0]: https://github.com/eclipse/keyple-service-resource-java-lib/releases/tag/2.0.0
 
+[#9]: https://github.com/eclipse/keyple-service-resource-java-lib/issues/9
 [#6]: https://github.com/eclipse/keyple-service-resource-java-lib/issues/6
 [#4]: https://github.com/eclipse/keyple-service-resource-java-lib/issues/4
 

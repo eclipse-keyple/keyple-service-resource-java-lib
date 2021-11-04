@@ -27,14 +27,14 @@ import org.eclipse.keyple.core.util.Assert;
 public final class CardResourceProfileConfigurator {
 
   private final String profileName;
-  private final CardResourceProfileExtension cardResourceProfileExtensionSpi;
+  private final CardResourceProfileExtension cardResourceProfileExtension;
   private final List<Plugin> plugins;
   private final String readerNameRegex;
   private final String readerGroupReference;
 
   private CardResourceProfileConfigurator(Builder builder) {
     profileName = builder.profileName;
-    cardResourceProfileExtensionSpi = builder.cardResourceProfileExtensionSpi;
+    cardResourceProfileExtension = builder.cardResourceProfileExtension;
     plugins = builder.plugins;
     readerNameRegex = builder.readerNameRegex;
     readerGroupReference = builder.readerGroupReference;
@@ -58,8 +58,8 @@ public final class CardResourceProfileConfigurator {
    * @return A not null reference.
    * @since 2.0.0
    */
-  CardResourceProfileExtension getCardResourceProfileExtensionSpi() {
-    return cardResourceProfileExtensionSpi;
+  CardResourceProfileExtension getCardResourceProfileExtension() {
+    return cardResourceProfileExtension;
   }
 
   /**
@@ -124,7 +124,7 @@ public final class CardResourceProfileConfigurator {
   public static class Builder {
 
     private final String profileName;
-    private final CardResourceProfileExtension cardResourceProfileExtensionSpi;
+    private final CardResourceProfileExtension cardResourceProfileExtension;
     private final List<Plugin> plugins;
     private String readerNameRegex;
     private String readerGroupReference;
@@ -133,13 +133,8 @@ public final class CardResourceProfileConfigurator {
       Assert.getInstance()
           .notEmpty(profileName, "profileName")
           .notNull(cardResourceProfileExtension, "cardResourceProfileExtension");
-      if (!(cardResourceProfileExtension instanceof CardResourceProfileExtension)) {
-        throw new IllegalArgumentException(
-            "The provided card profile extension does not implement the right internal SPI.");
-      }
       this.profileName = profileName;
-      this.cardResourceProfileExtensionSpi =
-          (CardResourceProfileExtension) cardResourceProfileExtension;
+      this.cardResourceProfileExtension = cardResourceProfileExtension;
       this.plugins = new ArrayList<Plugin>(1);
       this.readerNameRegex = null;
       this.readerGroupReference = null;
