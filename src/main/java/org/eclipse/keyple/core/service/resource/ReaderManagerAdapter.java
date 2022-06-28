@@ -15,9 +15,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.service.Plugin;
-import org.eclipse.keyple.core.service.Reader;
 import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
@@ -38,7 +38,7 @@ final class ReaderManagerAdapter {
   private static final Logger logger = LoggerFactory.getLogger(ReaderManagerAdapter.class);
 
   /** The associated reader */
-  private final Reader reader;
+  private final CardReader reader;
 
   /** The associated plugin */
   private final Plugin plugin;
@@ -79,7 +79,7 @@ final class ReaderManagerAdapter {
    * @since 2.0.0
    */
   ReaderManagerAdapter(
-      Reader reader,
+      CardReader reader,
       Plugin plugin,
       ReaderConfiguratorSpi readerConfiguratorSpi,
       int usageTimeoutMillis) {
@@ -100,7 +100,7 @@ final class ReaderManagerAdapter {
    * @return A not null reference.
    * @since 2.0.0
    */
-  Reader getReader() {
+  CardReader getReader() {
     return reader;
   }
 

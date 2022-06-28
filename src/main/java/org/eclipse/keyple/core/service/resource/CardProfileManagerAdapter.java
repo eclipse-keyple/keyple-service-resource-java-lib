@@ -126,7 +126,7 @@ final class CardProfileManagerAdapter {
    * @param plugin The "regular" plugin to analyse.
    */
   private void initializeCardResources(Plugin plugin) {
-    for (Reader reader : plugin.getReaders()) {
+    for (CardReader reader : plugin.getReaders()) {
       ReaderManagerAdapter readerManager = service.getReaderManager(reader);
       initializeCardResource(readerManager);
     }
@@ -368,7 +368,7 @@ final class CardProfileManagerAdapter {
   private CardResource getPoolCardResource() {
     for (PoolPlugin poolPlugin : poolPlugins) {
       try {
-        Reader reader = poolPlugin.allocateReader(cardProfile.getReaderGroupReference());
+        CardReader reader = poolPlugin.allocateReader(cardProfile.getReaderGroupReference());
         if (reader != null) {
           SmartCard smartCard =
               cardProfile
