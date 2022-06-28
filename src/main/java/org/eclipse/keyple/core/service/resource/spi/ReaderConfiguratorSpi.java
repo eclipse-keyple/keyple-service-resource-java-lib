@@ -11,10 +11,10 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.service.resource.spi;
 
-import org.eclipse.keyple.core.service.Reader;
+import org.calypsonet.terminal.reader.CardReader;
 
 /**
- * Reader configurator used to setup a new reader connected with its specific settings.
+ * Reader configurator used to set up a new card reader connected with its specific settings.
  *
  * <p>Note: since it depends on the type of reader, only the application developer knows what
  * settings to apply to the readers implemented by the Card Resource Service in order for them to be
@@ -25,12 +25,12 @@ import org.eclipse.keyple.core.service.Reader;
 public interface ReaderConfiguratorSpi {
 
   /**
-   * Invoked when a new reader is connected and accepted by at least one card resource profile.
+   * Invoked when a new card reader is connected and accepted by at least one card resource profile.
    *
-   * <p>The setup is required for some specific readers and must be do first.
+   * <p>The setup is required for some specific readers and must be done first.
    *
-   * @param reader The reader to setup.
+   * @param reader The reader to set up.
    * @since 2.0.0
    */
-  void setupReader(Reader reader);
+  void setupReader(CardReader reader);
 }

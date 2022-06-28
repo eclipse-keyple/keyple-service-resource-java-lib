@@ -23,6 +23,7 @@ import org.eclipse.keyple.core.service.*;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
 import org.eclipse.keyple.core.service.spi.PluginObserverSpi;
 import org.eclipse.keyple.core.util.Assert;
+import org.eclipse.keyple.core.util.HexUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,8 +42,8 @@ final class CardResourceServiceAdapter
   private static final CardResourceServiceAdapter INSTANCE = new CardResourceServiceAdapter();
 
   /** Map an accepted reader of a "regular" plugin to a reader manager. */
-  private final Map<Reader, ReaderManagerAdapter> readerToReaderManagerMap =
-      new ConcurrentHashMap<Reader, ReaderManagerAdapter>();
+  private final Map<CardReader, ReaderManagerAdapter> readerToReaderManagerMap =
+      new ConcurrentHashMap<CardReader, ReaderManagerAdapter>();
 
   /** Map a configured card profile name to a card profile manager. */
   private final Map<String, CardProfileManagerAdapter> cardProfileNameToCardProfileManagerMap =
@@ -93,13 +94,13 @@ final class CardResourceServiceAdapter
     if (cardResource != null) {
       return new StringBuilder()
           .append("card resource (")
-          .append(Integer.toHexString(System.identityHashCode(cardResource)))
+          .append(HexUtil.toHex(System.identityHashCode(cardResource)))
           .append(") - reader '")
           .append(cardResource.getReader().getName())
           .append("' (")
-          .append(Integer.toHexString(System.identityHashCode(cardResource.getReader())))
+          .append(HexUtil.toHex(System.identityHashCode(cardResource.getReader())))
           .append(") - smart card (")
-          .append(Integer.toHexString(System.identityHashCode(cardResource.getSmartCard())))
+          .append(HexUtil.toHex(System.identityHashCode(cardResource.getSmartCard())))
           .append(")")
           .toString();
     }
@@ -191,7 +192,7 @@ final class CardResourceServiceAdapter
    */
   private void initializeReaderManagers() {
     for (Plugin plugin : configurator.getPlugins()) {
-      for (Reader reader : plugin.getReaders()) {
+      for (CardReader reader : plugin.getReaders()) {
         registerReader(reader, plugin);
       }
     }
@@ -207,7 +208,7 @@ final class CardResourceServiceAdapter
    * @param plugin The associated plugin.
    * @return A not null reference.
    */
-  private ReaderManagerAdapter registerReader(Reader reader, Plugin plugin) {
+  private ReaderManagerAdapter registerReader(CardReader reader, Plugin plugin) {
 
     // Get the reader configurator if a monitoring is requested for this reader.
     ReaderConfiguratorSpi readerConfiguratorSpi = null;
@@ -274,7 +275,7 @@ final class CardResourceServiceAdapter
    * @param reader The reader to unregister.
    * @param plugin The associated plugin.
    */
-  private void unregisterReader(Reader reader, Plugin plugin) {
+  private void unregisterReader(CardReader reader, Plugin plugin) {
 
     readerToReaderManagerMap.remove(reader);
     Set<ObservableCardReader> usedObservableReaders = pluginToObservableReadersMap.get(plugin);
@@ -416,7 +417,7 @@ final class CardResourceServiceAdapter
       PoolPlugin poolPlugin = cardResourceToPoolPluginMap.get(cardResource);
       if (poolPlugin != null) {
         cardResourceToPoolPluginMap.remove(cardResource);
-        poolPlugin.releaseReader((Reader) cardResource.getReader());
+        poolPlugin.releaseReader(cardResource.getReader());
       }
     }
 
@@ -468,7 +469,7 @@ final class CardResourceServiceAdapter
     if (pluginEvent.getType() == PluginEvent.Type.READER_CONNECTED) {
       for (String readerName : pluginEvent.getReaderNames()) {
         // Get the new reader from the plugin because it is not yet registered in the service.
-        Reader reader = plugin.getReader(readerName);
+        CardReader reader = plugin.getReader(readerName);
         if (reader != null) {
           synchronized (reader) {
             onReaderConnected(reader, plugin);
@@ -478,7 +479,7 @@ final class CardResourceServiceAdapter
     } else {
       for (String readerName : pluginEvent.getReaderNames()) {
         // Get the reader back from the service because it is no longer registered in the plugin.
-        Reader reader = getReader(readerName);
+        CardReader reader = getReader(readerName);
         if (reader != null) {
           // The reader is registered in the service.
           synchronized (reader) {
@@ -496,8 +497,8 @@ final class CardResourceServiceAdapter
    * @param readerName The name of the reader.
    * @return Null if the reader is not or no longer registered.
    */
-  private Reader getReader(String readerName) {
-    for (Reader reader : readerToReaderManagerMap.keySet()) {
+  private CardReader getReader(String readerName) {
+    for (CardReader reader : readerToReaderManagerMap.keySet()) {
       if (reader.getName().equals(readerName)) {
         return reader;
       }
@@ -515,7 +516,7 @@ final class CardResourceServiceAdapter
    * @param reader The new reader.
    * @param plugin The associated plugin.
    */
-  private void onReaderConnected(Reader reader, Plugin plugin) {
+  private void onReaderConnected(CardReader reader, Plugin plugin) {
     ReaderManagerAdapter readerManager = registerReader(reader, plugin);
     for (CardProfileManagerAdapter cardProfileManager :
         cardProfileNameToCardProfileManagerMap.values()) {
@@ -537,7 +538,7 @@ final class CardResourceServiceAdapter
    * @param reader The reader to observe.
    * @param plugin The associated plugin.
    */
-  private void startMonitoring(Reader reader, Plugin plugin) {
+  private void startMonitoring(CardReader reader, Plugin plugin) {
 
     if (reader instanceof ObservableCardReader) {
 
@@ -590,7 +591,7 @@ final class CardResourceServiceAdapter
    * @param reader The disconnected reader.
    * @param plugin The associated plugin.
    */
-  private void onReaderDisconnected(Reader reader, Plugin plugin) {
+  private void onReaderDisconnected(CardReader reader, Plugin plugin) {
     ReaderManagerAdapter readerManager = readerToReaderManagerMap.get(reader);
     if (readerManager != null) {
       if (logger.isDebugEnabled()) {
@@ -612,7 +613,7 @@ final class CardResourceServiceAdapter
     if (!isStarted) {
       return;
     }
-    Reader reader = getReader(readerEvent.getReaderName());
+    CardReader reader = getReader(readerEvent.getReaderName());
     if (reader != null) {
       // The reader is registered in the service.
       synchronized (reader) {
