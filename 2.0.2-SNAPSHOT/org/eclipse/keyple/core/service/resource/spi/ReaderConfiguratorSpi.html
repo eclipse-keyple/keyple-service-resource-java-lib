@@ -125,7 +125,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <hr>
 <pre>public interface <span class="typeNameLabel">ReaderConfiguratorSpi</span></pre>
-<div class="block">Reader configurator used to setup a new reader connected with its specific settings.
+<div class="block">Reader configurator used to set up a new card reader connected with its specific settings.
 
  <p>Note: since it depends on the type of reader, only the application developer knows what
  settings to apply to the readers implemented by the Card Resource Service in order for them to be
@@ -156,9 +156,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setupReader(org.eclipse.keyple.core.service.Reader)">setupReader</a></span>&#8203;(org.eclipse.keyple.core.service.Reader&nbsp;reader)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setupReader(org.calypsonet.terminal.reader.CardReader)">setupReader</a></span>&#8203;(org.calypsonet.terminal.reader.CardReader&nbsp;reader)</code></th>
 <td class="colLast">
-<div class="block">Invoked when a new reader is connected and accepted by at least one card resource profile.</div>
+<div class="block">Invoked when a new card reader is connected and accepted by at least one card resource profile.</div>
 </td>
 </tr>
 </table>
@@ -178,19 +178,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="setupReader(org.eclipse.keyple.core.service.Reader)">
+<a id="setupReader(org.calypsonet.terminal.reader.CardReader)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>setupReader</h4>
-<pre class="methodSignature">void&nbsp;setupReader&#8203;(org.eclipse.keyple.core.service.Reader&nbsp;reader)</pre>
-<div class="block">Invoked when a new reader is connected and accepted by at least one card resource profile.
+<pre class="methodSignature">void&nbsp;setupReader&#8203;(org.calypsonet.terminal.reader.CardReader&nbsp;reader)</pre>
+<div class="block">Invoked when a new card reader is connected and accepted by at least one card resource profile.
 
- <p>The setup is required for some specific readers and must be do first.</div>
+ <p>The setup is required for some specific readers and must be done first.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>reader</code> - The reader to setup.</dd>
+<dd><code>reader</code> - The reader to set up.</dd>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>2.0.0</dd>
 </dl>
