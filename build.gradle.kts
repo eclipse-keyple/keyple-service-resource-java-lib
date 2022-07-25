@@ -32,7 +32,7 @@ repositories {
 dependencies {
     implementation("org.calypsonet.terminal:calypsonet-terminal-reader-java-api:1.0.0")
     implementation("org.eclipse.keyple:keyple-common-java-api:2.0.0")
-    implementation("org.eclipse.keyple:keyple-service-java-lib:2.1.0-SNAPSHOT") { isChanging = true }
+    implementation("org.eclipse.keyple:keyple-service-java-lib:2.1.0")
     implementation("org.eclipse.keyple:keyple-util-java-lib:2.1.0")
     implementation("com.google.code.gson:gson:2.8.8")
     implementation("org.slf4j:slf4j-api:1.7.32")
