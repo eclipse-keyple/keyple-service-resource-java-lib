@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - keyple-service-resource-java-lib - 2.0.+ (28/06/2022)
+    Keyple - keyple-service-resource-java-lib - 2.1.+ (2023-04-19)
 end title
 
 ' == THEME ==
@@ -56,6 +56,7 @@ legend top
     * __External public API references__ :
     ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
     ** <back:pink>**keyple-service-java-lib**</back>
+    ** <back:cyan>**keyple-common-java-lib**</back>
 end legend
 
 package "org.eclipse.keyple.core.service.resource" as resource {
@@ -123,6 +124,7 @@ package "org.eclipse.keyple.core.service.resource" as resource {
 
     +interface CardResource {
         +<back:yellow>CardReader</back> getReader ()
+        +<color:blue><back:cyan>KeypleReaderExtension</back> getReaderExtension ()
         +<back:yellow>SmartCard</back> getSmartCard ()
     }
 
@@ -176,6 +178,6 @@ CardResourceProfileConfiguratorBuilder .up.> CardResourceProfileConfigurator #C_
 ' == STYLE ==
 
 package resource #C_GREY1 {}
-package resourceSpi #C_GREY2 {}
+package resource.resourceSpi #C_GREY2 {}
 
 @enduml

@@ -40,7 +40,6 @@ public final class PluginsConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the selected card resource allocation strategy.
    *
    * @return A not null reference.
@@ -51,7 +50,6 @@ public final class PluginsConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the configured usage timeout.
    *
    * @return 0 if no timeout is set.
@@ -62,7 +60,6 @@ public final class PluginsConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the list of all configured "regular" plugins.
    *
    * @return A not empty list.
@@ -73,7 +70,6 @@ public final class PluginsConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the list of all configured "regular" plugins with their associated configuration.
    *
    * @return A not empty collection.
@@ -274,7 +270,6 @@ public final class PluginsConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * This POJO contains a plugin and the parameters that have been associated with it.
    *
    * @since 2.0.0
@@ -291,7 +286,6 @@ public final class PluginsConfigurator {
     private CardReaderObservationExceptionHandlerSpi readerObservationExceptionHandlerSpi;
 
     /**
-     * (package-private)<br>
      * Constructor.
      *
      * @param plugin The plugin.
@@ -318,8 +312,6 @@ public final class PluginsConfigurator {
     }
 
     /**
-     * (package-private)<br>
-     *
      * @return A not null {@link Plugin} reference.
      * @since 2.0.0
      */
@@ -328,8 +320,6 @@ public final class PluginsConfigurator {
     }
 
     /**
-     * (package-private)<br>
-     *
      * @return A not null {@link ReaderConfiguratorSpi} reference if reader monitoring is requested.
      * @since 2.0.0
      */
@@ -338,8 +328,6 @@ public final class PluginsConfigurator {
     }
 
     /**
-     * (package-private)<br>
-     *
      * @return True if the reader monitoring is required.
      * @since 2.0.0
      */
@@ -348,8 +336,6 @@ public final class PluginsConfigurator {
     }
 
     /**
-     * (package-private)<br>
-     *
      * @return A not null {@link PluginObservationExceptionHandlerSpi} reference if reader
      *     monitoring is requested.
      * @since 2.0.0
@@ -359,8 +345,6 @@ public final class PluginsConfigurator {
     }
 
     /**
-     * (package-private)<br>
-     *
      * @return True if the card monitoring is required.
      * @since 2.0.0
      */
@@ -369,8 +353,6 @@ public final class PluginsConfigurator {
     }
 
     /**
-     * (package-private)<br>
-     *
      * @return A not null {@link CardReaderObservationExceptionHandlerSpi} reference if card
      *     monitoring is requested.
      * @since 2.0.0

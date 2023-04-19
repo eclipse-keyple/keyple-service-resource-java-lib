@@ -32,8 +32,6 @@ public final class PoolPluginsConfigurator {
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return True if pool plugins must be used prior to "regular" plugins.
    * @since 2.0.0
    */
@@ -42,7 +40,6 @@ public final class PoolPluginsConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the list of all configured "pool" plugins.
    *
    * @return A not empty list.

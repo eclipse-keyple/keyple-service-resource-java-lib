@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - Adapters of keyple-service-resource-java-lib - 2.0.2 (28/06/2022)
+    Keyple - Adapters of keyple-service-resource-java-lib - 2.1.0 (2023-04-19)
 end title
 
 ' == THEME ==
@@ -56,6 +56,7 @@ legend top
     * __External public API references__ :
     ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
     ** <back:pink>**keyple-service-java-lib**</back>
+    ** <back:cyan>**keyple-common-java-lib**</back>
 end legend
 
 package "org.eclipse.keyple.core.service.resource" as resource {
@@ -86,9 +87,10 @@ package "org.eclipse.keyple.core.service.resource" as resource {
         +void onReaderEvent (<back:yellow>CardReaderEvent</back> readerEvent)
     }
     ~class "<<CardResource>>\n**final** CardResourceAdapter" as CardResourceAdapter {
-        ~CardResource (<back:yellow>CardReader</back> reader, <back:yellow>SmartCard</back> smartCard)
+        ~CardResource (<back:yellow>CardReader</back> reader, <color:blue><back:cyan>KeypleReaderExtension</back> readerExtension</color>, <back:yellow>SmartCard</back> smartCard)
         -- **CardResource** --
         +<back:yellow>CardReader</back> getReader ()
+        +<color:blue><back:cyan>KeypleReaderExtension</back> getReaderExtension ()
         +<back:yellow>SmartCard</back> getSmartCard ()
     }
     ~class "**final** ReaderManagerAdapter" as ReaderManagerAdapter {
@@ -149,10 +151,10 @@ ReaderManagerAdapter *-- "0..N" CardResourceAdapter #C_LINK
 
 package resource #C_GREY2 {}
 
-class CardResourceServiceAdapter <<blue>>
-class CardResourceAdapter <<blue>>
-class CardResourceServiceConfiguratorAdapter <<blue>>
-class ReaderManagerAdapter <<blue>>
-class CardProfileManagerAdapter <<blue>>
+class resource.CardResourceServiceAdapter <<blue>>
+class resource.CardResourceAdapter <<blue>>
+class resource.CardResourceServiceConfiguratorAdapter <<blue>>
+class resource.ReaderManagerAdapter <<blue>>
+class resource.CardProfileManagerAdapter <<blue>>
 
 @enduml

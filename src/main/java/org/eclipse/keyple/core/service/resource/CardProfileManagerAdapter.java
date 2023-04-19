@@ -19,12 +19,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
+import org.eclipse.keyple.core.common.KeypleReaderExtension;
 import org.eclipse.keyple.core.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * (package-private)<br>
  * Manager of a card profile.
  *
  * <p>It contains the profile configuration and associated card resources.
@@ -51,13 +51,12 @@ final class CardProfileManagerAdapter {
   private final List<PoolPlugin> poolPlugins;
 
   /** The current available card resources associated with "regular" plugins. */
-  private final List<CardResource> cardResources;
+  private final List<CardResourceAdapter> cardResources;
 
   /** The filter on the reader name if set. */
   private final Pattern readerNameRegexPattern;
 
   /**
-   * (package-private)<br>
    * Creates a new card profile manager using the provided card profile and initializes all
    * available card resources.
    *
@@ -74,7 +73,7 @@ final class CardProfileManagerAdapter {
     this.service = CardResourceServiceAdapter.getInstance();
     this.plugins = new ArrayList<Plugin>(0);
     this.poolPlugins = new ArrayList<PoolPlugin>(0);
-    this.cardResources = new ArrayList<CardResource>();
+    this.cardResources = new ArrayList<CardResourceAdapter>();
 
     // Prepare filter on reader name if requested.
     if (cardProfile.getReaderNameRegex() != null) {
@@ -91,10 +90,7 @@ final class CardProfileManagerAdapter {
     }
   }
 
-  /**
-   * (private)<br>
-   * Initializes card resources using the plugins configured on the card profile.
-   */
+  /** Initializes card resources using the plugins configured on the card profile. */
   private void initializeCardResourcesUsingProfilePlugins() {
     for (Plugin plugin : cardProfile.getPlugins()) {
       if (plugin instanceof PoolPlugin) {
@@ -106,10 +102,7 @@ final class CardProfileManagerAdapter {
     }
   }
 
-  /**
-   * (private)<br>
-   * Initializes card resources using the plugins configured on the card resource service.
-   */
+  /** Initializes card resources using the plugins configured on the card resource service. */
   private void initializeCardResourcesUsingDefaultPlugins() {
     poolPlugins.addAll(globalConfiguration.getPoolPlugins());
     for (Plugin plugin : globalConfiguration.getPlugins()) {
@@ -119,7 +112,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Initializes all available card resources by analysing all readers of the provided "regular"
    * plugin.
    *
@@ -133,7 +125,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Tries to initialize a card resource for the provided reader manager only if the reader is
    * accepted by the profile.
    *
@@ -148,7 +139,7 @@ final class CardProfileManagerAdapter {
 
       readerManager.activate();
 
-      CardResource cardResource =
+      CardResourceAdapter cardResource =
           readerManager.matches(cardProfile.getCardResourceProfileExtension());
 
       // The returned card resource may already be present in the current list if the service starts
@@ -173,7 +164,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Checks if the provided reader is accepted using the filter on the name.
    *
    * @param reader The reader to check.
@@ -185,7 +175,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Removes the provided card resource from the profile manager if it is present.
    *
    * @param cardResource The card resource to remove.
@@ -202,7 +191,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Invoked when a new reader is connected.<br>
    * If the associated plugin is referenced on the card profile, then tries to initialize a card
    * resource if the reader is accepted.
@@ -224,7 +212,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Invoked when a new card is inserted.<br>
    * The behaviour is the same as if a reader was connected.
    *
@@ -236,7 +223,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Tries to get a card resource and locks the associated reader.<br>
    * Applies the configured allocation strategy by looping, pausing, ordering resources.
    *
@@ -264,7 +250,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Make a pause if the provided card resource is null and a blocking allocation mode is requested.
    *
    * @param cardResource The founded card resource or null if not found.
@@ -281,7 +266,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Tries to get a card resource searching in "regular" and "pool" plugins.
    *
    * @return Null if there is no card resource available.
@@ -303,7 +287,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Tries to get a card resource searching in all "regular" plugins.
    *
    * <p>If a card resource is no more usable, then removes it from the service.
@@ -345,7 +328,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Updates the order of the created card resources according to the configured strategy.
    *
    * @param cardResourceIndex The current card resource index of the available card resource
@@ -360,7 +342,6 @@ final class CardProfileManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Tries to get a card resource searching in all "pool" plugins.
    *
    * @return Null if there is no card resource available.
@@ -370,13 +351,15 @@ final class CardProfileManagerAdapter {
       try {
         CardReader reader = poolPlugin.allocateReader(cardProfile.getReaderGroupReference());
         if (reader != null) {
+          KeypleReaderExtension readerExtension =
+              poolPlugin.getReaderExtension(KeypleReaderExtension.class, reader.getName());
           SmartCard smartCard =
               cardProfile
                   .getCardResourceProfileExtension()
                   .matches(
                       reader, SmartCardServiceProvider.getService().createCardSelectionManager());
           if (smartCard != null) {
-            CardResource cardResource = new CardResource(reader, smartCard);
+            CardResource cardResource = new CardResourceAdapter(reader, readerExtension, smartCard);
             service.registerPoolCardResource(cardResource, poolPlugin);
             return cardResource;
           }
