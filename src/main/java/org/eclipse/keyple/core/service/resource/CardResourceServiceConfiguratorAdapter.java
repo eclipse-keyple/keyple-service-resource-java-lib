@@ -19,7 +19,6 @@ import org.eclipse.keyple.core.service.PoolPlugin;
 import org.eclipse.keyple.core.util.Assert;
 
 /**
- * (package-private)<br>
  * Implementation of {@link CardResourceServiceConfigurator}.
  *
  * @since 2.0.0
@@ -45,7 +44,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   private int timeoutMillis;
 
   /**
-   * (package-private)<br>
    * Constructor.
    *
    * @since 2.0.0
@@ -193,7 +191,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (private)<br>
    * Computes the collection of the plugins used by at least one card profile.
    *
    * @return A not null collection.
@@ -211,7 +208,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (private)<br>
    * Gets all {@link ConfiguredPlugin} associated to a plugin contained in the provided collection.
    *
    * @param plugins The reference collection.
@@ -228,7 +224,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (private)<br>
    * Extracts all {@link PoolPlugin} from a collection of {@link Plugin}.
    *
    * @param plugins The origin collection.
@@ -245,8 +240,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return A not null list.
    * @since 2.0.0
    */
@@ -255,8 +248,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return A not null list.
    * @since 2.0.0
    */
@@ -265,8 +256,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return A not null reference.
    * @since 2.0.0
    */
@@ -275,8 +264,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return 0 if no usage timeout is set.
    * @since 2.0.0
    */
@@ -285,8 +272,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return A not null list.
    * @since 2.0.0
    */
@@ -295,8 +280,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return True if pool plugins are prior to regular plugins.
    * @since 2.0.0
    */
@@ -305,7 +288,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
    * Gets the configurations of all configured card resource profiles.
    *
    * @return A not null reference.
@@ -316,8 +298,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return A not null boolean.
    * @since 2.0.0
    */
@@ -326,8 +306,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return A positive int.
    * @since 2.0.0
    */
@@ -336,8 +314,6 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   }
 
   /**
-   * (package-private)<br>
-   *
    * @return A positive int.
    * @since 2.0.0
    */

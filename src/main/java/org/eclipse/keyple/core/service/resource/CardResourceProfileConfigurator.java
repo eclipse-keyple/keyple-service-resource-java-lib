@@ -41,7 +41,6 @@ public final class CardResourceProfileConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the name of the profile.
    *
    * @return A not empty string.
@@ -52,7 +51,6 @@ public final class CardResourceProfileConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the card resource profile extension.
    *
    * @return A not null reference.
@@ -63,7 +61,6 @@ public final class CardResourceProfileConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the list of plugins configured for the profile.<br>
    * If empty, then global configured plugins must be used.
    *
@@ -75,7 +72,6 @@ public final class CardResourceProfileConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the filter on the reader name as a regex value.<br>
    * This filter is useful for readers associated to "regular" plugins only.
    *
@@ -87,7 +83,6 @@ public final class CardResourceProfileConfigurator {
   }
 
   /**
-   * (package-private)<br>
    * Gets the filter on the reader group reference.<br>
    * This filter is useful for readers associated to "pool" plugins only.
    *

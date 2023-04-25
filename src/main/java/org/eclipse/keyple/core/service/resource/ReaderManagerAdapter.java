@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.calypsonet.terminal.reader.CardReader;
 import org.calypsonet.terminal.reader.selection.spi.SmartCard;
+import org.eclipse.keyple.core.common.KeypleReaderExtension;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
@@ -25,7 +26,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * (package-private)<br>
  * Manager of a reader associated to a "regular" plugin.
  *
  * <p>It contains all associated created card resources and manages concurrent access to the
@@ -40,11 +40,14 @@ final class ReaderManagerAdapter {
   /** The associated reader */
   private final CardReader reader;
 
+  /** The associated reader's extension */
+  private final KeypleReaderExtension readerExtension;
+
   /** The associated plugin */
   private final Plugin plugin;
 
   /** Collection of all created card resources. */
-  private final Set<CardResource> cardResources;
+  private final Set<CardResourceAdapter> cardResources;
 
   /** The reader configurator, not null if the monitoring is activated for the associated reader. */
   private final ReaderConfiguratorSpi readerConfiguratorSpi;
@@ -68,7 +71,6 @@ final class ReaderManagerAdapter {
   private volatile boolean isActive;
 
   /**
-   * (package-private)<br>
    * Creates a new reader manager not active by default.
    *
    * @param reader The associated reader.
@@ -84,17 +86,18 @@ final class ReaderManagerAdapter {
       ReaderConfiguratorSpi readerConfiguratorSpi,
       int usageTimeoutMillis) {
     this.reader = reader;
+    this.readerExtension = plugin.getReaderExtension(KeypleReaderExtension.class, reader.getName());
     this.plugin = plugin;
     this.readerConfiguratorSpi = readerConfiguratorSpi;
     this.usageTimeoutMillis = usageTimeoutMillis;
-    this.cardResources = Collections.newSetFromMap(new ConcurrentHashMap<CardResource, Boolean>());
+    this.cardResources =
+        Collections.newSetFromMap(new ConcurrentHashMap<CardResourceAdapter, Boolean>());
     this.selectedCardResource = null;
     this.isBusy = false;
     this.isActive = false;
   }
 
   /**
-   * (package-private)<br>
    * Gets the associated reader.
    *
    * @return A not null reference.
@@ -105,7 +108,6 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Gets the associated plugin.
    *
    * @return A not null reference.
@@ -116,18 +118,16 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Gets a view of the current created card resources.
    *
    * @return An empty collection if there's no card resources.
    * @since 2.0.0
    */
-  Set<CardResource> getCardResources() {
+  Set<CardResourceAdapter> getCardResources() {
     return cardResources;
   }
 
   /**
-   * (package-private)<br>
    * Indicates if the associated reader is accepted by at least one card profile manager.
    *
    * @return True if the reader manager is active.
@@ -138,7 +138,6 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Activates the reader manager and setup the reader if needed.
    *
    * @since 2.0.0
@@ -151,7 +150,6 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Gets a new or an existing card resource if the current inserted card matches with the provided
    * card resource profile extension.
    *
@@ -164,8 +162,8 @@ final class ReaderManagerAdapter {
    * @return Null if the inserted card does not match with the provided profile extension.
    * @since 2.0.0
    */
-  CardResource matches(CardResourceProfileExtension extension) {
-    CardResource cardResource = null;
+  CardResourceAdapter matches(CardResourceProfileExtension extension) {
+    CardResourceAdapter cardResource = null;
     SmartCard smartCard =
         extension.matches(
             reader, SmartCardServiceProvider.getService().createCardSelectionManager());
@@ -178,7 +176,6 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Tries to lock the provided card resource if the reader is not busy.
    *
    * <p>If the provided card resource is not the current selected one, then tries to select it using
@@ -219,7 +216,6 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Free the reader.
    *
    * @since 2.0.0
@@ -229,7 +225,6 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * (package-private)<br>
    * Removes the provided card resource.
    *
    * @param cardResource The card resource to remove.
@@ -243,30 +238,28 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * (private)<br>
    * Gets an existing card resource having the same smart card than the provided one, or creates a
    * new one if not.
    *
    * @param smartCard The associated smart card.
    * @return A not null reference.
    */
-  private CardResource getOrCreateCardResource(SmartCard smartCard) {
+  private CardResourceAdapter getOrCreateCardResource(SmartCard smartCard) {
 
     // Check if an identical card resource is already created.
-    for (CardResource cardResource : cardResources) {
+    for (CardResourceAdapter cardResource : cardResources) {
       if (areEquals(cardResource.getSmartCard(), smartCard)) {
         return cardResource;
       }
     }
 
     // If none, then create a new one.
-    CardResource cardResource = new CardResource(reader, smartCard);
+    CardResourceAdapter cardResource = new CardResourceAdapter(reader, readerExtension, smartCard);
     cardResources.add(cardResource);
     return cardResource;
   }
 
   /**
-   * (private)<br>
    * Checks if the provided Smart Cards are identical.
    *
    * @param s1 Smart Card 1

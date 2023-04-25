@@ -28,7 +28,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * (package-private)<br>
  * Implementation of {@link CardResourceService}.
  *
  * @since 2.0.0
@@ -72,7 +71,6 @@ final class CardResourceServiceAdapter
   private volatile boolean isStarted;
 
   /**
-   * (package-private)<br>
    * Gets the unique instance.
    *
    * @return A not null reference.
@@ -83,7 +81,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (package-private)<br>
    * Gets a string representation of the provided card resource.
    *
    * @param cardResource The card resource.
@@ -108,7 +105,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (package-private)<br>
    * Gets the reader manager associated to the provided reader.
    *
    * @param reader The associated reader.
@@ -120,7 +116,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (package-private)<br>
    * Associates a card resource to a "pool" plugin.
    *
    * @param cardResource The card resource to register.
@@ -132,7 +127,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (package-private)<br>
    * Configures the card resource service.
    *
    * <p>If service is started, then stops the service, applies the configuration and starts the
@@ -186,10 +180,7 @@ final class CardResourceServiceAdapter
     logger.info("Started");
   }
 
-  /**
-   * (private)<br>
-   * Initializes a reader manager for each reader of each configured "regular" plugin.
-   */
+  /** Initializes a reader manager for each reader of each configured "regular" plugin. */
   private void initializeReaderManagers() {
     for (Plugin plugin : configurator.getPlugins()) {
       for (CardReader reader : plugin.getReaders()) {
@@ -199,7 +190,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Creates and registers a reader manager associated to the provided reader and its associated
    * plugin.<br>
    * If the provided reader is observable, then add it to the map of used observable readers.
@@ -238,7 +228,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Creates and registers a card profile manager for each configured card profile and creates all
    * available card resources.
    */
@@ -251,7 +240,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Removes all reader managers whose reader is not accepted by any card profile manager and
    * unregisters their associated readers.
    */
@@ -268,7 +256,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Removes the registered reader manager associated to the provided reader and stops the
    * observation of the reader if the reader is observable and the observation started.
    *
@@ -288,7 +275,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Starts the observation of observable plugins and/or observable readers if requested.<br>
    * The observation of the readers is performed only for those accepted by at least one card
    * profile manager.
@@ -332,10 +318,7 @@ final class CardResourceServiceAdapter
     logger.info("Stopped");
   }
 
-  /**
-   * (private)<br>
-   * Stops the observation of all observable plugins and observable readers configured.
-   */
+  /** Stops the observation of all observable plugins and observable readers configured. */
   private void stopMonitoring() {
     for (ConfiguredPlugin configuredPlugin : configurator.getConfiguredPlugins()) {
 
@@ -491,7 +474,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Gets the reader having the provided name if it is registered.
    *
    * @param readerName The name of the reader.
@@ -507,7 +489,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Invoked when a new reader is connected.<br>
    * Notifies all card profile managers about the new available reader.<br>
    * If the new reader is accepted by at least one card profile manager, then a new reader manager
@@ -530,7 +511,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Starts the observation of the provided reader only if it is observable, if the monitoring is
    * requested for the provided plugin and if the reader is accepted by at least one card profile
    * manager.
@@ -554,7 +534,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Starts the observation of the "regular" plugin.
    *
    * @param configuredPlugin The associated configuration.
@@ -567,7 +546,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Starts the observation of the reader associated to a "regular" plugin.
    *
    * @param observableReader The observable reader to observe.
@@ -582,7 +560,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Invoked when an accepted reader is no more available because it was disconnected or
    * unregistered.<br>
    * Removes its reader manager and all associated created card resources from all card profile
@@ -626,7 +603,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Invoked when a card is inserted, removed or the associated reader unregistered.<br>
    *
    * @param readerEvent The reader event.
@@ -652,7 +628,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Invoked when a card is inserted on a reader.<br>
    * Notifies all card profile managers about the insertion of the card.<br>
    * Each card profile manager interested by the card reader will try to create a card resource.
@@ -667,7 +642,6 @@ final class CardResourceServiceAdapter
   }
 
   /**
-   * (private)<br>
    * Invoked when a card is removed or the associated reader unregistered.<br>
    * Removes all created card resources associated to the reader.
    *
