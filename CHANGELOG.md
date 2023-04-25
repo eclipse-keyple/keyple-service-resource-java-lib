@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- `CardResource.getReaderExtension` method to access to the associated reader's extension.
+- The method `CardResource.getReaderExtension` to access to the reader's extension.
 ### Changed
 - `CardResource` is now an interface.
 ### Upgraded
