@@ -77,7 +77,7 @@ final class ReaderManagerAdapter {
    * @param plugin The associated plugin.
    * @param readerConfiguratorSpi The reader configurator to use.
    * @param usageTimeoutMillis The max usage duration of a card resource before it will be
-   *     automatically release.
+   *     automatically release (0 for infinite timeout).
    * @since 2.0.0
    */
   ReaderManagerAdapter(
@@ -86,15 +86,15 @@ final class ReaderManagerAdapter {
       ReaderConfiguratorSpi readerConfiguratorSpi,
       int usageTimeoutMillis) {
     this.reader = reader;
-    this.readerExtension = plugin.getReaderExtension(KeypleReaderExtension.class, reader.getName());
+    readerExtension = plugin.getReaderExtension(KeypleReaderExtension.class, reader.getName());
     this.plugin = plugin;
     this.readerConfiguratorSpi = readerConfiguratorSpi;
     this.usageTimeoutMillis = usageTimeoutMillis;
-    this.cardResources =
+    cardResources =
         Collections.newSetFromMap(new ConcurrentHashMap<CardResourceAdapter, Boolean>());
-    this.selectedCardResource = null;
-    this.isBusy = false;
-    this.isActive = false;
+    selectedCardResource = null;
+    isBusy = false;
+    isActive = false;
   }
 
   /**
@@ -138,7 +138,7 @@ final class ReaderManagerAdapter {
   }
 
   /**
-   * Activates the reader manager and setup the reader if needed.
+   * Activates the reader manager and set up the reader if needed.
    *
    * @since 2.0.0
    */
@@ -191,7 +191,7 @@ final class ReaderManagerAdapter {
    */
   boolean lock(CardResource cardResource, CardResourceProfileExtension extension) {
     if (isBusy) {
-      if (System.currentTimeMillis() < lockMaxTimeMillis) {
+      if (usageTimeoutMillis == 0 || System.currentTimeMillis() < lockMaxTimeMillis) {
         return false;
       }
       logger.warn(
@@ -266,7 +266,7 @@ final class ReaderManagerAdapter {
    * @param s2 Smart Card 2
    * @return True if they are identical.
    */
-  private boolean areEquals(SmartCard s1, SmartCard s2) {
+  private static boolean areEquals(SmartCard s1, SmartCard s2) {
 
     if (s1 == s2) {
       return true;

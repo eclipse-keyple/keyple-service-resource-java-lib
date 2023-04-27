@@ -94,7 +94,7 @@ public final class PluginsConfigurator {
    *
    * @since 2.0.0
    */
-  public static class Builder {
+  public static final class Builder {
 
     private AllocationStrategy allocationStrategy;
     private Integer usageTimeoutMillis;
@@ -128,7 +128,7 @@ public final class PluginsConfigurator {
 
     /**
      * Specifies the timeout to use after that an allocated card resource can be automatically
-     * reallocated by card resource service to a new thread if requested.
+     * re-allocated by card resource service to a new thread if requested.
      *
      * <p>Default value: infinite
      *
@@ -274,7 +274,7 @@ public final class PluginsConfigurator {
    *
    * @since 2.0.0
    */
-  static class ConfiguredPlugin {
+  static final class ConfiguredPlugin {
 
     private final Plugin plugin;
     private final ReaderConfiguratorSpi readerConfiguratorSpi;
@@ -302,11 +302,11 @@ public final class PluginsConfigurator {
       this.plugin = plugin;
       this.readerConfiguratorSpi = readerConfiguratorSpi;
       if (pluginObservationExceptionHandlerSpi != null) {
-        this.withPluginMonitoring = true;
+        withPluginMonitoring = true;
         this.pluginObservationExceptionHandlerSpi = pluginObservationExceptionHandlerSpi;
       }
       if (readerObservationExceptionHandlerSpi != null) {
-        this.withReaderMonitoring = true;
+        withReaderMonitoring = true;
         this.readerObservationExceptionHandlerSpi = readerObservationExceptionHandlerSpi;
       }
     }

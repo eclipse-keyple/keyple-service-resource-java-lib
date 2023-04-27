@@ -64,7 +64,7 @@ public final class PoolPluginsConfigurator {
    *
    * @since 2.0.0
    */
-  public static class Builder {
+  public static final class Builder {
 
     private Boolean usePoolFirst;
     private final List<PoolPlugin> poolPlugins;

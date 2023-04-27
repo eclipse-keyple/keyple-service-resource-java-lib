@@ -38,7 +38,7 @@ import org.eclipse.keyple.core.service.PoolPlugin;
 public interface CardResourceService {
 
   /**
-   * Gets the configuration builder to setup the service.
+   * Gets the configuration builder to set up the service.
    *
    * @return A not null reference.
    * @since 2.0.0

@@ -70,23 +70,23 @@ final class CardProfileManagerAdapter {
 
     this.cardProfile = cardProfile;
     this.globalConfiguration = globalConfiguration;
-    this.service = CardResourceServiceAdapter.getInstance();
-    this.plugins = new ArrayList<Plugin>(0);
-    this.poolPlugins = new ArrayList<PoolPlugin>(0);
-    this.cardResources = new ArrayList<CardResourceAdapter>();
+    service = CardResourceServiceAdapter.getInstance();
+    plugins = new ArrayList<Plugin>(0);
+    poolPlugins = new ArrayList<PoolPlugin>(0);
+    cardResources = new ArrayList<CardResourceAdapter>();
 
     // Prepare filter on reader name if requested.
     if (cardProfile.getReaderNameRegex() != null) {
-      this.readerNameRegexPattern = Pattern.compile(cardProfile.getReaderNameRegex());
+      readerNameRegexPattern = Pattern.compile(cardProfile.getReaderNameRegex());
     } else {
-      this.readerNameRegexPattern = null;
+      readerNameRegexPattern = null;
     }
 
     // Initialize all available card resources.
-    if (!cardProfile.getPlugins().isEmpty()) {
-      initializeCardResourcesUsingProfilePlugins();
-    } else {
+    if (cardProfile.getPlugins().isEmpty()) {
       initializeCardResourcesUsingDefaultPlugins();
+    } else {
+      initializeCardResourcesUsingProfilePlugins();
     }
   }
 
@@ -199,15 +199,15 @@ final class CardProfileManagerAdapter {
    * @since 2.0.0
    */
   void onReaderConnected(ReaderManagerAdapter readerManager) {
-    if (!cardProfile.getPlugins().isEmpty()) {
+    if (cardProfile.getPlugins().isEmpty()) {
+      initializeCardResource(readerManager);
+    } else {
       for (Plugin profilePlugin : cardProfile.getPlugins()) {
         if (profilePlugin == readerManager.getPlugin()) {
           initializeCardResource(readerManager);
           break;
         }
       }
-    } else {
-      initializeCardResource(readerManager);
     }
   }
 
@@ -233,14 +233,14 @@ final class CardProfileManagerAdapter {
     CardResource cardResource;
     long maxTime = System.currentTimeMillis() + globalConfiguration.getTimeoutMillis();
     do {
-      if (!plugins.isEmpty()) {
-        if (!poolPlugins.isEmpty()) {
-          cardResource = getRegularOrPoolCardResource();
-        } else {
-          cardResource = getRegularCardResource();
-        }
-      } else {
+      if (plugins.isEmpty()) {
         cardResource = getPoolCardResource();
+      } else {
+        if (poolPlugins.isEmpty()) {
+          cardResource = getRegularCardResource();
+        } else {
+          cardResource = getRegularOrPoolCardResource();
+        }
       }
       pauseIfNeeded(cardResource);
     } while (cardResource == null

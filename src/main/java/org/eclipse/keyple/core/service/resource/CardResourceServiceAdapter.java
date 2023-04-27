@@ -89,17 +89,15 @@ final class CardResourceServiceAdapter
    */
   static String getCardResourceInfo(CardResource cardResource) {
     if (cardResource != null) {
-      return new StringBuilder()
-          .append("card resource (")
-          .append(HexUtil.toHex(System.identityHashCode(cardResource)))
-          .append(") - reader '")
-          .append(cardResource.getReader().getName())
-          .append("' (")
-          .append(HexUtil.toHex(System.identityHashCode(cardResource.getReader())))
-          .append(") - smart card (")
-          .append(HexUtil.toHex(System.identityHashCode(cardResource.getSmartCard())))
-          .append(")")
-          .toString();
+      return "card resource ("
+          + HexUtil.toHex(System.identityHashCode(cardResource))
+          + ") - reader '"
+          + cardResource.getReader().getName()
+          + "' ("
+          + HexUtil.toHex(System.identityHashCode(cardResource.getReader()))
+          + ") - smart card ("
+          + HexUtil.toHex(System.identityHashCode(cardResource.getSmartCard()))
+          + ")";
     }
     return null;
   }
@@ -630,7 +628,7 @@ final class CardResourceServiceAdapter
   /**
    * Invoked when a card is inserted on a reader.<br>
    * Notifies all card profile managers about the insertion of the card.<br>
-   * Each card profile manager interested by the card reader will try to create a card resource.
+   * Each card profile manager interested in the card reader will try to create a card resource.
    *
    * @param readerManager The associated reader manager.
    */

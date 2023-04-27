@@ -1,5 +1,39 @@
 <html>
 <body>
-<p>The Keyple Service Resource component provides profile-based card resource allocation mechanism.</p>
+
+<h2>Overview</h2>
+<p>An application that performs secure transactions on smart cards may need to dynamically allocate a card resource
+    dedicated to the current transaction to manage the security of the transaction (e.g. SAM or HSM).</p>
+<p>To meet this need, Keyple proposes the Service Resource component which provides a service that supports dynamic card
+    resource allocation, using a profile-based filtering mechanism.</p>
+
+<h2>Features</h2>
+<ul>
+    <li>card resource locking during use;</li>
+    <li>automatic monitoring of observable plugins and readers;</li>
+    <li>customizable profile-based filtering mechanism (specific plugins list, reader name using regular expression,
+        reader group name for pool plugins, specific card selection);</li>
+    <li>specific reader configuration capability;</li>
+    <li>allocation priority management;</li>
+    <li>two allocation modes (blocking, non-blocking);</li>
+    <li>multiple allocation strategies (first available card resource, cyclic, random);</li>
+    <li>configurable allocation timeout;</li>
+    <li>failure management.</li>
+</ul>
+
+<h2>Operating mode</h2>
+<ol>
+    <li>Access to the service</li>
+    <li>Access to the configurator</li>
+    <li>Register plugins and/or pool plugins to be used</li>
+    <li>Define profiles for card resource filtering</li>
+    <li>Set the allocation mode (optional)</li>
+    <li>Apply the configuration</li>
+    <li>Start the service</li>
+    <li>Allocate a resource</li>
+    <li>Use the resource</li>
+    <li>Release the used resource</li>
+</ol>
+
 </body>
 </html>
