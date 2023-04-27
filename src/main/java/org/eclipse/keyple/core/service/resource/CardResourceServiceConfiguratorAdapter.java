@@ -118,10 +118,10 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
     Assert.getInstance()
         .greaterOrEqual(cycleDurationMillis, 1, "cycleDurationMillis")
         .greaterOrEqual(timeoutMillis, 1, "timeoutMillis");
-    if (this.isBlockingAllocationMode) {
+    if (isBlockingAllocationMode) {
       throw new IllegalStateException("Allocation mode already configured.");
     }
-    this.isBlockingAllocationMode = true;
+    isBlockingAllocationMode = true;
     this.cycleDurationMillis = cycleDurationMillis;
     this.timeoutMillis = timeoutMillis;
     return this;
@@ -173,7 +173,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
       }
     }
 
-    // Remove plugins not used by a least one card profile.
+    // Remove plugins not used by at least one card profile.
     Set<Plugin> usedPlugins = computeUsedPlugins(allPlugins);
 
     if (usedPlugins.size() != allPlugins.size()) {
@@ -198,10 +198,10 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   private Set<Plugin> computeUsedPlugins(Set<Plugin> configuredPlugins) {
     Set<Plugin> usedPlugins = new HashSet<Plugin>(1);
     for (CardResourceProfileConfigurator profile : cardResourceProfileConfigurators) {
-      if (!profile.getPlugins().isEmpty()) {
-        usedPlugins.addAll(profile.getPlugins());
-      } else {
+      if (profile.getPlugins().isEmpty()) {
         return configuredPlugins;
+      } else {
+        usedPlugins.addAll(profile.getPlugins());
       }
     }
     return usedPlugins;
@@ -229,7 +229,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * @param plugins The origin collection.
    * @return A not null list
    */
-  private List<PoolPlugin> extractPoolPlugins(Set<Plugin> plugins) {
+  private static List<PoolPlugin> extractPoolPlugins(Set<Plugin> plugins) {
     List<PoolPlugin> results = new ArrayList<PoolPlugin>(1);
     for (Plugin plugin : plugins) {
       if (plugin instanceof PoolPlugin) {

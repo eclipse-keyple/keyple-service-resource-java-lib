@@ -116,7 +116,7 @@ public final class CardResourceProfileConfigurator {
    *
    * @since 2.0.0
    */
-  public static class Builder {
+  public static final class Builder {
 
     private final String profileName;
     private final CardResourceProfileExtension cardResourceProfileExtension;
@@ -130,9 +130,9 @@ public final class CardResourceProfileConfigurator {
           .notNull(cardResourceProfileExtension, "cardResourceProfileExtension");
       this.profileName = profileName;
       this.cardResourceProfileExtension = cardResourceProfileExtension;
-      this.plugins = new ArrayList<Plugin>(1);
-      this.readerNameRegex = null;
-      this.readerGroupReference = null;
+      plugins = new ArrayList<Plugin>(1);
+      readerNameRegex = null;
+      readerGroupReference = null;
     }
 
     /**
