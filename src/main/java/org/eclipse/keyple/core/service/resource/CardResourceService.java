@@ -30,7 +30,7 @@ import org.eclipse.keyple.core.service.PoolPlugin;
  * <ul>
  *   <li>with a dynamic allocation of readers from a {@link PoolPlugin},
  *   <li>with the internally managed observation mechanisms of {@link ObservablePlugin} and {@link
- *       org.calypsonet.terminal.reader.ObservableCardReader}.
+ *       org.eclipse.keypop.reader.ObservableCardReader}.
  * </ul>
  *
  * @since 2.0.0

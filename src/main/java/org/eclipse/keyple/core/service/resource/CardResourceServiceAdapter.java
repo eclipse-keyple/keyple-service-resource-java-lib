@@ -15,15 +15,15 @@ import static org.eclipse.keyple.core.service.resource.PluginsConfigurator.*;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.CardReaderEvent;
-import org.calypsonet.terminal.reader.ObservableCardReader;
-import org.calypsonet.terminal.reader.spi.CardReaderObserverSpi;
 import org.eclipse.keyple.core.service.*;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
 import org.eclipse.keyple.core.service.spi.PluginObserverSpi;
 import org.eclipse.keyple.core.util.Assert;
 import org.eclipse.keyple.core.util.HexUtil;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.CardReaderEvent;
+import org.eclipse.keypop.reader.ObservableCardReader;
+import org.eclipse.keypop.reader.spi.CardReaderObserverSpi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -15,13 +15,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.KeypleReaderExtension;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.SmartCardServiceProvider;
 import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.selection.spi.IsoSmartCard;
+import org.eclipse.keypop.reader.selection.spi.SmartCard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -165,8 +166,7 @@ final class ReaderManagerAdapter {
   CardResourceAdapter matches(CardResourceProfileExtension extension) {
     CardResourceAdapter cardResource = null;
     SmartCard smartCard =
-        extension.matches(
-            reader, SmartCardServiceProvider.getService().createCardSelectionManager());
+        extension.matches(reader, SmartCardServiceProvider.getService().getReaderApiFactory());
     if (smartCard != null) {
       cardResource = getOrCreateCardResource(smartCard);
       selectedCardResource = cardResource;
@@ -201,8 +201,7 @@ final class ReaderManagerAdapter {
     }
     if (selectedCardResource != cardResource) {
       SmartCard smartCard =
-          extension.matches(
-              reader, SmartCardServiceProvider.getService().createCardSelectionManager());
+          extension.matches(reader, SmartCardServiceProvider.getService().getReaderApiFactory());
       if (!areEquals(cardResource.getSmartCard(), smartCard)) {
         selectedCardResource = null;
         throw new IllegalStateException(
@@ -280,8 +279,15 @@ final class ReaderManagerAdapter {
         (s1.getPowerOnData() == null && s2.getPowerOnData() == null)
             || (s1.getPowerOnData() != null && s1.getPowerOnData().equals(s2.getPowerOnData()));
 
-    boolean hasSameFci =
-        Arrays.equals(s1.getSelectApplicationResponse(), s2.getSelectApplicationResponse());
+    boolean hasSameFci;
+    if (s1 instanceof IsoSmartCard && s2 instanceof IsoSmartCard) {
+      hasSameFci =
+          Arrays.equals(
+              ((IsoSmartCard) s1).getSelectApplicationResponse(),
+              ((IsoSmartCard) s2).getSelectApplicationResponse());
+    } else {
+      hasSameFci = true;
+    }
 
     return hasSamePowerOnData && hasSameFci;
   }
