@@ -5,10 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+:warning: Major version! Following the migration of the "Calypsonet Terminal" APIs to the
+[Eclipse Keypop project](https://keypop.org), this library now implements Keypop interfaces.
 ### Added
 - Added project status badges on `README.md` file.
+### Changed
+- Signature of method `CardResourceProfileExtension.matches(...)`:
+  - previous: `SmartCard matches(CardReader reader, CardSelectionManager cardSelectionManager)`
+  - current: `SmartCard matches(CardReader reader, ReaderApiFactory readerApiFactory)`
 ### Fixed
 - CI: code coverage report when releasing.
+### Upgraded
+- Calypsonet Terminal Reader API `1.2.0` -> Keypop Reader API `2.0.0`
+- Keyple Service Library `2.2.0` -> `3.0.0`
+- Keyple Util Library `2.3.0` -> `2.3.1` (source code not impacted)
 
 ## [2.1.1] - 2023-04-27
 ### Fixed
