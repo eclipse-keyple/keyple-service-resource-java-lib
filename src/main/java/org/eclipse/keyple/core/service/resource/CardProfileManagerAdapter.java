@@ -17,10 +17,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.KeypleReaderExtension;
 import org.eclipse.keyple.core.service.*;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.selection.spi.SmartCard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -356,8 +356,7 @@ final class CardProfileManagerAdapter {
           SmartCard smartCard =
               cardProfile
                   .getCardResourceProfileExtension()
-                  .matches(
-                      reader, SmartCardServiceProvider.getService().createCardSelectionManager());
+                  .matches(reader, SmartCardServiceProvider.getService().getReaderApiFactory());
           if (smartCard != null) {
             CardResource cardResource = new CardResourceAdapter(reader, readerExtension, smartCard);
             service.registerPoolCardResource(cardResource, poolPlugin);

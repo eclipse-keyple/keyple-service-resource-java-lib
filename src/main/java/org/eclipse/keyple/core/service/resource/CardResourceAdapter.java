@@ -11,9 +11,9 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.service.resource;
 
-import org.calypsonet.terminal.reader.CardReader;
-import org.calypsonet.terminal.reader.selection.spi.SmartCard;
 import org.eclipse.keyple.core.common.KeypleReaderExtension;
+import org.eclipse.keypop.reader.CardReader;
+import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
 /**
  * Adapter of {@link CardResource}.

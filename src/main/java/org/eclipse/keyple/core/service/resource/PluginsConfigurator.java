@@ -12,13 +12,13 @@
 package org.eclipse.keyple.core.service.resource;
 
 import java.util.*;
-import org.calypsonet.terminal.reader.spi.CardReaderObservationExceptionHandlerSpi;
 import org.eclipse.keyple.core.service.ObservablePlugin;
 import org.eclipse.keyple.core.service.Plugin;
 import org.eclipse.keyple.core.service.PoolPlugin;
 import org.eclipse.keyple.core.service.resource.spi.ReaderConfiguratorSpi;
 import org.eclipse.keyple.core.service.spi.PluginObservationExceptionHandlerSpi;
 import org.eclipse.keyple.core.util.Assert;
+import org.eclipse.keypop.reader.spi.CardReaderObservationExceptionHandlerSpi;
 
 /**
  * Configurator of all plugins to associate to the card resource service.

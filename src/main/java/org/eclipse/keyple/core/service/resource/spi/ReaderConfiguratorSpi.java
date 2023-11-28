@@ -11,7 +11,7 @@
  ************************************************************************************** */
 package org.eclipse.keyple.core.service.resource.spi;
 
-import org.calypsonet.terminal.reader.CardReader;
+import org.eclipse.keypop.reader.CardReader;
 
 /**
  * Reader configurator used to set up a new card reader connected with its specific settings.

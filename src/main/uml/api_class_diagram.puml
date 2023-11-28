@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - keyple-service-resource-java-lib - 2.1.+ (2023-04-19)
+    Keyple - keyple-service-resource-java-lib - 3.0.+ (2023-06-29)
 end title
 
 ' == THEME ==
@@ -54,7 +54,7 @@ hide <<grey>> stereotype
 legend top
     __Colors legend__ :
     * __External public API references__ :
-    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:yellow>**keypop-reader-java-api**</back>
     ** <back:pink>**keyple-service-java-lib**</back>
     ** <back:cyan>**keyple-common-java-lib**</back>
 end legend
@@ -62,7 +62,7 @@ end legend
 package "org.eclipse.keyple.core.service.resource" as resource {
 
     ' Card Resource Service
-    +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider {
+    +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider <<green>> {
         +{static} CardResourceService getService ()
     }
 
@@ -83,7 +83,7 @@ package "org.eclipse.keyple.core.service.resource" as resource {
         +void configure ()
     }
 
-    +class "**final** PluginsConfigurator" as PluginsConfigurator {
+    +class "**final** PluginsConfigurator" as PluginsConfigurator <<green>> {
         +{static} Builder builder ()
     }
     +class "**final** Builder" as PluginsConfiguratorBuilder {
@@ -96,13 +96,13 @@ package "org.eclipse.keyple.core.service.resource" as resource {
             \t<back:yellow>CardReaderObservationExceptionHandlerSpi</back> readerObservationExceptionHandlerSpi)
         +PluginsConfigurator build ()
     }
-    +enum AllocationStrategy {
+    +enum AllocationStrategy <<green>> {
         FIRST
         CYCLIC
         RANDOM
     }
 
-    +class "**final** PoolPluginsConfigurator" as PoolPluginsConfigurator {
+    +class "**final** PoolPluginsConfigurator" as PoolPluginsConfigurator <<green>> {
         +{static} Builder builder ()
     }
     +class "**final** Builder" as PoolPluginsConfiguratorBuilder {
@@ -111,7 +111,7 @@ package "org.eclipse.keyple.core.service.resource" as resource {
         +PoolPluginsConfigurator build ()
     }
 
-    +class "**final** CardResourceProfileConfigurator" as CardResourceProfileConfigurator {
+    +class "**final** CardResourceProfileConfigurator" as CardResourceProfileConfigurator <<green>> {
         --
         +{static} Builder builder (String profileName, CardResourceProfileExtension cardResourceProfileExtension)
     }
@@ -124,16 +124,16 @@ package "org.eclipse.keyple.core.service.resource" as resource {
 
     +interface CardResource {
         +<back:yellow>CardReader</back> getReader ()
-        +<color:blue><back:cyan>KeypleReaderExtension</back> getReaderExtension ()
+        +<back:cyan>KeypleReaderExtension</back> getReaderExtension ()
         +<back:yellow>SmartCard</back> getSmartCard ()
     }
 
     package "spi" as resourceSpi {
-        +interface ReaderConfiguratorSpi {
+        +interface ReaderConfiguratorSpi <<red>> {
             +void setupReader (<back:yellow>CardReader</back> reader)
         }
-        +interface CardResourceProfileExtension {
-            +<back:yellow>SmartCard</back> matches (<back:yellow>CardReader</back> reader, <back:yellow>CardSelectionManager</back> cardSelectionManager)
+        +interface CardResourceProfileExtension <<red>> {
+            +<back:yellow>SmartCard</back> matches (<back:yellow>CardReader</back> reader, <color:blue><back:yellow>ReaderApiFactory</back> readerApiFactory</color>)
         }
     }
 }

@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - Adapters of keyple-service-resource-java-lib - 2.1.0 (2023-04-19)
+    Keyple - Adapters of keyple-service-resource-java-lib - 3.0.0 (2023-06-27)
 end title
 
 ' == THEME ==
@@ -54,14 +54,14 @@ hide <<grey>> stereotype
 legend top
     __Colors legend__ :
     * __External public API references__ :
-    ** <back:yellow>**calypsonet-terminal-reader-java-api**</back>
+    ** <back:yellow>**keypop-reader-java-api**</back>
     ** <back:pink>**keyple-service-java-lib**</back>
     ** <back:cyan>**keyple-common-java-lib**</back>
 end legend
 
 package "org.eclipse.keyple.core.service.resource" as resource {
 
-    +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider {
+    +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider <<green>> {
         ...
     }
     ~class "<<CardResourceService>>\n<<<back:pink>PluginObserverSpi</back>>>\n<<<back:yellow>CardReaderObserverSpi</back>>>\n**final** CardResourceServiceAdapter" as CardResourceServiceAdapter {
@@ -87,10 +87,10 @@ package "org.eclipse.keyple.core.service.resource" as resource {
         +void onReaderEvent (<back:yellow>CardReaderEvent</back> readerEvent)
     }
     ~class "<<CardResource>>\n**final** CardResourceAdapter" as CardResourceAdapter {
-        ~CardResource (<back:yellow>CardReader</back> reader, <color:blue><back:cyan>KeypleReaderExtension</back> readerExtension</color>, <back:yellow>SmartCard</back> smartCard)
+        ~CardResource (<back:yellow>CardReader</back> reader, <back:cyan>KeypleReaderExtension</back> readerExtension, <back:yellow>SmartCard</back> smartCard)
         -- **CardResource** --
         +<back:yellow>CardReader</back> getReader ()
-        +<color:blue><back:cyan>KeypleReaderExtension</back> getReaderExtension ()
+        +<back:cyan>KeypleReaderExtension</back> getReaderExtension ()
         +<back:yellow>SmartCard</back> getSmartCard ()
     }
     ~class "**final** ReaderManagerAdapter" as ReaderManagerAdapter {
