@@ -91,8 +91,7 @@ final class ReaderManagerAdapter {
     this.plugin = plugin;
     this.readerConfiguratorSpi = readerConfiguratorSpi;
     this.usageTimeoutMillis = usageTimeoutMillis;
-    cardResources =
-        Collections.newSetFromMap(new ConcurrentHashMap<CardResourceAdapter, Boolean>());
+    cardResources = Collections.newSetFromMap(new ConcurrentHashMap<>());
     selectedCardResource = null;
     isBusy = false;
     isActive = false;
@@ -195,7 +194,7 @@ final class ReaderManagerAdapter {
         return false;
       }
       logger.warn(
-          "Reader '{}' automatically unlocked due to a usage duration over than {} milliseconds.",
+          "Reader [{}] automatically unlocked due to a usage duration over than {} milliseconds",
           reader.getName(),
           usageTimeoutMillis);
     }
@@ -205,7 +204,7 @@ final class ReaderManagerAdapter {
       if (!areEquals(cardResource.getSmartCard(), smartCard)) {
         selectedCardResource = null;
         throw new IllegalStateException(
-            "No card is inserted or its profile does not match the associated data.");
+            "No card is inserted or its profile does not match the associated data");
       }
       selectedCardResource = cardResource;
     }

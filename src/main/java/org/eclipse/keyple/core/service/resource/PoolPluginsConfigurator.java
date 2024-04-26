@@ -70,7 +70,7 @@ public final class PoolPluginsConfigurator {
     private final List<PoolPlugin> poolPlugins;
 
     private Builder() {
-      poolPlugins = new ArrayList<PoolPlugin>(1);
+      poolPlugins = new ArrayList<>(1);
     }
 
     /**
@@ -85,7 +85,7 @@ public final class PoolPluginsConfigurator {
      */
     public Builder usePoolFirst() {
       if (usePoolFirst != null) {
-        throw new IllegalStateException("Pool plugins priority already configured.");
+        throw new IllegalStateException("Pool plugins priority already configured");
       }
       usePoolFirst = true;
       return this;
@@ -106,7 +106,7 @@ public final class PoolPluginsConfigurator {
     public Builder addPoolPlugin(PoolPlugin poolPlugin) {
       Assert.getInstance().notNull(poolPlugin, "poolPlugin");
       if (poolPlugins.contains(poolPlugin)) {
-        throw new IllegalStateException("Pool plugin already configured.");
+        throw new IllegalStateException("Pool plugin already configured");
       }
       poolPlugins.add(poolPlugin);
       return this;
@@ -121,7 +121,7 @@ public final class PoolPluginsConfigurator {
      */
     public PoolPluginsConfigurator build() {
       if (poolPlugins.isEmpty()) {
-        throw new IllegalStateException("No pool plugin was configured.");
+        throw new IllegalStateException("No pool plugin was configured");
       }
       if (usePoolFirst == null) {
         usePoolFirst = false;

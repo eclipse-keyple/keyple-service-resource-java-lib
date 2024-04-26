@@ -102,8 +102,8 @@ public final class PluginsConfigurator {
     private final List<ConfiguredPlugin> configuredPlugins;
 
     private Builder() {
-      plugins = new ArrayList<Plugin>(1);
-      configuredPlugins = new ArrayList<ConfiguredPlugin>(1);
+      plugins = new ArrayList<>(1);
+      configuredPlugins = new ArrayList<>(1);
     }
 
     /**
@@ -120,7 +120,7 @@ public final class PluginsConfigurator {
     public Builder withAllocationStrategy(AllocationStrategy allocationStrategy) {
       Assert.getInstance().notNull(allocationStrategy, "allocationStrategy");
       if (this.allocationStrategy != null) {
-        throw new IllegalStateException("Allocation strategy already configured.");
+        throw new IllegalStateException("Allocation strategy already configured");
       }
       this.allocationStrategy = allocationStrategy;
       return this;
@@ -141,7 +141,7 @@ public final class PluginsConfigurator {
     public Builder withUsageTimeout(int usageTimeoutMillis) {
       Assert.getInstance().greaterOrEqual(usageTimeoutMillis, 1, "usageTimeoutMillis");
       if (this.usageTimeoutMillis != null) {
-        throw new IllegalStateException("Usage timeout already configured.");
+        throw new IllegalStateException("Usage timeout already configured");
       }
       this.usageTimeoutMillis = usageTimeoutMillis;
       return this;
@@ -204,7 +204,7 @@ public final class PluginsConfigurator {
             "Plugin must be an instance of Plugin or ObservablePlugin");
       }
       if (plugins.contains(plugin)) {
-        throw new IllegalStateException("Plugin already configured.");
+        throw new IllegalStateException("Plugin already configured");
       }
       plugins.add(plugin);
       configuredPlugins.add(
@@ -225,7 +225,7 @@ public final class PluginsConfigurator {
      */
     public PluginsConfigurator build() {
       if (plugins.isEmpty()) {
-        throw new IllegalStateException("No plugin was configured.");
+        throw new IllegalStateException("No plugin was configured");
       }
       if (allocationStrategy == null) {
         allocationStrategy = AllocationStrategy.FIRST;

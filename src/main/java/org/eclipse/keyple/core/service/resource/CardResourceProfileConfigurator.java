@@ -130,7 +130,7 @@ public final class CardResourceProfileConfigurator {
           .notNull(cardResourceProfileExtension, "cardResourceProfileExtension");
       this.profileName = profileName;
       this.cardResourceProfileExtension = cardResourceProfileExtension;
-      plugins = new ArrayList<Plugin>(1);
+      plugins = new ArrayList<>(1);
       readerNameRegex = null;
       readerGroupReference = null;
     }
@@ -176,7 +176,7 @@ public final class CardResourceProfileConfigurator {
     public Builder withReaderNameRegex(String readerNameRegex) {
       Assert.getInstance().notEmpty(readerNameRegex, "readerNameRegex");
       if (this.readerNameRegex != null) {
-        throw new IllegalStateException("Reader name regex has already been set.");
+        throw new IllegalStateException("Reader name regex has already been set");
       }
       try {
         Pattern.compile(readerNameRegex);
@@ -201,7 +201,7 @@ public final class CardResourceProfileConfigurator {
     public Builder withReaderGroupReference(String readerGroupReference) {
       Assert.getInstance().notEmpty(readerGroupReference, "readerGroupReference");
       if (this.readerGroupReference != null) {
-        throw new IllegalStateException("Reader group reference has already been set.");
+        throw new IllegalStateException("Reader group reference has already been set");
       }
       this.readerGroupReference = readerGroupReference;
       return this;
