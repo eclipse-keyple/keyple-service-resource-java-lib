@@ -362,7 +362,7 @@ final class CardResourceServiceAdapter
     CardResource cardResource = cardProfileManager.getCardResource();
 
     if (logger.isDebugEnabled()) {
-      logger.debug("Card resource founded: {}", getCardResourceInfo(cardResource));
+      logger.debug("Card resource found: {}", getCardResourceInfo(cardResource));
     }
 
     return cardResource;
