@@ -71,9 +71,9 @@ final class CardProfileManagerAdapter {
     this.cardProfile = cardProfile;
     this.globalConfiguration = globalConfiguration;
     service = CardResourceServiceAdapter.getInstance();
-    plugins = new ArrayList<Plugin>(0);
-    poolPlugins = new ArrayList<PoolPlugin>(0);
-    cardResources = new ArrayList<CardResourceAdapter>();
+    plugins = new ArrayList<>(0);
+    poolPlugins = new ArrayList<>(0);
+    cardResources = new ArrayList<>();
 
     // Prepare filter on reader name if requested.
     if (cardProfile.getReaderNameRegex() != null) {
@@ -147,15 +147,13 @@ final class CardProfileManagerAdapter {
       if (cardResource != null) {
         if (!cardResources.contains(cardResource)) {
           cardResources.add(cardResource);
-          if (logger.isDebugEnabled()) {
-            logger.debug(
-                "Add {} to card resource profile '{}'",
-                CardResourceServiceAdapter.getCardResourceInfo(cardResource),
-                cardProfile.getProfileName());
-          }
-        } else if (logger.isDebugEnabled()) {
-          logger.debug(
-              "{} already present in card resource profile '{}'",
+          logger.info(
+              "Add {} to profile [{}]",
+              CardResourceServiceAdapter.getCardResourceInfo(cardResource),
+              cardProfile.getProfileName());
+        } else {
+          logger.info(
+              "{} already present in profile [{}]",
               CardResourceServiceAdapter.getCardResourceInfo(cardResource),
               cardProfile.getProfileName());
         }
@@ -182,9 +180,9 @@ final class CardProfileManagerAdapter {
    */
   void removeCardResource(CardResource cardResource) {
     boolean isRemoved = cardResources.remove(cardResource);
-    if (logger.isDebugEnabled() && isRemoved) {
-      logger.debug(
-          "Remove {} from card resource profile '{}'",
+    if (isRemoved) {
+      logger.info(
+          "Remove {} from profile [{}]",
           CardResourceServiceAdapter.getCardResourceInfo(cardResource),
           cardProfile.getProfileName());
     }
@@ -296,7 +294,7 @@ final class CardProfileManagerAdapter {
   private CardResource getRegularCardResource() {
 
     CardResource result = null;
-    List<CardResource> unusableCardResources = new ArrayList<CardResource>(0);
+    List<CardResource> unusableCardResources = new ArrayList<>(0);
 
     for (CardResource cardResource : cardResources) {
       CardReader reader = cardResource.getReader();

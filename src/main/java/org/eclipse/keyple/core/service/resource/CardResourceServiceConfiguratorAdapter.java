@@ -49,7 +49,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * @since 2.0.0
    */
   CardResourceServiceConfiguratorAdapter() {
-    cardResourceProfileConfigurators = new HashSet<CardResourceProfileConfigurator>(1);
+    cardResourceProfileConfigurators = new HashSet<>(1);
   }
 
   /**
@@ -61,7 +61,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
   public CardResourceServiceConfigurator withPlugins(PluginsConfigurator pluginsConfigurator) {
     Assert.getInstance().notNull(pluginsConfigurator, "pluginsConfigurator");
     if (plugins != null) {
-      throw new IllegalStateException("Plugins already configured.");
+      throw new IllegalStateException("Plugins already configured");
     }
     plugins = pluginsConfigurator.getPlugins();
     configuredPlugins = pluginsConfigurator.getConfiguredPlugins();
@@ -80,7 +80,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
       PoolPluginsConfigurator poolPluginsConfigurator) {
     Assert.getInstance().notNull(poolPluginsConfigurator, "poolPluginsConfigurator");
     if (poolPlugins != null) {
-      throw new IllegalStateException("Pool plugins already configured.");
+      throw new IllegalStateException("Pool plugins already configured");
     }
     poolPlugins = poolPluginsConfigurator.getPoolPlugins();
     usePoolFirst = poolPluginsConfigurator.isUsePoolFirst();
@@ -98,7 +98,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
     Assert.getInstance()
         .notNull(cardResourceProfileConfigurators, "cardResourceProfileConfigurators");
     if (!this.cardResourceProfileConfigurators.isEmpty()) {
-      throw new IllegalStateException("Card resource profiles already configured.");
+      throw new IllegalStateException("Card resource profiles already configured");
     }
     for (CardResourceProfileConfigurator configurator : cardResourceProfileConfigurators) {
       Assert.getInstance().notNull(configurator, "cardResourceProfileConfigurator");
@@ -119,7 +119,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
         .greaterOrEqual(cycleDurationMillis, 1, "cycleDurationMillis")
         .greaterOrEqual(timeoutMillis, 1, "timeoutMillis");
     if (isBlockingAllocationMode) {
-      throw new IllegalStateException("Allocation mode already configured.");
+      throw new IllegalStateException("Allocation mode already configured");
     }
     isBlockingAllocationMode = true;
     this.cycleDurationMillis = cycleDurationMillis;
@@ -147,29 +147,29 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
     }
 
     // Check global plugins (regular + pool).
-    Set<Plugin> allPlugins = new HashSet<Plugin>(1);
+    Set<Plugin> allPlugins = new HashSet<>(1);
     allPlugins.addAll(plugins);
     allPlugins.addAll(poolPlugins);
     if (allPlugins.isEmpty()) {
-      throw new IllegalStateException("No plugin configured.");
+      throw new IllegalStateException("No plugin configured");
     }
 
     // Check card resource profiles.
     if (cardResourceProfileConfigurators.isEmpty()) {
-      throw new IllegalStateException("No card resource profile configured.");
+      throw new IllegalStateException("No card resource profile configured");
     }
     // Check card resource profiles names and plugins.
-    Set<String> profileNames = new HashSet<String>(1);
+    Set<String> profileNames = new HashSet<>(1);
     for (CardResourceProfileConfigurator profile : cardResourceProfileConfigurators) {
       // Check name.
       if (!profileNames.add(profile.getProfileName())) {
         throw new IllegalStateException(
-            "Some card resource profiles are configured with the same profile name.");
+            "Some card resource profiles are configured with the same profile name");
       }
       // Check plugins.
       if (!allPlugins.containsAll(profile.getPlugins())) {
         throw new IllegalStateException(
-            "Some card resource profiles specify plugins which are not configured in the global list.");
+            "Some card resource profiles specify plugins which are not configured in the global list");
       }
     }
 
@@ -178,7 +178,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
 
     if (usedPlugins.size() != allPlugins.size()) {
 
-      Set<Plugin> unusedPlugins = new HashSet<Plugin>(allPlugins);
+      Set<Plugin> unusedPlugins = new HashSet<>(allPlugins);
       unusedPlugins.removeAll(usedPlugins);
 
       plugins.removeAll(unusedPlugins);
@@ -196,7 +196,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * @return A not null collection.
    */
   private Set<Plugin> computeUsedPlugins(Set<Plugin> configuredPlugins) {
-    Set<Plugin> usedPlugins = new HashSet<Plugin>(1);
+    Set<Plugin> usedPlugins = new HashSet<>(1);
     for (CardResourceProfileConfigurator profile : cardResourceProfileConfigurators) {
       if (profile.getPlugins().isEmpty()) {
         return configuredPlugins;
@@ -214,7 +214,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * @return A not null collection.
    */
   private List<ConfiguredPlugin> getConfiguredPlugins(Set<Plugin> plugins) {
-    List<ConfiguredPlugin> results = new ArrayList<ConfiguredPlugin>(1);
+    List<ConfiguredPlugin> results = new ArrayList<>(1);
     for (ConfiguredPlugin configuredRegularPlugin : configuredPlugins) {
       if (plugins.contains(configuredRegularPlugin.getPlugin())) {
         results.add(configuredRegularPlugin);
@@ -230,7 +230,7 @@ final class CardResourceServiceConfiguratorAdapter implements CardResourceServic
    * @return A not null list
    */
   private static List<PoolPlugin> extractPoolPlugins(Set<Plugin> plugins) {
-    List<PoolPlugin> results = new ArrayList<PoolPlugin>(1);
+    List<PoolPlugin> results = new ArrayList<>(1);
     for (Plugin plugin : plugins) {
       if (plugin instanceof PoolPlugin) {
         results.add((PoolPlugin) plugin);
