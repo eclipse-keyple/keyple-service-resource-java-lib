@@ -29,7 +29,7 @@ repositories {
 dependencies {
     implementation("org.eclipse.keypop:keypop-reader-java-api:2.0.1")
     implementation("org.eclipse.keyple:keyple-common-java-api:2.0.1")
-    implementation("org.eclipse.keyple:keyple-service-java-lib:3.2.2-SNAPSHOT") {isChanging=true}
+    implementation("org.eclipse.keyple:keyple-service-java-lib:3.2.3")
     implementation("org.eclipse.keyple:keyple-util-java-lib:2.4.0")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("org.slf4j:slf4j-api:1.7.32")
