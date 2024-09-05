@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - keyple-service-resource-java-lib - 3.0.+ (2023-06-29)
+    Keyple - keyple-service-resource-java-lib - 3.1.+ (2024-09-05)
 end title
 
 ' == THEME ==
@@ -133,7 +133,8 @@ package "org.eclipse.keyple.core.service.resource" as resource {
             +void setupReader (<back:yellow>CardReader</back> reader)
         }
         +interface CardResourceProfileExtension <<red>> {
-            +<back:yellow>SmartCard</back> matches (<back:yellow>CardReader</back> reader, <color:blue><back:yellow>ReaderApiFactory</back> readerApiFactory</color>)
+            +<back:yellow>SmartCard</back> matches (<back:yellow>CardReader</back> reader, <back:yellow>ReaderApiFactory</back> readerApiFactory)
+            +<color:blue><back:yellow>SmartCard</back> matches (<back:yellow>SmartCard</back> smartCard)
         }
     }
 }

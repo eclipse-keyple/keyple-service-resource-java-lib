@@ -33,4 +33,14 @@ public interface CardResourceProfileExtension {
    * @since 2.0.0
    */
   SmartCard matches(CardReader reader, ReaderApiFactory readerApiFactory);
+
+  /**
+   * Checks if the provided selected smart card is as expected by the profile.
+   *
+   * @param smartCard The selected smart card.
+   * @return The provided {@link SmartCard} or null if its profile does not match the associated
+   *     data.
+   * @since 3.1.0
+   */
+  SmartCard matches(SmartCard smartCard);
 }
