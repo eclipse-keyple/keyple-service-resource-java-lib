@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import org.eclipse.keyple.core.common.KeypleReaderExtension;
 import org.eclipse.keyple.core.service.*;
+import org.eclipse.keyple.core.service.resource.spi.CardResourceProfileExtension;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
 import org.slf4j.Logger;
@@ -345,26 +346,40 @@ final class CardProfileManagerAdapter {
    * @return Null if there is no card resource available.
    */
   private CardResource getPoolCardResource() {
+    CardResourceProfileExtension cardProfileExtension =
+        cardProfile.getCardResourceProfileExtension();
     for (PoolPlugin poolPlugin : poolPlugins) {
       try {
         CardReader reader = poolPlugin.allocateReader(cardProfile.getReaderGroupReference());
         if (reader != null) {
-          KeypleReaderExtension readerExtension =
-              poolPlugin.getReaderExtension(KeypleReaderExtension.class, reader.getName());
+          SmartCard selectedSmartCard = poolPlugin.getSelectedSmartCard(reader);
           SmartCard smartCard =
-              cardProfile
-                  .getCardResourceProfileExtension()
-                  .matches(reader, SmartCardServiceProvider.getService().getReaderApiFactory());
+              selectedSmartCard != null
+                  ? cardProfileExtension.matches(selectedSmartCard)
+                  : cardProfileExtension.matches(
+                      reader, SmartCardServiceProvider.getService().getReaderApiFactory());
           if (smartCard != null) {
+            KeypleReaderExtension readerExtension =
+                poolPlugin.getReaderExtension(KeypleReaderExtension.class, reader.getName());
             CardResource cardResource = new CardResourceAdapter(reader, readerExtension, smartCard);
             service.registerPoolCardResource(cardResource, poolPlugin);
             return cardResource;
+          } else {
+            releaseReaderSilently(poolPlugin, reader);
           }
         }
       } catch (KeyplePluginException e) {
-        // Continue.
+        // Continue
       }
     }
     return null;
+  }
+
+  private static void releaseReaderSilently(PoolPlugin poolPlugin, CardReader reader) {
+    try {
+      poolPlugin.releaseReader(reader);
+    } catch (Exception ignored) {
+      // NOP
+    }
   }
 }
