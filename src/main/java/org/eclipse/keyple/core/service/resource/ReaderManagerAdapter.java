@@ -194,7 +194,7 @@ final class ReaderManagerAdapter {
         return false;
       }
       logger.warn(
-          "Reader [{}] automatically unlocked due to a usage duration over than {} milliseconds",
+          "Reader automatically unlocked due to a usage timeout exceeded [reader={}, usageTimeoutMs={}]",
           reader.getName(),
           usageTimeoutMillis);
     }
