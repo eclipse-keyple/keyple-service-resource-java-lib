@@ -181,7 +181,8 @@ public final class CardResourceProfileConfigurator {
       try {
         Pattern.compile(readerNameRegex);
       } catch (PatternSyntaxException exception) {
-        throw new IllegalArgumentException("Invalid regular expression: " + readerNameRegex);
+        throw new IllegalArgumentException(
+            "Invalid regular expression [regex=" + readerNameRegex + "]");
       }
       this.readerNameRegex = readerNameRegex;
       return this;
