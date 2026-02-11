@@ -12,6 +12,7 @@
 package org.eclipse.keyple.core.service.resource;
 
 import org.eclipse.keyple.core.common.KeypleReaderExtension;
+import org.eclipse.keyple.core.util.HexUtil;
 import org.eclipse.keypop.reader.CardReader;
 import org.eclipse.keypop.reader.selection.spi.SmartCard;
 
@@ -69,5 +70,29 @@ final class CardResourceAdapter implements CardResource {
   @Override
   public SmartCard getSmartCard() {
     return smartCard;
+  }
+
+  /**
+   * Provides a string representation of the CardResourceAdapter instance, including the hash codes
+   * of the adapter itself, the associated reader, and the smart card, as well as the name of the
+   * reader.
+   *
+   * @return A non-null string representation of this CardResourceAdapter instance, containing
+   *     detailed internal state information.
+   * @since 3.1.1
+   */
+  @Override
+  public String toString() {
+    return "CardResourceAdapter{"
+        + "hashCode="
+        + HexUtil.toHex(System.identityHashCode(this))
+        + ", readerName='"
+        + reader.getName()
+        + '\''
+        + ", readerHashCode="
+        + HexUtil.toHex(System.identityHashCode(reader))
+        + ", smartCardHashCode="
+        + HexUtil.toHex(System.identityHashCode(smartCard))
+        + '}';
   }
 }

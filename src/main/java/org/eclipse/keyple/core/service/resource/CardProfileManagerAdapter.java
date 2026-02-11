@@ -149,14 +149,14 @@ final class CardProfileManagerAdapter {
         if (!cardResources.contains(cardResource)) {
           cardResources.add(cardResource);
           logger.info(
-              "Add {} to profile [{}]",
-              CardResourceServiceAdapter.getCardResourceInfo(cardResource),
-              cardProfile.getProfileName());
+              "New card resource added [profile={}, cardResource={}]",
+              cardProfile.getProfileName(),
+              CardResourceServiceAdapter.getCardResourceInfo(cardResource));
         } else {
           logger.info(
-              "{} already present in profile [{}]",
-              CardResourceServiceAdapter.getCardResourceInfo(cardResource),
-              cardProfile.getProfileName());
+              "Card resource already present [profile={}, cardResource={}]",
+              cardProfile.getProfileName(),
+              CardResourceServiceAdapter.getCardResourceInfo(cardResource));
         }
       }
     }
@@ -180,13 +180,7 @@ final class CardProfileManagerAdapter {
    * @since 2.0.0
    */
   void removeCardResource(CardResource cardResource) {
-    boolean isRemoved = cardResources.remove(cardResource);
-    if (isRemoved) {
-      logger.info(
-          "Remove {} from profile [{}]",
-          CardResourceServiceAdapter.getCardResourceInfo(cardResource),
-          cardProfile.getProfileName());
-    }
+    cardResources.remove(cardResource);
   }
 
   /**
