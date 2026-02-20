@@ -270,7 +270,7 @@ final class CardResourceServiceAdapter
           && configuredPlugin.getPlugin() instanceof ObservablePlugin) {
 
         logger.info(
-            "Plugin monitoring start requested [plugin={}]",
+            "Reader monitoring start requested [plugin={}]",
             configuredPlugin.getPlugin().getName());
         startPluginObservation(configuredPlugin);
       }
@@ -281,7 +281,7 @@ final class CardResourceServiceAdapter
         for (ObservableCardReader reader :
             pluginToObservableReadersMap.get(configuredPlugin.getPlugin())) {
 
-          logger.info("Reader monitoring start requested [reader={}]", reader.getName());
+          logger.info("Card monitoring start requested [reader={}]", reader.getName());
           startReaderObservation(reader, configuredPlugin);
         }
       }
@@ -313,7 +313,7 @@ final class CardResourceServiceAdapter
 
         ((ObservablePlugin) configuredPlugin.getPlugin()).removeObserver(this);
         logger.info(
-            "Plugin monitoring stopped [plugin={}]", configuredPlugin.getPlugin().getName());
+            "Reader monitoring stopped [plugin={}]", configuredPlugin.getPlugin().getName());
       }
 
       if (configuredPlugin.isWithReaderMonitoring()
@@ -323,7 +323,7 @@ final class CardResourceServiceAdapter
             pluginToObservableReadersMap.get(configuredPlugin.getPlugin())) {
 
           reader.removeObserver(this);
-          logger.info("Reader monitoring stopped [reader={}]", reader.getName());
+          logger.info("Card monitoring stopped [reader={}]", reader.getName());
         }
       }
     }
@@ -504,7 +504,7 @@ final class CardResourceServiceAdapter
 
         if (configuredPlugin.getPlugin() == plugin && configuredPlugin.isWithReaderMonitoring()) {
 
-          logger.info("Reader monitoring start requested [reader={}]", reader.getName());
+          logger.info("Card monitoring start requested [reader={}]", reader.getName());
           startReaderObservation((ObservableCardReader) reader, configuredPlugin);
         }
       }
