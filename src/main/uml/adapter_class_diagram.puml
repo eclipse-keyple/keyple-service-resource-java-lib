@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - Adapters of keyple-service-resource-java-lib - 3.0.0 (2023-06-27)
+    Keyple - Adapters of keyple-service-resource-java-lib - 3.2.0 (2026-04-13)
 end title
 
 ' == THEME ==
@@ -64,7 +64,7 @@ package "org.eclipse.keyple.core.service.resource" as resource {
     +class "**final** CardResourceServiceProvider" as CardResourceServiceProvider <<green>> {
         ...
     }
-    ~class "<<CardResourceService>>\n<<<back:pink>PluginObserverSpi</back>>>\n<<<back:yellow>CardReaderObserverSpi</back>>>\n**final** CardResourceServiceAdapter" as CardResourceServiceAdapter {
+    ~class "<<CardResourceService>>\n<<<back:pink><color:blue>PluginEventHandler</back>>>\n<<<back:yellow><color:blue>CardReaderEventHandler</back>>>\n**final** CardResourceServiceAdapter" as CardResourceServiceAdapter {
         --
         ~{static} CardResourceServiceAdapter getInstance ()
         ~{static} String getCardResourceInfo (CardResource cardResource)
@@ -81,10 +81,12 @@ package "org.eclipse.keyple.core.service.resource" as resource {
         +CardResource getCardResource ()
         +void releaseCardResource (CardResource cardResource)
         +void removeCardResource (CardResource cardResource)
-        -- **PluginObserverSpi** --
+        -- **PluginEventHandler** --
         +void onPluginEvent (<back:pink>PluginEvent</back> pluginEvent)
-        -- **CardReaderObserverSpi** --
-        +void onReaderEvent (<back:yellow>CardReaderEvent</back> readerEvent)
+        +<color:blue>void onPluginError (String pluginName, Throwable e)
+        -- **CardReaderEventHandler** --
+        +void onReaderEvent (<back:yellow>CardReaderEvent</back> cardReaderEvent)
+        +<color:blue>void onReaderError (String context, String readerName, Throwable e)
     }
     ~class "<<CardResource>>\n**final** CardResourceAdapter" as CardResourceAdapter {
         ~CardResource (<back:yellow>CardReader</back> reader, <back:cyan>KeypleReaderExtension</back> readerExtension, <back:yellow>SmartCard</back> smartCard)
