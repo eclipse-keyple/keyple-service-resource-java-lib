@@ -1,6 +1,6 @@
 @startuml
 title
-    Keyple - keyple-service-resource-java-lib - 3.1.+ (2024-09-05)
+    Keyple - keyple-service-resource-java-lib - 3.2.+ (2026-04-13)
 end title
 
 ' == THEME ==
@@ -91,9 +91,12 @@ package "org.eclipse.keyple.core.service.resource" as resource {
         +Builder withAllocationStrategy (AllocationStrategy allocationStrategy)
         +Builder withUsageTimeout (int usageTimeoutMillis)
         +Builder addPlugin (<back:pink>Plugin</back> plugin, ReaderConfiguratorSpi readerConfiguratorSpi)
-        +Builder addPluginWithMonitoring (<back:pink>Plugin</back> plugin, ReaderConfiguratorSpi readerConfiguratorSpi
-            \t<back:pink>PluginObservationExceptionHandlerSpi</back> pluginObservationExceptionHandlerSpi,
-            \t<back:yellow>CardReaderObservationExceptionHandlerSpi</back> readerObservationExceptionHandlerSpi)
+        +<color:red><s>Builder addPluginWithMonitoring (<back:pink>Plugin</back> plugin, ReaderConfiguratorSpi readerConfiguratorSpi
+            \t<color:red><s><back:pink>PluginObservationExceptionHandlerSpi</back> pluginObservationExceptionHandlerSpi,
+            \t<color:red><s><back:yellow>CardReaderObservationExceptionHandlerSpi</back> readerObservationExceptionHandlerSpi)
+        +<color:blue>Builder addPluginWithMonitoring (<back:pink>Plugin</back> plugin, ReaderConfiguratorSpi readerConfiguratorSpi
+            \t<color:blue>CardResourceMonitoringExceptionHandler pluginMonitoringExceptionHandler,
+            \t<color:blue>CardResourceMonitoringExceptionHandler readerMonitoringExceptionHandler)
         +PluginsConfigurator build ()
     }
     +enum AllocationStrategy <<green>> {
@@ -129,12 +132,15 @@ package "org.eclipse.keyple.core.service.resource" as resource {
     }
 
     package "spi" as resourceSpi {
+        +interface "<color:blue>CardResourceMonitoringExceptionHandler" as CardResourceMonitoringExceptionHandler <<red>> {
+            +<color:blue>void onCardResourceMonitoringError (String context, Throwable e)
+        }
         +interface ReaderConfiguratorSpi <<red>> {
             +void setupReader (<back:yellow>CardReader</back> reader)
         }
         +interface CardResourceProfileExtension <<red>> {
             +<back:yellow>SmartCard</back> matches (<back:yellow>CardReader</back> reader, <back:yellow>ReaderApiFactory</back> readerApiFactory)
-            +<color:blue><back:yellow>SmartCard</back> matches (<back:yellow>SmartCard</back> smartCard)
+            +<back:yellow>SmartCard</back> matches (<back:yellow>SmartCard</back> smartCard)
         }
     }
 }
@@ -159,6 +165,7 @@ PluginsConfigurator *-right- "1" AllocationStrategy #C_LINK
 PluginsConfiguratorBuilder ..> PluginsConfiguratorBuilder #C_LINK
 PluginsConfiguratorBuilder .up.> AllocationStrategy #C_USE : use >
 PluginsConfiguratorBuilder ..> ReaderConfiguratorSpi #C_USE : use >
+PluginsConfiguratorBuilder ..> CardResourceMonitoringExceptionHandler #C_USE : use >
 PluginsConfiguratorBuilder .up.> PluginsConfigurator #C_LINK : create >
 
 PoolPluginsConfigurator +-- PoolPluginsConfiguratorBuilder
